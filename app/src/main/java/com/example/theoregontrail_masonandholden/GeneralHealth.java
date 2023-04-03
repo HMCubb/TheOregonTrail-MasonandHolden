@@ -21,6 +21,10 @@ public class GeneralHealth {
         this.GeneralHealth = generalHealth;
     }
 
+    public void addHealth(double increment) {
+        this.GeneralHealth = this.GeneralHealth + increment;
+    }
+
     public boolean weatherHealth(int weather, int clothing, int memberCount){
         if (weather == 5){
             this.GeneralHealth = this.GeneralHealth + 2;
@@ -34,6 +38,9 @@ public class GeneralHealth {
             return true;
         }
         else if (weather == 2){
+            return true;
+        }
+        else if (weather == 1){
             if (clothing >= (memberCount * 2)){
                 return true;
             }
@@ -46,7 +53,7 @@ public class GeneralHealth {
                 return true;
             }
         }
-        else if (weather == 1){
+        else if (weather == 0){
             if (clothing >= (memberCount * 4)){
                 return true;
             }
