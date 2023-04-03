@@ -6,6 +6,7 @@ public class Entity {
 
     public boolean sick = false;
     public boolean injured = false;
+    public boolean dead = false;
     public String name = "";
     private int hattieNumber = 1;
     private int charlesNumber = 2;
@@ -33,6 +34,7 @@ public class Entity {
 
         sick = false;
         injured = false;
+        dead = false;
     }
 
 
