@@ -58,6 +58,18 @@ public class Store extends AppCompatActivity {
         configureWheelsDownButton();
         configureOxenUpButton();
         configureOxenDownButton();
+        configureContinueButton();
+    }
+
+    private void configureContinueButton() {
+
+        Button continueButton = (Button) findViewById(R.id.continueButton);
+        continueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Store.this, DailyStatus.class));
+            }
+        });
     }
 
     private void configureFoodUpButton() {
