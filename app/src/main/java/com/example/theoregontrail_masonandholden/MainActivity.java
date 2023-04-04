@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setContentView(R.layout.activity_store);
+        //setContentView(R.layout.activity_store);
 
         configureStartButton();
     }
@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setContentView(R.layout.activity_store);
                 startActivity(new Intent(MainActivity.this, Store.class));
             }
         });

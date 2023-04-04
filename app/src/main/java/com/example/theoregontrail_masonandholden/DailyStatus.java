@@ -6,9 +6,14 @@ import android.os.Bundle;
 
 public class DailyStatus extends AppCompatActivity {
 
+    Wagon wagon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_status);
+    }
+
+    public void setWagon(Wagon wagon){
+        this.wagon = wagon;
     }
 }
