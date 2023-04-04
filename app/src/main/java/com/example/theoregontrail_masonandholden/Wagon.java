@@ -3,7 +3,7 @@ package com.example.theoregontrail_masonandholden;
 public class Wagon {
 
     public int people;
-    public int money;
+    public double money;
     public int oxen;
     public int food;
     public int clothes;
@@ -11,7 +11,7 @@ public class Wagon {
     public int axles;
     public int wheels;
 
-    public Wagon(int people, int money, int oxen, int food, int clothes, int tongues, int axles, int wheels) {
+    public Wagon(int people, double money, int oxen, int food, int clothes, int tongues, int axles, int wheels) {
         this.people = people;
         this.money = money;
         this.oxen = oxen;
@@ -34,19 +34,19 @@ public class Wagon {
         this.people = this.people - 1;
     }
 
-    public int getMoney() {
+    public double getMoney() {
         return money;
     }
 
-    public void setMoney(int money) {
+    public void setMoney(double money) {
         this.money = money;
     }
 
-    public void spendMoney(int amount){
+    public void spendMoney(double amount){
         this.money = this.money - amount;
     }
 
-    public void returnMoney(int amount){
+    public void returnMoney(double amount){
         this.money = this.money + amount;
     }
 
