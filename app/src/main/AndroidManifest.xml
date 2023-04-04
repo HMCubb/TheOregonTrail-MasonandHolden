@@ -12,6 +12,9 @@
         android:theme="@style/Theme.TheOregonTrailMasonandHolden"
         tools:targetApi="31">
         <activity
+            android:name=".DailyStatus"
+            android:exported="false" />
+        <activity
             android:name=".Store"
             android:exported="false" />
         <activity

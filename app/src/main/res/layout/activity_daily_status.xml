@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/DailyStatus"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".DailyStatus">
+
+    <TextView
+        android:id="@+id/ProgressLabels"
+        android:layout_width="435dp"
+        android:layout_height="368dp"
+        android:background="#FFFFFF"
+        android:text="Day: Distance: Health: Temperature: "
+        android:textSize="70sp"
+        tools:layout_editor_absoluteX="838dp"
+        tools:layout_editor_absoluteY="200dp" />
+
+    <EditText
+        android:id="@+id/TemperatureTracker"
+        android:layout_width="47dp"
+        android:layout_height="83dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textSize="50sp"
+        tools:layout_editor_absoluteX="1299dp"
+        tools:layout_editor_absoluteY="467dp" />
+
+    <EditText
+        android:id="@+id/DistanceTracker"
+        android:layout_width="47dp"
+        android:layout_height="83dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textSize="50sp"
+        tools:layout_editor_absoluteX="1299dp"
+        tools:layout_editor_absoluteY="301dp" />
+
+    <EditText
+        android:id="@+id/DayTracker"
+        android:layout_width="47dp"
+        android:layout_height="83dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textSize="50sp"
+        tools:layout_editor_absoluteX="1299dp"
+        tools:layout_editor_absoluteY="218dp" />
+
+    <EditText
+        android:id="@+id/HealthTracker"
+        android:layout_width="47dp"
+        android:layout_height="83dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textSize="50sp"
+        tools:layout_editor_absoluteX="1299dp"
+        tools:layout_editor_absoluteY="384dp" />
+
+    <TextView
+        android:id="@+id/ProgressTitle"
+        android:layout_width="452dp"
+        android:layout_height="142dp"
+        android:background="#FFFFFF"
+        android:text="Progress"
+        android:textSize="100sp"
+        tools:layout_editor_absoluteX="874dp"
+        tools:layout_editor_absoluteY="40dp" />
+
+    <EditText
+        android:id="@+id/EventsDisplay"
+        android:layout_width="869dp"
+        android:layout_height="292dp"
+        android:background="#FFFFFF"
+        android:text=" "
+        android:textSize="34sp"
+        tools:layout_editor_absoluteX="673dp"
+        tools:layout_editor_absoluteY="833dp" />
+
+    <TextView
+        android:id="@+id/ResourceLabels"
+        android:layout_width="292dp"
+        android:layout_height="676dp"
+        android:background="#FFFFFF"
+        android:text="People: Money: Food: Oxen: Clothes: Tongues: Axles: Wheels:"
+        android:textSize="70sp"
+        tools:layout_editor_absoluteX="170dp"
+        tools:layout_editor_absoluteY="252dp" />
+
+    <TextView
+        android:id="@+id/EventsTitle"
+        android:layout_width="384dp"
+        android:layout_height="138dp"
+        android:background="#FFFFFF"
+        android:text="Events"
+        android:textSize="100sp"
+        tools:layout_editor_absoluteX="931dp"
+        tools:layout_editor_absoluteY="667dp" />
+
+    <EditText
+        android:id="@+id/WheelsCount"
+        android:layout_width="47dp"
+        android:layout_height="83dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textSize="50sp"
+        tools:layout_editor_absoluteX="487dp"
+        tools:layout_editor_absoluteY="833dp" />
+
+    <EditText
+        android:id="@+id/AxlesCount"
+        android:layout_width="47dp"
+        android:layout_height="83dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textSize="50sp"
+        tools:layout_editor_absoluteX="487dp"
+        tools:layout_editor_absoluteY="750dp" />
+
+    <EditText
+        android:id="@+id/TonguesCount"
+        android:layout_width="47dp"
+        android:layout_height="83dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textSize="50sp"
+        tools:layout_editor_absoluteX="487dp"
+        tools:layout_editor_absoluteY="667dp" />
+
+    <EditText
+        android:id="@+id/ClothesCount"
+        android:layout_width="47dp"
+        android:layout_height="83dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textSize="50sp"
+        tools:layout_editor_absoluteX="487dp"
+        tools:layout_editor_absoluteY="584dp" />
+
+    <EditText
+        android:id="@+id/OxenCount"
+        android:layout_width="47dp"
+        android:layout_height="83dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textSize="50sp"
+        tools:layout_editor_absoluteX="487dp"
+        tools:layout_editor_absoluteY="501dp" />
+
+    <EditText
+        android:id="@+id/FoodCount"
+        android:layout_width="47dp"
+        android:layout_height="83dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textSize="50sp"
+        tools:layout_editor_absoluteX="487dp"
+        tools:layout_editor_absoluteY="418dp" />
+
+    <EditText
+        android:id="@+id/MoneyCount"
+        android:layout_width="47dp"
+        android:layout_height="83dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textSize="50sp"
+        tools:layout_editor_absoluteX="487dp"
+        tools:layout_editor_absoluteY="335dp" />
+
+    <EditText
+        android:id="@+id/PeopleCount"
+        android:layout_width="47dp"
+        android:layout_height="83dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textSize="50sp"
+        tools:layout_editor_absoluteX="487dp"
+        tools:layout_editor_absoluteY="252dp" />
+
+    <TextView
+        android:id="@+id/ResourceTitle"
+        android:layout_width="503dp"
+        android:layout_height="149dp"
+        android:background="#FFFFFF"
+        android:text="Resources"
+        android:textSize="100sp"
+        tools:layout_editor_absoluteX="170dp"
+        tools:layout_editor_absoluteY="85dp" />
+
+    <Button
+        android:id="@+id/NextDayButton"
+        android:layout_width="302dp"
+        android:layout_height="151dp"
+        android:text="Next Day"
+        android:textSize="34sp"
+        tools:layout_editor_absoluteX="1543dp"
+        tools:layout_editor_absoluteY="500dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
