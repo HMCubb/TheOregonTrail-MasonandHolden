@@ -30,7 +30,7 @@ public class Wagon {
         this.people = people;
     }
 
-    public void killPerson() {
+    public void removePerson() {
         this.people = this.people - 1;
     }
 
@@ -42,8 +42,12 @@ public class Wagon {
         this.money = money;
     }
 
-    public void removeMoney(int amount){
+    public void spendMoney(int amount){
         this.money = this.money - amount;
+    }
+
+    public void returnMoney(int amount){
+        this.money = this.money + amount;
     }
 
     public int getOxen() {
@@ -54,12 +58,28 @@ public class Wagon {
         this.oxen = oxen;
     }
 
+    public void buyYoke() {
+        this.oxen = this.oxen + 2;
+    }
+
+    public void sellYoke() {
+        this.oxen = this.oxen - 2;
+    }
+
     public int getFood() {
         return food;
     }
 
     public void setFood(int food) {
         this.food = food;
+    }
+
+    public void buyFood() {
+        this.food = this.food + 10;
+    }
+
+    public void sellFood() {
+        this.food = this.food - 10;
     }
 
     public int getClothes() {
@@ -70,12 +90,28 @@ public class Wagon {
         this.clothes = clothes;
     }
 
+    public void buyClothes() {
+        this.clothes = this.clothes + 1;
+    }
+
+    public void sellClothes() {
+        this.clothes = this.clothes - 1;
+    }
+
     public int getTongues() {
         return tongues;
     }
 
     public void setTongues(int tongues) {
         this.tongues = tongues;
+    }
+
+    public void buyTongues() {
+        this.tongues = this.tongues + 1;
+    }
+
+    public void sellTongues() {
+        this.tongues = this.tongues - 1;
     }
 
     public int getAxles() {
@@ -86,12 +122,28 @@ public class Wagon {
         this.axles = axles;
     }
 
+    public void buyAxles() {
+        this.axles = this.axles + 1;
+    }
+
+    public void sellAxles() {
+        this.axles = this.axles - 1;
+    }
+
     public int getWheels() {
         return wheels;
     }
 
     public void setWheels(int wheels) {
         this.wheels = wheels;
+    }
+
+    public void buyWheels() {
+        this.wheels = this.wheels + 1;
+    }
+
+    public void sellWheels() {
+        this.wheels = this.wheels - 1;
     }
 }
 

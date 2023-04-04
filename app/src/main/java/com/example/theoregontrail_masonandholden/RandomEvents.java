@@ -23,7 +23,7 @@ public class RandomEvents {
     }
 
     public boolean randomLowWater(int rainfall){
-        int random = (int) (Math.random() * 1000);
+        int random = (int) (Math.random() * 100);
         if (rainfall <= 0) {
             return random <= 10;
         }
@@ -38,7 +38,7 @@ public class RandomEvents {
     public boolean randomBlizzard(int temperature){
         int random = (int) (Math.random() * 100);
         if (temperature <= 1) {
-            return random <= 15;
+            return random <= 5;
         }
         else {
             return false;
