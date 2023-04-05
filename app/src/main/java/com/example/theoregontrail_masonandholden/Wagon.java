@@ -4,6 +4,7 @@ public class Wagon {
 
     public int people;
     public double money;
+    public double moneySpent = 0.00;
     public int oxen;
     public int food;
     public int clothes;
@@ -42,13 +43,9 @@ public class Wagon {
         this.money = money;
     }
 
-    public void spendMoney(double amount){
-        this.money = this.money - amount;
-    }
+    public void spendMoney(double amount){ this.money = this.money - amount; moneySpent = moneySpent + amount;}
 
-    public void returnMoney(double amount){
-        this.money = this.money + amount;
-    }
+    public void returnMoney(double amount){ this.money = this.money + amount; moneySpent = moneySpent - amount;};
 
     public int getOxen() {
         return oxen;
@@ -58,11 +55,11 @@ public class Wagon {
         this.oxen = oxen;
     }
 
-    public void buyYoke() {
+    public void buyOxen() {
         this.oxen = this.oxen + 2;
     }
 
-    public void sellYoke() {
+    public void sellOxen() {
         this.oxen = this.oxen - 2;
     }
 

@@ -345,7 +345,6 @@
         android:layout_width="197dp"
         android:layout_height="65dp"
         android:layout_marginStart="112dp"
-        android:layout_marginTop="28dp"
         android:layout_marginBottom="88dp"
         android:background="#FFFFFF"
         android:text="Owed $"
@@ -356,22 +355,21 @@
         android:textStyle="bold"
         android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yourMoneyText" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/yourMoneyAmount"
         android:layout_width="217dp"
         android:layout_height="66dp"
         android:layout_marginStart="31dp"
-        android:layout_marginBottom="27dp"
+        android:layout_marginTop="188dp"
         android:background="#FFFFFF"
         android:text="$850.00"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="48sp"
-        app:layout_constraintBottom_toTopOf="@+id/moneyOwedAmount"
-        app:layout_constraintStart_toEndOf="@+id/yourMoneyText" />
+        app:layout_constraintStart_toEndOf="@+id/yourMoneyText"
+        app:layout_constraintTop_toBottomOf="@+id/clothesText" />
 
     <TextView
         android:id="@+id/yourMoneyText"
