@@ -3,22 +3,30 @@ package com.example.theoregontrail_masonandholden;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class DailyStatus extends AppCompatActivity {
 
-    Wagon wagon;
+    public Wagon wagon;
 
     Wagon theWagon = new Wagon(10, 20, 30, 40, 50, 60, 70, 80);
     Weather weather = new Weather();
     DateAndDistance dateAndDistance = new DateAndDistance();
     GeneralHealth health = new GeneralHealth();
 
-    public void setWagon(Wagon wagon){
+    public DailyStatus(){}
+
+    public DailyStatus(Wagon wagon){
         this.wagon = wagon;
     }
+
+//    public void setWagon(NewWagon storeWagon){
+//        wagon = storeWagon;
+//        Log.i("DailyStatus",  String.valueOf(wagon.getPeople()));
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,20 +48,22 @@ public class DailyStatus extends AppCompatActivity {
         final TextView HealthTracker = findViewById(R.id.HealthTracker);
         final TextView TemperatureTracker = findViewById(R.id.TemperatureTracker);
 
+        wagon = (Wagon) getIntent().getSerializableExtra("NewWagon");
+
         NextDayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 
 
-                PeopleCount.setText(String.valueOf(theWagon.getPeople()));
-                MoneyCount.setText(String.valueOf(theWagon.getMoney()));
-                FoodCount.setText(String.valueOf(theWagon.getFood()));
-                OxenCount.setText(String.valueOf(theWagon.getOxen()));
-                ClothesCount.setText(String.valueOf(theWagon.getClothes()));
-                TonguesCount.setText(String.valueOf(theWagon.getTongues()));
-                AxlesCount.setText(String.valueOf(theWagon.getAxles()));
-                WheelsCount.setText(String.valueOf(theWagon.getWheels()));
+                PeopleCount.setText(String.valueOf(wagon.getPeople()));
+                MoneyCount.setText(String.valueOf(String.format("%.2f", wagon.getMoney())));
+                FoodCount.setText(String.valueOf(wagon.getFood()));
+                OxenCount.setText(String.valueOf(wagon.getOxen()));
+                ClothesCount.setText(String.valueOf(wagon.getClothes()));
+                TonguesCount.setText(String.valueOf(wagon.getTongues()));
+                AxlesCount.setText(String.valueOf(wagon.getAxles()));
+                WheelsCount.setText(String.valueOf(wagon.getWheels()));
                 HealthTracker.setText(String.valueOf(health.getGeneralHealth()));
                 DistanceTracker.setText(String.valueOf(dateAndDistance.getDistanceTraveled()));
                 DayTracker.setText(String.valueOf(dateAndDistance.getCurrentDate()));

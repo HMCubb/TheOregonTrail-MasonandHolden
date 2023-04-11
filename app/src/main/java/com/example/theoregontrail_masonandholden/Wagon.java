@@ -1,6 +1,10 @@
 package com.example.theoregontrail_masonandholden;
 
-public class Wagon {
+import static java.lang.Math.round;
+
+import java.io.Serializable;
+
+public class Wagon implements Serializable {
 
     public int people;
     public double money;
@@ -35,9 +39,7 @@ public class Wagon {
         this.people = this.people - 1;
     }
 
-    public double getMoney() {
-        return money;
-    }
+    public double getMoney() { return money; }
 
     public void setMoney(double money) {
         this.money = money;
