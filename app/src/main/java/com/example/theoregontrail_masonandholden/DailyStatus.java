@@ -16,6 +16,7 @@ public class DailyStatus extends AppCompatActivity {
     Weather weather = new Weather();
     DateAndDistance dateAndDistance = new DateAndDistance();
     GeneralHealth health = new GeneralHealth();
+    RandomEvents randomEvents = new RandomEvents();
 
     public DailyStatus(){}
 
@@ -54,8 +55,6 @@ public class DailyStatus extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
-
                 PeopleCount.setText(String.valueOf(wagon.getPeople()));
                 MoneyCount.setText(String.valueOf(String.format("%.2f", wagon.getMoney())));
                 FoodCount.setText(String.valueOf(wagon.getFood()));
@@ -68,6 +67,19 @@ public class DailyStatus extends AppCompatActivity {
                 DistanceTracker.setText(String.valueOf(dateAndDistance.getDistanceTraveled()));
                 DayTracker.setText(String.valueOf(dateAndDistance.getCurrentDate()));
                 TemperatureTracker.setText(String.valueOf(weather.getTemperature()));
+
+                weather.temperatureDaily();
+                weather.rainfallDaily();
+                health.decrementHealth();
+                randomEvents.randomFruit(dateAndDistance.getMonth());
+                randomEvents.randomBadGrass(weather.getRainfall());
+                randomEvents.randomLostMember();
+                if (randomEvents.fruit){
+                    wagon.gainFood(20);
+                }
+                if (randomEvents.lostMember) {
+                    dateAndDistance.addDays(randomEvents.randomDaysLost(5));
+                }
 
             }
         });

@@ -2,117 +2,163 @@ package com.example.theoregontrail_masonandholden;
 
 public class RandomEvents {
 
-    public double randomValue;
+    public boolean disease;
+    public boolean badWater;
+    public boolean lowWater;
+    public boolean roughTrail;
+    public boolean blizzard;
+    public boolean fog;
+    public boolean hail;
+    public boolean oxenDamage;
+    public boolean injury;
+    public boolean snakeBite;
+    public boolean loseTrail;
+    public boolean thief;
+    public boolean blockedTrail;
+    public boolean fire;
+    public boolean abandonedWagon;
+    public boolean oxenWandered;
+    public boolean lostMember;
+    public boolean badGrass;
+    public boolean fruit;
+    public int daysLost;
+    public int foodLost;
 
-    public RandomEvents() {
-        this.randomValue = 0;
+
+
+    public RandomEvents()   {
+        this.disease = false;
+        this.badWater = false;
+        this.lowWater = false;
+        this.roughTrail = false;
+        this.blizzard = false;
+        this.fog = false;
+        this.hail = false;
+        this.oxenDamage = false;
+        this.injury = false;
+        this.snakeBite = false;
+        this.loseTrail = false;
+        this.thief = false;
+        this.blockedTrail = false;
+        this.fire = false;
+        this.abandonedWagon = false;
+        this.oxenWandered = false;
+        this.lostMember = false;
+        this.badGrass = false;
+        this.fruit = false;
+        this.daysLost = 0;
+        this.foodLost = 0;
+
     }
-
-    public boolean randomDisease(double health){
+    public void randomDisease(double health){
         double standardized = (health / 140) * 40;
         int random = (int) (Math.random() * 100);
-        return random <= standardized;
+        this.disease = random <= standardized;
     }
 
-    public boolean randomBadWater(int rainfall){
+    public void randomBadWater(int rainfall){
         int random = (int) (Math.random() * 100);
         if (rainfall <= 0) {
-            return random <= 5;
+            this.badWater = random <= 5;
         }
-        return false;
+        else {
+            this.badWater = false;
+        }
     }
 
-    public boolean randomLowWater(int rainfall){
+    public void randomLowWater(int rainfall){
         int random = (int) (Math.random() * 100);
         if (rainfall <= 0) {
-            return random <= 10;
+            this.lowWater = random <= 10;
         }
-        return false;
+        else {
+            this.lowWater = false;
+        }
     }
 
-    public boolean randomRoughTrail(){
+    public void randomRoughTrail(){
         int random = (int) (Math.random() * 1000);
-        return random <= 25;
+        this.roughTrail = random <= 25;
     }
 
-    public boolean randomBlizzard(int temperature){
+    public void randomBlizzard(int temperature){
         int random = (int) (Math.random() * 100);
         if (temperature <= 1) {
-            return random <= 5;
+            this.blizzard =  random <= 5;
         }
         else {
-            return false;
+            this.blizzard = false;
         }
     }
 
-    public boolean randomFog(int temperature){
+    public void randomFog(int temperature){
         int random = (int) (Math.random() * 100);
         if (temperature >= 4) {
-            return random <= 3;
+            this.fog = random <= 3;
         }
         else {
-            return false;
+            this.fog = false;
         }
     }
 
-    public boolean randomHail(int temperature){
+    public void randomHail(int temperature){
         int random = (int) (Math.random() * 100);
         if (temperature <= 0) {
-            return random <= 6;
+            this.hail = random <= 6;
         }
         else {
-            return false;
+            this.hail = false;
         }
     }
 
-    public boolean randomOxenDamage(){
+    public void randomOxenDamage(){
         int random = (int) (Math.random() * 100);
-        return random <= 2;
+        this.oxenDamage = random <= 2;
     }
 
-    public boolean randomInjury(){
+    public void randomInjury(){
         int random = (int) (Math.random() * 100);
-        return random <= 2;
+        this.injury = random <= 2;
     }
 
-    public boolean randomSnakebite(){
+    public void randomSnakebite(){
         int random = (int) (Math.random() * 1000);
-        return random <= 7;
+        this.snakeBite = random <= 7;
     }
 
-    public boolean randomLoseTrail(){
+    public void randomLoseTrail(){
         int random = (int) (Math.random() * 100);
-        return random <= 2;
+        this.loseTrail = random <= 2;
     }
 
-    public boolean randomThief(){
+    public void randomThief(){
         int random = (int) (Math.random() * 100);
-        return random <= 2;
+        this.thief = random <= 2;
     }
 
-    public boolean randomBlockedTrail(){
+    public void randomBlockedTrail(){
         int random = (int) (Math.random() * 1000);
-        return random <= 25;
+        this.blockedTrail = random <= 25;
     }
 
-    public boolean randomFire(){
+    public void randomFire(){
         int random = (int) (Math.random() * 100);
-        return random <= 2;
+        this.fire = random <= 2;
     }
 
-    public boolean randomAbandonedWagon(){
+    public void randomAbandonedWagon(){
         int random = (int) (Math.random() * 100);
-        return random <= 2;
+        this.abandonedWagon = random <= 2;
     }
 
-    public boolean randomOxenWander(){
+    public void randomOxenWander(){
         int random = (int) (Math.random() * 100);
-        return random <= 1;
+        this.oxenWandered = random <= 1;
     }
 
-    public boolean randomLostMember(){
+    public void randomLostMember(){
         int random = (int) (Math.random() * 100);
-        return random <= 1;
+        this.lostMember = random <= 1;
     }
 
     public int randomDaysLost(int maximum){
@@ -123,21 +169,23 @@ public class RandomEvents {
         return (int) (Math.random() * (maximum - 1)) + 1;
     }
 
-    public boolean randomBadGrass(int rainfall){
+    public void randomBadGrass(int rainfall){
         int random = (int) (Math.random() * 100);
         if (rainfall <= 0) {
-            return random <= 10;
-        }
-        return false;
-    }
-
-    public boolean randomFruit(int month){
-        int random = (int) (Math.random() * 100);
-        if (month >= 5 && month <= 9) {
-            return random <= 4;
+            this.badGrass = random <= 10;
         }
         else {
-            return false;
+            this.badGrass = false;
+        }
+    }
+
+    public void randomFruit(int month){
+        int random = (int) (Math.random() * 100);
+        if (month >= 5 && month <= 9) {
+            this.fruit = random <= 4;
+        }
+        else {
+            this.fruit = false;
         }
     }
 }

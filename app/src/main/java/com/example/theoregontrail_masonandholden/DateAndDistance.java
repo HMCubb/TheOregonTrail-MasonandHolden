@@ -12,7 +12,7 @@ public class DateAndDistance {
     public int month = 0;
     public int year = 0;
     public int pace = 0;
-    public int milesPerDay = 0;
+    public int milesPerDay = 20;
     private int locationStart = 0;
     private int midStop = 335;
     private int end = 510;
@@ -21,7 +21,7 @@ public class DateAndDistance {
 
         distanceFromHome = 0;
         day = 0;
-        month = 0;
+        month = 4;
         year = 0;
         beenToKearny = false;
         reachedEnd = false;
@@ -29,16 +29,15 @@ public class DateAndDistance {
 
     public String getCurrentDate() {
 
-        month = 4;
-        if (day ==  31) {
+        day++;
+        if (day >=  31) {
 
-            day = 1;
+            day = day - 30;
             month++;
         }
         year = 1847;
 
-        String date = month + "/" + day + "/" + year;
-        return date;
+        return month + "/" + day + "/" + year;
     }
 
     public String getLocationName() {
@@ -116,5 +115,16 @@ public class DateAndDistance {
         }
     }
 
+    public int dailyMotion() {
+        distanceFromHome = distanceFromHome + milesPerDay;
+        return distanceFromHome;
+    }
 
+    public int getMonth() {
+        return month;
+    }
+
+    public void addDays(int days) {
+        day = day + days;
+    }
 }

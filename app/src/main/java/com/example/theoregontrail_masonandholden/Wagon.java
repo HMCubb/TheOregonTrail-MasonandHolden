@@ -81,6 +81,14 @@ public class Wagon implements Serializable {
         this.food = this.food - 10;
     }
 
+    public void gainFood(int food) {
+        this.food = this.food + food;
+    }
+
+    public void loseFood(int food) {
+        this.food = this.food - food;
+    }
+
     public int getClothes() {
         return clothes;
     }
