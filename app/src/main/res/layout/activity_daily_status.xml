@@ -78,17 +78,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/EventsDisplay"
-        android:layout_width="865dp"
-        android:layout_height="243dp"
-        android:layout_marginEnd="390dp"
-        android:background="#FFFFFF"
-        android:text=" "
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
         android:id="@+id/ResourceLabels"
         android:layout_width="292dp"
         android:layout_height="676dp"
@@ -99,18 +88,6 @@
         android:textSize="70sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/EventsTitle"
-        android:layout_width="346dp"
-        android:layout_height="136dp"
-        android:layout_marginEnd="310dp"
-        android:layout_marginBottom="34dp"
-        android:background="#FFFFFF"
-        android:text="Events"
-        android:textSize="100sp"
-        app:layout_constraintBottom_toTopOf="@+id/EventsDisplay"
-        app:layout_constraintEnd_toStartOf="@+id/NextDayButton" />
 
     <TextView
         android:id="@+id/WheelsCount"
@@ -183,8 +160,8 @@
 
     <TextView
         android:id="@+id/MoneyCount"
-        android:layout_width="142dp"
-        android:layout_height="82dp"
+        android:layout_width="185dp"
+        android:layout_height="78dp"
         android:layout_marginStart="15dp"
         android:background="#FFFFFF"
         android:text="0"
@@ -220,8 +197,9 @@
         android:layout_width="302dp"
         android:layout_height="151dp"
         android:layout_marginEnd="32dp"
+        android:layout_marginBottom="413dp"
         android:text="Next Day"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/EventsTitle"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

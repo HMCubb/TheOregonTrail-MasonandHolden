@@ -27,7 +27,6 @@ public class Store extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store);
 
-
         configureFoodUpButton();
         configureFoodDownButton();
         configureClothesUpButton();
@@ -50,6 +49,7 @@ public class Store extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
                 Wagon storeWagon = new Wagon(myWagon.people, myWagon.money, myWagon.oxen, myWagon.food, myWagon.clothes, myWagon.tongues, myWagon.axles, myWagon.wheels);
 
                 DailyStatus dailyStatus = new DailyStatus();
@@ -58,7 +58,6 @@ public class Store extends AppCompatActivity {
                 intent.putExtra("NewWagon", storeWagon);
 
                 startActivity(intent);
-//                startActivity(new Intent(Store.this, dailyStatus.getClass()));
             }
         });
     }

@@ -1,6 +1,8 @@
 package com.example.theoregontrail_masonandholden;
 
-public class RandomEvents {
+import java.io.Serializable;
+
+public class RandomEvents implements Serializable {
 
     public boolean disease;
     public boolean badWater;
@@ -26,28 +28,28 @@ public class RandomEvents {
 
 
 
-    public RandomEvents()   {
-        this.disease = false;
-        this.badWater = false;
-        this.lowWater = false;
-        this.roughTrail = false;
-        this.blizzard = false;
-        this.fog = false;
-        this.hail = false;
-        this.oxenDamage = false;
-        this.injury = false;
-        this.snakeBite = false;
-        this.loseTrail = false;
-        this.thief = false;
-        this.blockedTrail = false;
-        this.fire = false;
-        this.abandonedWagon = false;
-        this.oxenWandered = false;
-        this.lostMember = false;
-        this.badGrass = false;
-        this.fruit = false;
-        this.daysLost = 0;
-        this.foodLost = 0;
+    public RandomEvents(boolean disease, boolean badWater, boolean lowWater, boolean roughTrail, boolean blizzard, boolean fog, boolean hail, boolean oxenDamage, boolean injury, boolean snakeBite, boolean loseTrail, boolean thief, boolean blockedTrail, boolean fire, boolean abandonedWagon, boolean oxenWandered, boolean lostMember, boolean badGrass, boolean fruit, int daysLost, int foodLost)  {
+        this.disease = disease;
+        this.badWater = badWater;
+        this.lowWater = lowWater;
+        this.roughTrail = roughTrail;
+        this.blizzard = blizzard;
+        this.fog = fog;
+        this.hail = hail;
+        this.oxenDamage = oxenDamage;
+        this.injury = injury;
+        this.snakeBite = snakeBite;
+        this.loseTrail = loseTrail;
+        this.thief = thief;
+        this.blockedTrail = blockedTrail;
+        this.fire = fire;
+        this.abandonedWagon = abandonedWagon;
+        this.oxenWandered = oxenWandered;
+        this.lostMember = lostMember;
+        this.badGrass = badGrass;
+        this.fruit = fruit;
+        this.daysLost = daysLost;
+        this.foodLost = foodLost;
 
     }
     public void randomDisease(double health){
@@ -158,7 +160,7 @@ public class RandomEvents {
 
     public void randomLostMember(){
         int random = (int) (Math.random() * 100);
-        this.lostMember = random <= 1;
+        this.lostMember = random <= 100;
     }
 
     public int randomDaysLost(int maximum){
