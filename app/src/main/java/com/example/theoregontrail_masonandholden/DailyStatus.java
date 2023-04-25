@@ -15,14 +15,25 @@ import java.util.Random;
 public class DailyStatus extends AppCompatActivity {
 
     public Wagon wagon;
+    public Entity Hattie;
+    public Entity Charles;
+    public Entity Augusta;
+    public Entity Ben;
+    public Entity Jake;
+
     Weather weather = new Weather();
     DateAndDistance dateAndDistance = new DateAndDistance();
     GeneralHealth health = new GeneralHealth();
     RandomEvents randomEvents = new RandomEvents(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, 0, 0);
 
     public DailyStatus(){}
-    public DailyStatus(Wagon wagon){
+    public DailyStatus(Wagon wagon, Entity newHattie, Entity newCharles, Entity newAugusta, Entity newBen, Entity newJake){
         this.wagon = wagon;
+        this.Hattie = newHattie;
+        this.Charles = newCharles;
+        this.Augusta = newAugusta;
+        this.Ben = newBen;
+        this.Jake = newJake;
     }
 
     @Override
@@ -32,6 +43,11 @@ public class DailyStatus extends AppCompatActivity {
         setContentView(R.layout.activity_daily_status);
 
         wagon = (Wagon) getIntent().getSerializableExtra("NewWagon");
+        Hattie = (Entity) getIntent().getSerializableExtra("NewHattie");
+        Charles = (Entity) getIntent().getSerializableExtra("NewCharles");
+        Augusta = (Entity) getIntent().getSerializableExtra("NewAugusta");
+        Ben = (Entity) getIntent().getSerializableExtra("NewBen");
+        Jake = (Entity) getIntent().getSerializableExtra("NewJake");
 
         final Button NextDayButton = findViewById(R.id.NextDayButton);
         final TextView PeopleCount = findViewById(R.id.PeopleCount);
@@ -60,9 +76,6 @@ public class DailyStatus extends AppCompatActivity {
         DayTracker.setText(String.valueOf(dateAndDistance.getCurrentDate()));
         TemperatureTracker.setText(String.valueOf(weather.getTemperature()));
 
-
-
-
         NextDayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,13 +95,19 @@ public class DailyStatus extends AppCompatActivity {
                 }
 
                 RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.daysLost, randomEvents.foodLost);
-
-                dailyEvents dailyEvents = new dailyEvents();
+                Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
+                Entity newCharles = new Entity (Charles.name, Charles.sick, Charles.injured, Charles.dead);
+                Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
+                Entity newBen = new Entity (Ben.name, Ben.sick, Ben.injured, Ben.dead);
+                Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
 
                 Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
-                intent.putExtra("NewRandomEvents", newRandomEvents);
-                startActivity(intent);
 
+                intent.putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+
+                setContentView(R.layout.activity_daily_status);
+                startActivity(new Intent(DailyStatus.this, dailyEvents.class));
+                startActivity(intent);
             }
         });
     }
