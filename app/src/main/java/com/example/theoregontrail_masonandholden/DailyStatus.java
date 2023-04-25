@@ -24,7 +24,7 @@ public class DailyStatus extends AppCompatActivity {
     Weather weather = new Weather();
     DateAndDistance dateAndDistance = new DateAndDistance();
     GeneralHealth health = new GeneralHealth();
-    RandomEvents randomEvents = new RandomEvents(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, 0, 0);
+    RandomEvents randomEvents = new RandomEvents(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, 0, 0, 0, 0, 0,0);
 
     public DailyStatus(){}
     public DailyStatus(Wagon wagon, Entity newHattie, Entity newCharles, Entity newAugusta, Entity newBen, Entity newJake){
@@ -87,14 +87,81 @@ public class DailyStatus extends AppCompatActivity {
                 randomEvents.randomFruit(dateAndDistance.getMonth());
                 randomEvents.randomBadGrass(weather.getRainfall());
                 randomEvents.randomLostMember();
+                randomEvents.randomOxenWander();
+                randomEvents.randomAbandonedWagon();
+                randomEvents.randomFire();
+                randomEvents.randomThief();
+                randomEvents.randomBlockedTrail(dateAndDistance.getDistanceTraveled());
+                randomEvents.randomLoseTrail();
+                randomEvents.randomRoughTrail();
+
+                if (!randomEvents.blockedTrail && !randomEvents.lostMember && !randomEvents.loseTrail) {
+                    dateAndDistance.dailyMotion();
+                }
+
                 if (randomEvents.fruit){
                     wagon.gainFood(20);
                 }
                 if (randomEvents.lostMember) {
-                    dateAndDistance.addDays(randomEvents.randomDaysLost(5));
+                    randomEvents.setDaysLost(randomEvents.randomDaysLost(5));
+                    dateAndDistance.addDays(randomEvents.getDaysLost());
+                }
+                if (randomEvents.oxenWandered && !randomEvents.lostMember) {
+                    randomEvents.setDaysLost(randomEvents.randomDaysLost(3));
+                    dateAndDistance.addDays(randomEvents.getDaysLost());
+                }
+                if (randomEvents.abandonedWagon) {
+                    randomEvents.setFoodLost(randomEvents.randomFoodLost(wagon.getFood() / 5));
+                    randomEvents.setWheelsLost(randomEvents.randomOtherLost(1));
+                    randomEvents.setAxlesLost(randomEvents.randomOtherLost(1));
+                    randomEvents.setTonguesLost(randomEvents.randomOtherLost(1));
+                    randomEvents.setClothesLost(randomEvents.randomOtherLost(wagon.getClothes() / 3));
+
+                    wagon.setClothes(wagon.clothes + randomEvents.getClothesLost());
+                    wagon.setAxles(wagon.axles + randomEvents.getAxlesLost());
+                    wagon.setWheels(wagon.wheels + randomEvents.getWheelsLost());
+                    wagon.setTongues(wagon.tongues + randomEvents.getTonguesLost());
+                    wagon.setFood(wagon.food + randomEvents.getFoodLost());
                 }
 
-                RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.daysLost, randomEvents.foodLost);
+                if (randomEvents.fire && !randomEvents.abandonedWagon && !randomEvents.thief) {
+                    randomEvents.setFoodLost(randomEvents.randomFoodLost(wagon.getFood() / 2));
+                    randomEvents.setWheelsLost(randomEvents.randomOtherLost(1));
+                    randomEvents.setAxlesLost(randomEvents.randomOtherLost(1));
+                    randomEvents.setTonguesLost(randomEvents.randomOtherLost(1));
+                    randomEvents.setClothesLost(randomEvents.randomOtherLost(wagon.getClothes() / 2));
+
+                    wagon.setClothes(wagon.clothes - randomEvents.getClothesLost());
+                    wagon.setAxles(wagon.axles - randomEvents.getAxlesLost());
+                    wagon.setWheels(wagon.wheels - randomEvents.getWheelsLost());
+                    wagon.setTongues(wagon.tongues - randomEvents.getTonguesLost());
+                    wagon.setFood(wagon.food - randomEvents.getFoodLost());
+                }
+
+                if (randomEvents.thief && !randomEvents.abandonedWagon) {
+                    randomEvents.setFoodLost(randomEvents.randomFoodLost(wagon.getFood() / 10));
+                    randomEvents.setClothesLost(randomEvents.randomOtherLost(wagon.getClothes() / 3));
+
+                    wagon.setClothes(wagon.clothes - randomEvents.getClothesLost());
+                    wagon.setFood(wagon.food - randomEvents.getFoodLost());
+                }
+
+                if (randomEvents.blockedTrail && !randomEvents.loseTrail) {
+                    dateAndDistance.addDays(2);
+                }
+
+                if (randomEvents.loseTrail) {
+                    dateAndDistance.addDays(1);
+                }
+
+                if (randomEvents.roughTrail) {
+                    health.addHealth(10);
+                }
+
+
+
+
+                RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost);
                 Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
                 Entity newCharles = new Entity (Charles.name, Charles.sick, Charles.injured, Charles.dead);
                 Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);

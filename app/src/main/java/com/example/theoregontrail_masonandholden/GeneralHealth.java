@@ -7,10 +7,9 @@ public class GeneralHealth {
     public GeneralHealth() {this.GeneralHealth = 0;}
 
 
-    public boolean decrementHealth(){
+    public void decrementHealth(){
         double decrement = this.GeneralHealth * 0.1;
         this.GeneralHealth = this.GeneralHealth - decrement;
-        return true;
     }
 
     public double getGeneralHealth() {
