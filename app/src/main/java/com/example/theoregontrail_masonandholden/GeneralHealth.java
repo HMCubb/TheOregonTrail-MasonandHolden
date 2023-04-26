@@ -20,60 +20,39 @@ public class GeneralHealth {
         this.GeneralHealth = generalHealth;
     }
 
-    public void addHealth(double increment) {
+    public void addHealth(int increment) {
         this.GeneralHealth = this.GeneralHealth + increment;
     }
 
-    public boolean weatherHealth(int weather, int clothing, int memberCount){
+    public void weatherHealth(int weather, int clothing, int memberCount){
         if (weather == 5){
             this.GeneralHealth = this.GeneralHealth + 2;
-            return true;
         }
         else if (weather == 4){
             this.GeneralHealth = this.GeneralHealth + 1;
-            return true;
-        }
-        else if (weather == 3){
-            return true;
-        }
-        else if (weather == 2){
-            return true;
         }
         else if (weather == 1){
-            if (clothing >= (memberCount * 2)){
-                return true;
-            }
-            else if (clothing >= memberCount){
+            if (clothing >= memberCount){
                 this.GeneralHealth = this.GeneralHealth + 1;
-                return true;
             }
             else {
                 this.GeneralHealth = this.GeneralHealth + 2;
-                return true;
             }
         }
         else if (weather == 0){
-            if (clothing >= (memberCount * 4)){
-                return true;
-            }
-            else if (clothing >= (memberCount * 3)){
+            if (clothing >= (memberCount * 3)){
                 this.GeneralHealth = this.GeneralHealth + 1;
-                return true;
             }
             else if (clothing >= (memberCount * 2)){
                 this.GeneralHealth = this.GeneralHealth + 2;
-                return true;
             }
             else if (clothing >= memberCount){
                 this.GeneralHealth = this.GeneralHealth + 3;
-                return true;
             }
             else {
                 this.GeneralHealth = this.GeneralHealth + 4;
-                return true;
             }
         }
-        return false;
     }
 
     public boolean paceHealth(int pace){

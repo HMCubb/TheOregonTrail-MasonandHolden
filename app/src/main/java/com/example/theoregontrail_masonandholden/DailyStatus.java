@@ -24,7 +24,7 @@ public class DailyStatus extends AppCompatActivity {
     Weather weather = new Weather();
     DateAndDistance dateAndDistance = new DateAndDistance();
     GeneralHealth health = new GeneralHealth();
-    RandomEvents randomEvents = new RandomEvents(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, 0, 0, 0, 0, 0,0);
+    RandomEvents randomEvents = new RandomEvents(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, 0, 0, 0, 0, 0,0, 0);
 
     public DailyStatus(){}
     public DailyStatus(Wagon wagon, Entity newHattie, Entity newCharles, Entity newAugusta, Entity newBen, Entity newJake){
@@ -80,7 +80,7 @@ public class DailyStatus extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
+                boolean alive = false;
                 weather.temperatureDaily();
                 weather.rainfallDaily();
                 health.decrementHealth();
@@ -94,8 +94,64 @@ public class DailyStatus extends AppCompatActivity {
                 randomEvents.randomBlockedTrail(dateAndDistance.getDistanceTraveled());
                 randomEvents.randomLoseTrail();
                 randomEvents.randomRoughTrail();
+                randomEvents.randomSnakebite();
+                randomEvents.randomInjury();
+                randomEvents.randomOxenDamage(dateAndDistance.getDistanceTraveled(), randomEvents.badGrass);
+                randomEvents.randomHail(weather.getTemperature());
+                randomEvents.randomFog(weather.getTemperature());
+                randomEvents.randomBlizzard(weather.getTemperature());
+                randomEvents.randomLowWater(weather.getRainfall());
+                randomEvents.randomBadWater(weather.getRainfall());
+                randomEvents.randomDisease(health.getGeneralHealth());
+                health.weatherHealth(weather.getTemperature(), wagon.getClothes(), wagon.getPeople());
 
-                if (!randomEvents.blockedTrail && !randomEvents.lostMember && !randomEvents.loseTrail) {
+                while (!alive) {
+                    int person = randomEvents.randomChooseMember(5);
+                    if (person == 1) {
+                        if (!Hattie.dead) {
+                            alive = true;
+                            randomEvents.setMemberLost(1);
+                            randomEvents.randomHealedDisease(Hattie.sick);
+                            randomEvents.randomHealedInjury(Hattie.injured);
+                        }
+                    }
+                    else if (person == 2) {
+                        if (!Charles.dead) {
+                            alive = true;
+                            randomEvents.setMemberLost(2);
+                            randomEvents.randomHealedDisease(Charles.sick);
+                            randomEvents.randomHealedInjury(Charles.injured);
+                        }
+                    }
+                    else if (person == 3) {
+                        if (!Augusta.dead) {
+                            alive = true;
+                            randomEvents.setMemberLost(3);
+                            randomEvents.randomHealedDisease(Augusta.sick);
+                            randomEvents.randomHealedInjury(Augusta.injured);
+                        }
+                    }
+                    else if (person == 4) {
+                        if (!Ben.dead) {
+                            alive = true;
+                            randomEvents.setMemberLost(4);
+                            randomEvents.randomHealedDisease(Ben.sick);
+                            randomEvents.randomHealedInjury(Ben.injured);
+                        }
+                    }
+                    else {
+                        if (!Jake.dead) {
+                            alive = true;
+                            randomEvents.setMemberLost(5);
+                            randomEvents.randomHealedDisease(Jake.sick);
+                            randomEvents.randomHealedInjury(Jake.injured);
+                        }
+                    }
+                }
+
+                health.addHealth((dateAndDistance.milesPerDay / 5) - 2);
+
+                if (!randomEvents.blockedTrail && !randomEvents.lostMember && !randomEvents.loseTrail && !randomEvents.fog) {
                     dateAndDistance.dailyMotion();
                 }
 
@@ -154,11 +210,175 @@ public class DailyStatus extends AppCompatActivity {
                     dateAndDistance.addDays(1);
                 }
 
+                if (randomEvents.fog) {
+                    dateAndDistance.addDays(1);
+                }
+
                 if (randomEvents.roughTrail) {
                     health.addHealth(10);
                 }
 
+                if (randomEvents.snakeBite || randomEvents.injury) {
+                    if (randomEvents.getMemberLost() == 1) {
+                        if (Hattie.injured) {
+                            Hattie.dead = true;
+                            wagon.removePerson();
+                        }
+                        else {
+                            Hattie.injured = true;
+                            health.addHealth(20);
+                        }
+                    }
+                    else if (randomEvents.getMemberLost() == 2) {
+                        if (Charles.injured) {
+                            Charles.dead = true;
+                            wagon.removePerson();
+                        }
+                        else {
+                            Charles.injured = true;
+                            health.addHealth(20);
+                        }
+                    }
+                    else if (randomEvents.getMemberLost() == 3) {
+                        if (Augusta.injured) {
+                            Augusta.dead = true;
+                            wagon.removePerson();
+                        }
+                        else {
+                            Augusta.injured = true;
+                            health.addHealth(20);
+                        }
+                    }
+                    else if (randomEvents.getMemberLost() == 4) {
+                        if (Ben.injured) {
+                            Ben.dead = true;
+                            wagon.removePerson();
+                        }
+                        else {
+                            Ben.injured = true;
+                            health.addHealth(20);
+                        }
+                    }
+                    else if (randomEvents.getMemberLost() == 5) {
+                        if (Jake.injured) {
+                            Jake.dead = true;
+                            wagon.removePerson();
+                        }
+                        else {
+                            Jake.injured = true;
+                            health.addHealth(20);
+                        }
+                    }
+                }
 
+                if (randomEvents.disease) {
+                    if (randomEvents.getMemberLost() == 1) {
+                        if (Hattie.sick) {
+                            Hattie.dead = true;
+                            wagon.removePerson();
+                        }
+                        else {
+                            Hattie.sick = true;
+                            health.addHealth(20);
+                        }
+                    }
+                    else if (randomEvents.getMemberLost() == 2) {
+                        if (Charles.sick) {
+                            Charles.dead = true;
+                            wagon.removePerson();
+                        }
+                        else {
+                            Charles.sick = true;
+                            health.addHealth(20);
+                        }
+                    }
+                    else if (randomEvents.getMemberLost() == 3) {
+                        if (Augusta.sick) {
+                            Augusta.dead = true;
+                            wagon.removePerson();
+                        }
+                        else {
+                            Augusta.sick = true;
+                            health.addHealth(20);
+                        }
+                    }
+                    else if (randomEvents.getMemberLost() == 4) {
+                        if (Ben.sick) {
+                            Ben.dead = true;
+                            wagon.removePerson();
+                        }
+                        else {
+                            Ben.sick = true;
+                            health.addHealth(20);
+                        }
+                    }
+                    else if (randomEvents.getMemberLost() == 5) {
+                        if (Jake.sick) {
+                            Jake.dead = true;
+                            wagon.removePerson();
+                        }
+                        else {
+                            Jake.sick = true;
+                            health.addHealth(20);
+                        }
+                    }
+                }
+
+                if (randomEvents.oxenDamage) {
+                    wagon.loseOx();
+                }
+
+                if (randomEvents.hail) {
+                    health.addHealth(7);
+                }
+
+                if (randomEvents.blizzard) {
+                    health.addHealth(14);
+                }
+
+                if (randomEvents.badWater) {
+                    health.addHealth(20);
+                }
+
+                if (randomEvents.lowWater) {
+                    health.addHealth(10);
+                }
+
+                if (randomEvents.healedDisease && !randomEvents.snakeBite && !randomEvents.injury && !randomEvents.disease) {
+                    if (randomEvents.getMemberLost() == 1) {
+                        Hattie.sick = false;
+                    }
+                    else if (randomEvents.getMemberLost() == 2) {
+                        Charles.sick = false;
+                    }
+                    else if (randomEvents.getMemberLost() == 3) {
+                        Augusta.sick = false;
+                    }
+                    else if (randomEvents.getMemberLost() == 4) {
+                        Ben.sick = false;
+                    }
+                    else  {
+                        Jake.sick = false;
+                    }
+                }
+
+                if (randomEvents.healedInjury && !randomEvents.snakeBite && !randomEvents.injury && !randomEvents.disease) {
+                    if (randomEvents.getMemberLost() == 1) {
+                        Hattie.injured = false;
+                    }
+                    else if (randomEvents.getMemberLost() == 2) {
+                        Charles.injured = false;
+                    }
+                    else if (randomEvents.getMemberLost() == 3) {
+                        Augusta.injured = false;
+                    }
+                    else if (randomEvents.getMemberLost() == 4) {
+                        Ben.injured = false;
+                    }
+                    else  {
+                        Jake.injured = false;
+                    }
+                }
 
                 if (dateAndDistance.reachedEnd) {
 
@@ -189,12 +409,13 @@ public class DailyStatus extends AppCompatActivity {
                 }
                 else {
 
-                    RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost);
-                    Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
-                    Entity newCharles = new Entity(Charles.name, Charles.sick, Charles.injured, Charles.dead);
-                    Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
-                    Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
-                    Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
+
+                RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
+                Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
+                Entity newCharles = new Entity (Charles.name, Charles.sick, Charles.injured, Charles.dead);
+                Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
+                Entity newBen = new Entity (Ben.name, Ben.sick, Ben.injured, Ben.dead);
+                Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
 
                     Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 

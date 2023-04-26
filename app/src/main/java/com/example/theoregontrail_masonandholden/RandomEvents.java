@@ -23,16 +23,19 @@ public class RandomEvents implements Serializable {
     public boolean lostMember;
     public boolean badGrass;
     public boolean fruit;
+    public boolean healedDisease;
+    public boolean healedInjury;
     public int daysLost;
     public int foodLost;
     public int clothesLost;
     public int axlesLost;
     public int wheelsLost;
     public int tonguesLost;
+    public int memberLost;
 
 
 
-    public RandomEvents(boolean disease, boolean badWater, boolean lowWater, boolean roughTrail, boolean blizzard, boolean fog, boolean hail, boolean oxenDamage, boolean injury, boolean snakeBite, boolean loseTrail, boolean thief, boolean blockedTrail, boolean fire, boolean abandonedWagon, boolean oxenWandered, boolean lostMember, boolean badGrass, boolean fruit, int daysLost, int foodLost, int clothesLost, int axlesLost, int wheelsLost, int tonguesLost)  {
+    public RandomEvents(boolean disease, boolean badWater, boolean lowWater, boolean roughTrail, boolean blizzard, boolean fog, boolean hail, boolean oxenDamage, boolean injury, boolean snakeBite, boolean loseTrail, boolean thief, boolean blockedTrail, boolean fire, boolean abandonedWagon, boolean oxenWandered, boolean lostMember, boolean badGrass, boolean fruit, boolean healedDisease, boolean healedInjury, int daysLost, int foodLost, int clothesLost, int axlesLost, int wheelsLost, int tonguesLost, int memberLost)  {
         this.disease = disease;
         this.badWater = badWater;
         this.lowWater = lowWater;
@@ -52,12 +55,15 @@ public class RandomEvents implements Serializable {
         this.lostMember = lostMember;
         this.badGrass = badGrass;
         this.fruit = fruit;
+        this.healedDisease = healedDisease;
+        this.healedInjury = healedInjury;
         this.daysLost = daysLost;
         this.foodLost = foodLost;
         this.clothesLost = clothesLost;
         this.axlesLost = axlesLost;
         this.wheelsLost = wheelsLost;
         this.tonguesLost = tonguesLost;
+        this.memberLost = memberLost;
 
     }
     public void randomDisease(double health){
@@ -78,8 +84,8 @@ public class RandomEvents implements Serializable {
 
     public void randomLowWater(int rainfall){
         int random = (int) (Math.random() * 100);
-        if (rainfall <= 0) {
-            this.lowWater = random <= 10;
+        if (rainfall <= 2) {
+            this.lowWater = random <= 5;
         }
         else {
             this.lowWater = false;
@@ -94,7 +100,7 @@ public class RandomEvents implements Serializable {
     public void randomBlizzard(int temperature){
         double random = (Math.random() * 100);
         if (temperature <= 1) {
-            this.blizzard =  random <= 5;
+            this.blizzard = random <= 5;
         }
         else {
             this.blizzard = false;
@@ -121,9 +127,17 @@ public class RandomEvents implements Serializable {
         }
     }
 
-    public void randomOxenDamage(){
+    public void randomOxenDamage(int distance, boolean badGrass){
         double random = (Math.random() * 100);
-        this.oxenDamage = random <= 2;
+        if (distance <= 1200 && !badGrass) {
+            this.oxenDamage = random <= 1;
+        }
+        else if (!badGrass){
+            this.oxenDamage = random <= 2;
+        }
+        else {
+            this.oxenDamage = random <= 35;
+        }
     }
 
     public void randomInjury(){
@@ -147,7 +161,7 @@ public class RandomEvents implements Serializable {
     }
 
     public void randomBlockedTrail(int distance){
-        if (distance > 1000) {
+        if (distance > 1200) {
             double random = (Math.random() * 1000);
             this.blockedTrail = random <= 25;
         }
@@ -173,7 +187,32 @@ public class RandomEvents implements Serializable {
 
     public void randomLostMember(){
         double random = (Math.random() * 100);
-        this.lostMember = random <= 100;
+        this.lostMember = random <= 1;
+    }
+
+    public void randomHealedDisease(boolean sick){
+        double random = (Math.random() * 100);
+        if (sick) {
+            this.healedDisease = random <= 10;
+        }
+        else {
+            this.healedDisease = false;
+        }
+    }
+
+    public void randomHealedInjury(boolean injured){
+        double random = (Math.random() * 100);
+        if (injured) {
+            this.healedInjury = random <= 10;
+        }
+        else {
+            this.healedInjury = false;
+        }
+    }
+
+    public int randomChooseMember(int people){
+        double random = (Math.random() * people) + 1;
+        return (int) random;
     }
 
     public int randomDaysLost(int maximum){
@@ -255,4 +294,13 @@ public class RandomEvents implements Serializable {
     public void setTonguesLost(int tonguesLost) {
         this.tonguesLost = tonguesLost;
     }
+
+    public int getMemberLost() {
+        return memberLost;
+    }
+
+    public void setMemberLost(int memberLost) {
+        this.memberLost = memberLost;
+    }
+
 }

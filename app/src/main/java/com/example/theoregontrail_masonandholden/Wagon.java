@@ -47,7 +47,7 @@ public class Wagon implements Serializable {
 
     public void spendMoney(double amount){ this.money = this.money - amount; moneySpent = moneySpent + amount;}
 
-    public void returnMoney(double amount){ this.money = this.money + amount; moneySpent = moneySpent - amount;};
+    public void returnMoney(double amount){ this.money = this.money + amount; moneySpent = moneySpent - amount;}
 
     public int getOxen() {
         return oxen;
@@ -63,6 +63,10 @@ public class Wagon implements Serializable {
 
     public void sellOxen() {
         this.oxen = this.oxen - 2;
+    }
+
+    public void loseOx() {
+        this.oxen = this.oxen - 1;
     }
 
     public int getFood() {
