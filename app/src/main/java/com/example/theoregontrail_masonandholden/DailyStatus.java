@@ -160,21 +160,50 @@ public class DailyStatus extends AppCompatActivity {
 
 
 
+                if (dateAndDistance.reachedEnd) {
 
-                RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost);
-                Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
-                Entity newCharles = new Entity (Charles.name, Charles.sick, Charles.injured, Charles.dead);
-                Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
-                Entity newBen = new Entity (Ben.name, Ben.sick, Ben.injured, Ben.dead);
-                Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
+                }
+                else if(dateAndDistance.beenToTheDalles){
 
-                Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
+                }
+                else if(dateAndDistance.beenToFortWallaWalla){
 
-                intent.putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                }
+                else if(dateAndDistance.beenToFortBoise){
 
-                setContentView(R.layout.activity_daily_status);
-                startActivity(new Intent(DailyStatus.this, dailyEvents.class));
-                startActivity(intent);
+                }
+                else if(dateAndDistance.beenToFortHall){
+
+                }
+                else if(dateAndDistance.beenToSouthPass){
+
+                }
+                else if(dateAndDistance.beenToIndependenceRock){
+
+                }
+                else if(dateAndDistance.beenToFortLaramie){
+
+                }
+                else if(dateAndDistance.beenToKearny){
+
+                }
+                else {
+
+                    RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost);
+                    Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
+                    Entity newCharles = new Entity(Charles.name, Charles.sick, Charles.injured, Charles.dead);
+                    Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
+                    Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
+                    Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
+
+                    Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
+
+                    intent.putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+
+                    setContentView(R.layout.activity_daily_events);
+                    startActivity(new Intent(DailyStatus.this, dailyEvents.class));
+                    startActivity(intent);
+                }
             }
         });
     }
