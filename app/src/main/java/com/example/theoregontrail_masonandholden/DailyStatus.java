@@ -28,6 +28,7 @@ public class DailyStatus extends AppCompatActivity {
 
     public DailyStatus(){}
     public DailyStatus(Wagon wagon, Entity newHattie, Entity newCharles, Entity newAugusta, Entity newBen, Entity newJake){
+
         this.wagon = wagon;
         this.Hattie = newHattie;
         this.Charles = newCharles;
@@ -380,36 +381,167 @@ public class DailyStatus extends AppCompatActivity {
                     }
                 }
 
-                if (dateAndDistance.reachedEnd) {
+                dateAndDistance.locationCheck();
+                dateAndDistance.location();
 
+                if (dateAndDistance.locationTicker == 8) {
+                    if (dateAndDistance.reachedEnd) {
+                        //Display winning screen
+                    }
                 }
-                else if(dateAndDistance.beenToTheDalles){
+                else if (dateAndDistance.locationTicker == 7) {
+                    if (dateAndDistance.beenToTheDalles) {
 
+                        dateAndDistance.tickerUp();
+                        RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
+                        Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
+                        Entity newCharles = new Entity(Charles.name, Charles.sick, Charles.injured, Charles.dead);
+                        Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
+                        Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
+                        Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
+                        Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
+                        Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
+
+                        intent.putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                        setContentView(R.layout.activity_location_page);
+                        startActivity(new Intent(DailyStatus.this, LocationPage.class));
+                        startActivity(intent);
+                    }
                 }
-                else if(dateAndDistance.beenToFortWallaWalla){
+                else if (dateAndDistance.locationTicker == 6) {
+                    if (dateAndDistance.beenToFortWallaWalla) {
 
+                        dateAndDistance.tickerUp();
+                        RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
+                        Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
+                        Entity newCharles = new Entity(Charles.name, Charles.sick, Charles.injured, Charles.dead);
+                        Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
+                        Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
+                        Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
+                        Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
+                        Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
+
+                        intent.putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                        setContentView(R.layout.activity_location_page);
+                        startActivity(new Intent(DailyStatus.this, LocationPage.class));
+                        startActivity(intent);
+                    }
                 }
-                else if(dateAndDistance.beenToFortBoise){
+                else if (dateAndDistance.locationTicker == 5) {
+                    if (dateAndDistance.beenToFortBoise) {
 
+                        dateAndDistance.tickerUp();
+                        RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
+                        Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
+                        Entity newCharles = new Entity(Charles.name, Charles.sick, Charles.injured, Charles.dead);
+                        Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
+                        Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
+                        Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
+                        Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
+                        Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
+
+                        intent.putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                        setContentView(R.layout.activity_location_page);
+                        startActivity(new Intent(DailyStatus.this, LocationPage.class));
+                        startActivity(intent);
+                    }
                 }
-                else if(dateAndDistance.beenToFortHall){
+                else if (dateAndDistance.locationTicker == 4) {
+                    if (dateAndDistance.beenToFortHall) {
 
+                        dateAndDistance.tickerUp();
+                        RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
+                        Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
+                        Entity newCharles = new Entity(Charles.name, Charles.sick, Charles.injured, Charles.dead);
+                        Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
+                        Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
+                        Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
+                        Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
+                        Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
+
+                        intent.putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                        setContentView(R.layout.activity_location_page);
+                        startActivity(new Intent(DailyStatus.this, LocationPage.class));
+                        startActivity(intent);
+                    }
                 }
-                else if(dateAndDistance.beenToSouthPass){
+                else if (dateAndDistance.locationTicker == 3) {
+                    if (dateAndDistance.beenToSouthPass) {
 
+                        dateAndDistance.tickerUp();
+                        RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
+                        Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
+                        Entity newCharles = new Entity(Charles.name, Charles.sick, Charles.injured, Charles.dead);
+                        Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
+                        Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
+                        Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
+                        Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
+                        Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
+
+                        intent.putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                        setContentView(R.layout.activity_location_page);
+                        startActivity(new Intent(DailyStatus.this, LocationPage.class));
+                        startActivity(intent);
+                    }
                 }
-                else if(dateAndDistance.beenToIndependenceRock){
+                else if (dateAndDistance.locationTicker == 2) {
+                    if (dateAndDistance.beenToIndependenceRock) {
 
+                        dateAndDistance.tickerUp();
+                        RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
+                        Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
+                        Entity newCharles = new Entity(Charles.name, Charles.sick, Charles.injured, Charles.dead);
+                        Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
+                        Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
+                        Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
+                        Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
+                        Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
+
+                        intent.putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                        setContentView(R.layout.activity_location_page);
+                        startActivity(new Intent(DailyStatus.this, LocationPage.class));
+                        startActivity(intent);
+                    }
                 }
-                else if(dateAndDistance.beenToFortLaramie){
+                else if (dateAndDistance.locationTicker == 1) {
+                    if (dateAndDistance.beenToFortLaramie) {
 
+                        dateAndDistance.tickerUp();
+                        RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
+                        Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
+                        Entity newCharles = new Entity(Charles.name, Charles.sick, Charles.injured, Charles.dead);
+                        Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
+                        Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
+                        Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
+                        Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
+                        Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
+
+                        intent.putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                        setContentView(R.layout.activity_location_page);
+                        startActivity(new Intent(DailyStatus.this, LocationPage.class));
+                        startActivity(intent);
+                    }
                 }
-                else if(dateAndDistance.beenToKearny){
+                else if (dateAndDistance.locationTicker == 0) {
+                    if (dateAndDistance.beenToKearny) {
 
+                        dateAndDistance.tickerUp();
+                        RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
+                        Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
+                        Entity newCharles = new Entity(Charles.name, Charles.sick, Charles.injured, Charles.dead);
+                        Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
+                        Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
+                        Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
+                        Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
+                        Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
+
+                        intent.putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                        setContentView(R.layout.activity_location_page);
+                        startActivity(new Intent(DailyStatus.this, LocationPage.class));
+                        startActivity(intent);
+                    }
                 }
                 else {
-
-
                 RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
                 Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
                 Entity newCharles = new Entity (Charles.name, Charles.sick, Charles.injured, Charles.dead);

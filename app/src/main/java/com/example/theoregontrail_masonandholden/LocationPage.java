@@ -8,13 +8,41 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.Random;
+
 public class LocationPage extends AppCompatActivity {
 
+    public RandomEvents locationRandoms;
+    public Entity locationHattie;
+    public Entity locationCharles;
+    public Entity locationAugusta;
+    public Entity locationBen;
+    public Entity locationJake;
+    public Wagon locationWagon;
+    public LocationPage(){};
+    
+    public LocationPage(RandomEvents locationRandoms, Entity locationHattie, Entity locationCharles, Entity locationAugusta, Entity locationBen, Entity locationJake, Wagon locationWagon){
+        
+        this.locationRandoms = locationRandoms;
+        this.locationHattie = locationHattie;
+        this.locationCharles = locationCharles;
+        this.locationBen = locationBen;
+        this.locationJake = locationJake;
+        this.locationWagon = locationWagon;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_page);
 
+        locationRandoms = (RandomEvents) getIntent().getSerializableExtra("NewRandomEvents");
+        locationHattie = (Entity) getIntent().getSerializableExtra("NewHattie");
+        locationCharles = (Entity) getIntent().getSerializableExtra("NewCharles");
+        locationAugusta = (Entity) getIntent().getSerializableExtra("NewAugusta");
+        locationBen = (Entity) getIntent().getSerializableExtra("NewBen");
+        locationJake = (Entity) getIntent().getSerializableExtra("NewJake");
+        locationWagon = (Wagon) getIntent().getSerializableExtra("NewWagon");
+        
         configureMapButton();
         configureResourcesButton();
         configurePartyButton();
@@ -29,6 +57,7 @@ public class LocationPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                //Take user to a map screen with a dot or star on the location in which they are currently at.
             }
         });
     }
@@ -40,6 +69,7 @@ public class LocationPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                //Show user their current resources (wagon)
             }
         });
     }
@@ -63,9 +93,14 @@ public class LocationPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Wagon locationStoreWagon = new Wagon(locationWagon.people, locationWagon.money, locationWagon.oxen, locationWagon.food, locationWagon.clothes, locationWagon.tongues, locationWagon.axles, locationWagon.wheels);
 
+                Intent intent = new Intent(LocationPage.this, Store.class);
+
+                intent.putExtra("NewWagon", locationStoreWagon);
                 setContentView(R.layout.activity_store);
                 startActivity(new Intent(LocationPage.this, Store.class));
+                startActivity(intent);
             }
         });
     }

@@ -31,6 +31,8 @@ public class DateAndDistance {
     final private int theDalles = 1726;
     final private int end = 1857;
 
+    public int locationTicker = 0;
+
     public DateAndDistance (){
 
         distanceFromHome = 0;
@@ -87,6 +89,11 @@ public class DateAndDistance {
             stop = false;
         }
 
+    }
+
+    public void tickerUp() {
+
+        locationTicker++;
     }
 
     public void locationCheck() {

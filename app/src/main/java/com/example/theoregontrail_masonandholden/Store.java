@@ -26,13 +26,15 @@ public class Store extends AppCompatActivity {
     public Entity Augusta;
     public Entity Ben;
     public Entity Jake;
+    public Wagon storeWagon;
     public Store(){}
-    public Store(Entity newHattie, Entity newCharles, Entity newAugusta, Entity newBen, Entity newJake){
+    public Store(Entity newHattie, Entity newCharles, Entity newAugusta, Entity newBen, Entity newJake, Wagon storeWagon){
         this.Hattie = newHattie;
         this.Charles = newCharles;
         this.Augusta = newAugusta;
         this.Ben = newBen;
         this.Jake = newJake;
+        this.storeWagon = storeWagon;
     }
 
 
@@ -47,6 +49,10 @@ public class Store extends AppCompatActivity {
         Augusta = (Entity) getIntent().getSerializableExtra("NewAugusta");
         Ben = (Entity) getIntent().getSerializableExtra("NewBen");
         Jake = (Entity) getIntent().getSerializableExtra("NewJake");
+        storeWagon = (Wagon) getIntent().getSerializableExtra("NewWagon");
+
+
+
 
         configureFoodUpButton();
         configureFoodDownButton();
@@ -73,7 +79,6 @@ public class Store extends AppCompatActivity {
 
                 Wagon storeWagon = new Wagon(myWagon.people, myWagon.money, myWagon.oxen, myWagon.food, myWagon.clothes, myWagon.tongues, myWagon.axles, myWagon.wheels);
 
-                DailyStatus dailyStatus = new DailyStatus();
                 Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
                 Entity newCharles = new Entity (Charles.name, Charles.sick, Charles.injured, Charles.dead);
                 Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
