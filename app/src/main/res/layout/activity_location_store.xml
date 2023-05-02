@@ -1,10 +1,445 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Store"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LocationStore">
+    android:background="#000000"
+    tools:context=".Store">
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/oxenTextLocation"
+        android:layout_width="255dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="60dp"
+        android:background="#FFFFFF"
+        android:text="oxen    ($40/yoke)"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:textSize="48sp"
+        app:layout_constraintStart_toEndOf="@+id/axlesAmountLocation"
+        app:layout_constraintTop_toBottomOf="@+id/wheelsTextLocation" />
+
+    <EditText
+        android:id="@+id/oxenAmountLocation"
+        android:layout_width="79dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="119dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="48sp"
+        app:layout_constraintStart_toEndOf="@+id/oxenDownLocation"
+        app:layout_constraintTop_toBottomOf="@+id/wheelsAmountLocation" />
+
+    <Button
+        android:id="@+id/oxenDownLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        android:clickable="true"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/oxenTextLocation"
+        app:layout_constraintTop_toBottomOf="@+id/oxenUpLocation"
+        app:srcCompat="@android:drawable/arrow_down_float" />
+
+    <Button
+        android:id="@+id/oxenUpLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="68dp"
+        android:clickable="true"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/oxenTextLocation"
+        app:layout_constraintTop_toBottomOf="@+id/wheelsDownLocation"
+        app:srcCompat="@android:drawable/arrow_up_float" />
+
+    <EditText
+        android:id="@+id/axlesAmountLocation"
+        android:layout_width="79dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="114dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="48sp"
+        app:layout_constraintStart_toEndOf="@+id/axlesDownLocation"
+        app:layout_constraintTop_toBottomOf="@+id/tonguesAmountLocation" />
+
+    <EditText
+        android:id="@+id/foodAmountLocation"
+        android:layout_width="79dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="111dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="48sp"
+        app:layout_constraintStart_toEndOf="@+id/foodDownLocation"
+        app:layout_constraintTop_toBottomOf="@+id/headerTextLocation" />
+
+    <TextView
+        android:id="@+id/wheelsTextLocation"
+        android:layout_width="238dp"
+        android:layout_height="127dp"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="79dp"
+        android:background="#FFFFFF"
+        android:text="wheels ($10)"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:textSize="48sp"
+        app:layout_constraintStart_toEndOf="@+id/tonguesAmountLocation"
+        app:layout_constraintTop_toBottomOf="@+id/headerTextLocation" />
+
+    <Button
+        android:id="@+id/wheelsDownLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="14dp"
+        android:clickable="true"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/wheelsTextLocation"
+        app:layout_constraintTop_toBottomOf="@+id/wheelsUpLocation"
+        app:srcCompat="@android:drawable/arrow_down_float" />
+
+    <Button
+        android:id="@+id/wheelsUpLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="81dp"
+        android:clickable="true"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/wheelsTextLocation"
+        app:layout_constraintTop_toBottomOf="@+id/headerTextLocation"
+        app:srcCompat="@android:drawable/arrow_up_float" />
+
+    <TextView
+        android:id="@+id/axlesTextLocation"
+        android:layout_width="244dp"
+        android:layout_height="123dp"
+        android:layout_marginStart="94dp"
+        android:layout_marginTop="62dp"
+        android:background="#FFFFFF"
+        android:text="axles  ($10)"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:textSize="48sp"
+        app:layout_constraintStart_toEndOf="@+id/clothesAmountLocation"
+        app:layout_constraintTop_toBottomOf="@+id/tonguesTextLocation" />
+
+    <TextView
+        android:id="@+id/tonguesTextLocation"
+        android:layout_width="238dp"
+        android:layout_height="127dp"
+        android:layout_marginStart="101dp"
+        android:layout_marginTop="79dp"
+        android:background="#FFFFFF"
+        android:text="tongues ($10)"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:textSize="48sp"
+        app:layout_constraintStart_toEndOf="@+id/foodAmountLocation"
+        app:layout_constraintTop_toBottomOf="@+id/headerTextLocation" />
+
+    <Button
+        android:id="@+id/axlesUpLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="76dp"
+        android:clickable="true"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/axlesTextLocation"
+        app:layout_constraintTop_toBottomOf="@+id/tonguesDownLocation"
+        app:srcCompat="@android:drawable/arrow_up_float" />
+
+    <Button
+        android:id="@+id/tonguesDownLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="21dp"
+        android:clickable="true"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/tonguesTextLocation"
+        app:layout_constraintTop_toBottomOf="@+id/tonguesUpLocation"
+        app:srcCompat="@android:drawable/arrow_down_float" />
+
+    <Button
+        android:id="@+id/axlesDownLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="30dp"
+        android:clickable="true"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/axlesTextLocation"
+        app:layout_constraintTop_toBottomOf="@+id/axlesUpLocation"
+        app:srcCompat="@android:drawable/arrow_down_float" />
+
+    <Button
+        android:id="@+id/tonguesUpLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="73dp"
+        android:clickable="true"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/tonguesTextLocation"
+        app:layout_constraintTop_toBottomOf="@+id/headerTextLocation"
+        app:srcCompat="@android:drawable/arrow_up_float" />
+
+    <TextView
+        android:id="@+id/foodText"
+        android:layout_width="284dp"
+        android:layout_height="131dp"
+        android:layout_marginStart="134dp"
+        android:layout_marginTop="79dp"
+        android:background="#FFFFFF"
+        android:text="10lbs food ($2/10lbs)"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:textSize="48sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerTextLocation" />
+
+    <Button
+        android:id="@+id/foodDownLocation"
+        android:layout_width="49dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="21dp"
+        android:clickable="true"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/foodText"
+        app:layout_constraintTop_toBottomOf="@+id/foodUpLocation"
+        app:srcCompat="@android:drawable/arrow_down_float" />
+
+    <Button
+        android:id="@+id/clothesUpLocation"
+        android:layout_width="50dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="53dp"
+        android:clickable="true"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/clothesTextLocation"
+        app:layout_constraintTop_toBottomOf="@+id/foodDownLocation"
+        app:srcCompat="@android:drawable/arrow_up_float" />
+
+    <Button
+        android:id="@+id/clothesDownLocation"
+        android:layout_width="48dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="21dp"
+        android:clickable="true"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/clothesTextLocation"
+        app:layout_constraintTop_toBottomOf="@+id/clothesUpLocation"
+        app:srcCompat="@android:drawable/arrow_down_float" />
+
+    <TextView
+        android:id="@+id/clothesTextLocation"
+        android:layout_width="244dp"
+        android:layout_height="124dp"
+        android:layout_marginStart="175dp"
+        android:layout_marginTop="58dp"
+        android:background="#FFFFFF"
+        android:text="Clothes ($10/set)"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:textSize="48sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodText" />
+
+    <Button
+        android:id="@+id/foodUpLocation"
+        android:layout_width="49dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="73dp"
+        android:clickable="true"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/foodText"
+        app:layout_constraintTop_toBottomOf="@+id/headerTextLocation"
+        app:srcCompat="@android:drawable/arrow_up_float" />
+
+    <EditText
+        android:id="@+id/tonguesAmountLocation"
+        android:layout_width="79dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="111dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="48sp"
+        app:layout_constraintStart_toEndOf="@+id/tonguesDownLocation"
+        app:layout_constraintTop_toBottomOf="@+id/headerTextLocation" />
+
+    <EditText
+        android:id="@+id/clothesAmountLocation"
+        android:layout_width="79dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="114dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="48sp"
+        app:layout_constraintStart_toEndOf="@+id/clothesUpLocation"
+        app:layout_constraintTop_toBottomOf="@+id/foodAmountLocation" />
+
+    <EditText
+        android:id="@+id/wheelsAmountLocation"
+        android:layout_width="79dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="118dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="48sp"
+        app:layout_constraintStart_toEndOf="@+id/wheelsDownLocation"
+        app:layout_constraintTop_toBottomOf="@+id/headerTextLocation" />
+
+    <EditText
+        android:id="@+id/moneyOwedAmountLocation"
+        android:layout_width="217dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginBottom="87dp"
+        android:background="#FFFFFF"
+        android:text="$0.00"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/moneyOwedTextLocation" />
+
+    <TextView
+        android:id="@+id/moneyOwedTextLocation"
+        android:layout_width="197dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginBottom="88dp"
+        android:background="#FFFFFF"
+        android:text="Owed $"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        android:typeface="serif"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/yourMoneyAmountLocation"
+        android:layout_width="217dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="188dp"
+        android:background="#FFFFFF"
+        android:text="$850.00"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="48sp"
+        app:layout_constraintStart_toEndOf="@+id/yourMoneyTextLocation"
+        app:layout_constraintTop_toBottomOf="@+id/clothesTextLocation" />
+
+    <TextView
+        android:id="@+id/yourMoneyTextLocation"
+        android:layout_width="197dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="188dp"
+        android:background="#FFFFFF"
+        android:text="Your $"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        android:typeface="serif"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clothesTextLocation" />
+
+    <TextView
+        android:id="@+id/headerTextLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:background="#FAF7F7"
+        android:text="What would you like to buy for your party?"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#0B0A0A"
+        android:textSize="82sp"
+        android:textStyle="bold"
+        android:typeface="serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/backButtonLocation"
+        android:layout_width="339dp"
+        android:layout_height="117dp"
+        android:layout_marginStart="234dp"
+        android:layout_marginBottom="87dp"
+        android:background="#F8F4F4"
+        android:backgroundTint="@color/white"
+        android:backgroundTintMode="add"
+        android:foregroundTint="#F8F5F5"
+        android:text="back"
+        android:textColor="#050505"
+        android:textColorHighlight="#F8F5F5"
+        android:textColorLink="#F8EDED"
+        android:textSize="48sp"
+        android:typeface="serif"
+        app:iconTint="#EFE8EA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/moneyOwedAmountLocation" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

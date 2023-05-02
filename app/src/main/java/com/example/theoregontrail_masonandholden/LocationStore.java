@@ -4,12 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class Store extends AppCompatActivity {
+public class LocationStore extends AppCompatActivity {
 
     public Wagon myWagon = new Wagon(5, 850.00, 0, 0, 0, 0, 0, 0);
 
@@ -19,8 +20,10 @@ public class Store extends AppCompatActivity {
     public Entity Ben;
     public Entity Jake;
     public Wagon storeWagon;
-    public Store(){}
-    public Store(Entity newHattie, Entity newCharles, Entity newAugusta, Entity newBen, Entity newJake, Wagon wagon){
+
+    public LocationStore(){}
+
+    public LocationStore(Entity newHattie, Entity newCharles, Entity newAugusta, Entity newBen, Entity newJake, Wagon wagon){
         this.Hattie = newHattie;
         this.Charles = newCharles;
         this.Augusta = newAugusta;
@@ -32,7 +35,7 @@ public class Store extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_store);
+        setContentView(R.layout.activity_location_store);
 
         Hattie = (Entity) getIntent().getSerializableExtra("NewHattie");
         Charles = (Entity) getIntent().getSerializableExtra("NewCharles");
@@ -40,9 +43,6 @@ public class Store extends AppCompatActivity {
         Ben = (Entity) getIntent().getSerializableExtra("NewBen");
         Jake = (Entity) getIntent().getSerializableExtra("NewJake");
         storeWagon = (Wagon) getIntent().getSerializableExtra("NewWagon");
-
-
-
 
         configureFoodUpButton();
         configureFoodDownButton();
@@ -56,10 +56,10 @@ public class Store extends AppCompatActivity {
         configureWheelsDownButton();
         configureOxenUpButton();
         configureOxenDownButton();
-        configureContinueButton();
+        configureBackButton();
     }
 
-    private void configureContinueButton() {
+    private void configureBackButton() {
 
         Button continueButton = (Button) findViewById(R.id.backButtonLocation);
         continueButton.setOnClickListener(new View.OnClickListener() {
@@ -68,19 +68,18 @@ public class Store extends AppCompatActivity {
 
 
                 Wagon storeWagon = new Wagon(myWagon.people, myWagon.money, myWagon.oxen, myWagon.food, myWagon.clothes, myWagon.tongues, myWagon.axles, myWagon.wheels);
-
                 Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
                 Entity newCharles = new Entity (Charles.name, Charles.sick, Charles.injured, Charles.dead);
                 Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
                 Entity newBen = new Entity (Ben.name, Ben.sick, Ben.injured, Ben.dead);
                 Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
 
-                Intent intent = new Intent(Store.this, DailyStatus.class);
+                Intent intent = new Intent(LocationStore.this, LocationPage.class);
 
                 intent.putExtra("NewWagon", storeWagon).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
 
                 setContentView(R.layout.activity_daily_status);
-                startActivity(new Intent(Store.this, DailyStatus.class));
+                startActivity(new Intent(LocationStore.this, LocationPage.class));
                 startActivity(intent);
             }
         });
@@ -305,7 +304,7 @@ public class Store extends AppCompatActivity {
             }
         });
     }
-    
+
     private void configureOxenUpButton() {
 
         Button oxenUp = findViewById(R.id.oxenUpLocation);
@@ -351,4 +350,5 @@ public class Store extends AppCompatActivity {
     }
 
 }
+
 

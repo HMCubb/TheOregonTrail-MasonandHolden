@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Store store = new Store();
+                Wagon wagon = new Wagon(0,0.00,0,0,0,0,0,0);
                 Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
                 Entity newCharles = new Entity (Charles.name, Charles.sick, Charles.injured, Charles.dead);
                 Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(MainActivity.this, Store.class);
 
-                intent.putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                intent.putExtra("NewWagon", wagon).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
 
                 startActivity(intent);
                 setContentView(R.layout.activity_store);

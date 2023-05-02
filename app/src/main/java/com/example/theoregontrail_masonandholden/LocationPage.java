@@ -98,7 +98,7 @@ public class LocationPage extends AppCompatActivity {
                 Intent intent = new Intent(LocationPage.this, Store.class);
 
                 intent.putExtra("NewWagon", locationStoreWagon);
-                setContentView(R.layout.activity_store);
+                setContentView(R.layout.activity_location_store);
                 startActivity(new Intent(LocationPage.this, Store.class));
                 startActivity(intent);
             }
