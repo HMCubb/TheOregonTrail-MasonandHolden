@@ -1,6 +1,8 @@
 package com.example.theoregontrail_masonandholden;
 
-public class DateAndDistance {
+import java.io.Serializable;
+
+public class DateAndDistance implements Serializable {
 
     public boolean beenToKearny = false;
     public boolean beenToFortLaramie = false;

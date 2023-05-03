@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.Date;
 import java.util.Random;
 
 public class LocationPage extends AppCompatActivity {
@@ -19,10 +20,12 @@ public class LocationPage extends AppCompatActivity {
     public Entity locationBen;
     public Entity locationJake;
     public Wagon locationWagon;
+    public DateAndDistance dateAndDistance;
     public LocationPage(){};
     
-    public LocationPage(RandomEvents locationRandoms, Entity locationHattie, Entity locationCharles, Entity locationAugusta, Entity locationBen, Entity locationJake, Wagon locationWagon){
-        
+    public LocationPage(DateAndDistance dateAndDistance, RandomEvents locationRandoms, Entity locationHattie, Entity locationCharles, Entity locationAugusta, Entity locationBen, Entity locationJake, Wagon locationWagon){
+
+        this.dateAndDistance = dateAndDistance;
         this.locationRandoms = locationRandoms;
         this.locationHattie = locationHattie;
         this.locationCharles = locationCharles;
@@ -42,6 +45,7 @@ public class LocationPage extends AppCompatActivity {
         locationBen = (Entity) getIntent().getSerializableExtra("NewBen");
         locationJake = (Entity) getIntent().getSerializableExtra("NewJake");
         locationWagon = (Wagon) getIntent().getSerializableExtra("NewWagon");
+        dateAndDistance = (DateAndDistance) getIntent().getSerializableExtra("NewDateAndDistance");
         
         configureMapButton();
         configureResourcesButton();

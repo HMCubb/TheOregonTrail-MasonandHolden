@@ -207,7 +207,7 @@
         app:srcCompat="@android:drawable/arrow_up_float" />
 
     <TextView
-        android:id="@+id/foodText"
+        android:id="@+id/foodTextLocation"
         android:layout_width="284dp"
         android:layout_height="131dp"
         android:layout_marginStart="134dp"
@@ -229,7 +229,7 @@
         android:layout_marginTop="21dp"
         android:clickable="true"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintStart_toEndOf="@+id/foodText"
+        app:layout_constraintStart_toEndOf="@+id/foodTextLocation"
         app:layout_constraintTop_toBottomOf="@+id/foodUpLocation"
         app:srcCompat="@android:drawable/arrow_down_float" />
 
@@ -270,7 +270,7 @@
         android:textColor="#000000"
         android:textSize="48sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/foodText" />
+        app:layout_constraintTop_toBottomOf="@+id/foodTextLocation" />
 
     <Button
         android:id="@+id/foodUpLocation"
@@ -280,7 +280,7 @@
         android:layout_marginTop="73dp"
         android:clickable="true"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintStart_toEndOf="@+id/foodText"
+        app:layout_constraintStart_toEndOf="@+id/foodTextLocation"
         app:layout_constraintTop_toBottomOf="@+id/headerTextLocation"
         app:srcCompat="@android:drawable/arrow_up_float" />
 

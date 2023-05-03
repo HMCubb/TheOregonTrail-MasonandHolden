@@ -20,14 +20,14 @@ public class DailyStatus extends AppCompatActivity {
     public Entity Augusta;
     public Entity Ben;
     public Entity Jake;
+    public DateAndDistance dateAndDistance;
 
     Weather weather = new Weather();
-    DateAndDistance dateAndDistance = new DateAndDistance();
     GeneralHealth health = new GeneralHealth();
     RandomEvents randomEvents = new RandomEvents(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, 0, 0, 0, 0, 0,0, 0);
 
     public DailyStatus(){}
-    public DailyStatus(Wagon wagon, Entity newHattie, Entity newCharles, Entity newAugusta, Entity newBen, Entity newJake){
+    public DailyStatus(DateAndDistance dateAndDistance, Wagon wagon, Entity newHattie, Entity newCharles, Entity newAugusta, Entity newBen, Entity newJake){
 
         this.wagon = wagon;
         this.Hattie = newHattie;
@@ -35,6 +35,7 @@ public class DailyStatus extends AppCompatActivity {
         this.Augusta = newAugusta;
         this.Ben = newBen;
         this.Jake = newJake;
+        this.dateAndDistance = dateAndDistance;
     }
 
     @Override
@@ -49,6 +50,7 @@ public class DailyStatus extends AppCompatActivity {
         Augusta = (Entity) getIntent().getSerializableExtra("NewAugusta");
         Ben = (Entity) getIntent().getSerializableExtra("NewBen");
         Jake = (Entity) getIntent().getSerializableExtra("NewJake");
+        dateAndDistance = (DateAndDistance) getIntent().getSerializableExtra("NewDateAndDistance");
 
         final Button NextDayButton = findViewById(R.id.NextDayButton);
         final TextView PeopleCount = findViewById(R.id.PeopleCount);
@@ -400,9 +402,11 @@ public class DailyStatus extends AppCompatActivity {
                         Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
                         Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
+                        DateAndDistance newDateAndDistance = new DateAndDistance();
+
                         Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 
-                        intent.putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                        intent.putExtra("NewDateAndDistance", newDateAndDistance).putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
                         setContentView(R.layout.activity_location_page);
                         startActivity(new Intent(DailyStatus.this, LocationPage.class));
                         startActivity(intent);
@@ -419,9 +423,11 @@ public class DailyStatus extends AppCompatActivity {
                         Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
                         Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
+                        DateAndDistance newDateAndDistance = new DateAndDistance();
+
                         Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 
-                        intent.putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                        intent.putExtra("NewDateAndDistance", newDateAndDistance).putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
                         setContentView(R.layout.activity_location_page);
                         startActivity(new Intent(DailyStatus.this, LocationPage.class));
                         startActivity(intent);
@@ -438,9 +444,11 @@ public class DailyStatus extends AppCompatActivity {
                         Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
                         Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
+                        DateAndDistance newDateAndDistance = new DateAndDistance();
+
                         Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 
-                        intent.putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                        intent.putExtra("NewDateAndDistance", newDateAndDistance).putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
                         setContentView(R.layout.activity_location_page);
                         startActivity(new Intent(DailyStatus.this, LocationPage.class));
                         startActivity(intent);
@@ -457,9 +465,11 @@ public class DailyStatus extends AppCompatActivity {
                         Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
                         Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
+                        DateAndDistance newDateAndDistance = new DateAndDistance();
+
                         Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 
-                        intent.putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                        intent.putExtra("NewDateAndDistance", newDateAndDistance).putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
                         setContentView(R.layout.activity_location_page);
                         startActivity(new Intent(DailyStatus.this, LocationPage.class));
                         startActivity(intent);
@@ -476,9 +486,11 @@ public class DailyStatus extends AppCompatActivity {
                         Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
                         Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
+                        DateAndDistance newDateAndDistance = new DateAndDistance();
+
                         Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 
-                        intent.putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                        intent.putExtra("NewDateAndDistance", newDateAndDistance).putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
                         setContentView(R.layout.activity_location_page);
                         startActivity(new Intent(DailyStatus.this, LocationPage.class));
                         startActivity(intent);
@@ -495,9 +507,11 @@ public class DailyStatus extends AppCompatActivity {
                         Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
                         Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
+                        DateAndDistance newDateAndDistance = new DateAndDistance();
+
                         Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 
-                        intent.putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                        intent.putExtra("NewDateAndDistance", newDateAndDistance).putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
                         setContentView(R.layout.activity_location_page);
                         startActivity(new Intent(DailyStatus.this, LocationPage.class));
                         startActivity(intent);
@@ -514,9 +528,11 @@ public class DailyStatus extends AppCompatActivity {
                         Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
                         Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
+                        DateAndDistance newDateAndDistance = new DateAndDistance();
+
                         Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 
-                        intent.putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                        intent.putExtra("NewDateAndDistance", newDateAndDistance).putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
                         setContentView(R.layout.activity_location_page);
                         startActivity(new Intent(DailyStatus.this, LocationPage.class));
                         startActivity(intent);
@@ -533,25 +549,28 @@ public class DailyStatus extends AppCompatActivity {
                         Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
                         Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
+                        DateAndDistance newDateAndDistance = new DateAndDistance();
+
                         Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 
-                        intent.putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                        intent.putExtra("NewDateAndDistance", newDateAndDistance).putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
                         setContentView(R.layout.activity_location_page);
                         startActivity(new Intent(DailyStatus.this, LocationPage.class));
                         startActivity(intent);
                     }
                 }
                 else {
-                RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
-                Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
-                Entity newCharles = new Entity (Charles.name, Charles.sick, Charles.injured, Charles.dead);
-                Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
-                Entity newBen = new Entity (Ben.name, Ben.sick, Ben.injured, Ben.dead);
-                Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
+                    RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
+                    Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
+                    Entity newCharles = new Entity (Charles.name, Charles.sick, Charles.injured, Charles.dead);
+                    Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
+                    Entity newBen = new Entity (Ben.name, Ben.sick, Ben.injured, Ben.dead);
+                    Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
+                    DateAndDistance newDateAndDistance = new DateAndDistance();
 
                     Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 
-                    intent.putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                    intent.putExtra("NewDateAndDistance", newDateAndDistance).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
 
                     setContentView(R.layout.activity_daily_events);
                     startActivity(new Intent(DailyStatus.this, dailyEvents.class));

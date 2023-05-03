@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     Entity Augusta = new Entity("Augusta",false, false, false);
     Entity Ben = new Entity ("Ben",false, false, false);
     Entity Jake = new Entity ( "Jake",false, false, false);
+    DateAndDistance newDateAndDistance = new DateAndDistance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +41,12 @@ public class MainActivity extends AppCompatActivity {
                 Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
                 Entity newBen = new Entity (Ben.name, Ben.sick, Ben.injured, Ben.dead);
                 Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
+                DateAndDistance dateAndDistance = new DateAndDistance();
+
 
                 Intent intent = new Intent(MainActivity.this, Store.class);
 
-                intent.putExtra("NewWagon", wagon).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                intent.putExtra("NewDateAndDistance", dateAndDistance).putExtra("NewWagon", wagon).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
 
                 startActivity(intent);
                 setContentView(R.layout.activity_store);

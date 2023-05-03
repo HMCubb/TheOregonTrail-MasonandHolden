@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.Date;
+
 public class dailyEvents extends AppCompatActivity {
 
     public RandomEvents newRandomEvents;
@@ -16,10 +18,11 @@ public class dailyEvents extends AppCompatActivity {
     public Entity Augusta;
     public Entity Ben;
     public Entity Jake;
+    public DateAndDistance dateAndDistance;
 
     public dailyEvents(){}
-    public dailyEvents(RandomEvents newRandomEvents, Entity newHattie, Entity newCharles, Entity newAugusta, Entity newBen, Entity newJake){
-
+    public dailyEvents(DateAndDistance dateAndDistance, RandomEvents newRandomEvents, Entity newHattie, Entity newCharles, Entity newAugusta, Entity newBen, Entity newJake){
+        this.dateAndDistance = dateAndDistance;
         this.newRandomEvents = newRandomEvents;
         this.Hattie = newHattie;
         this.Charles = newCharles;
@@ -39,6 +42,7 @@ public class dailyEvents extends AppCompatActivity {
         Augusta = (Entity) getIntent().getSerializableExtra("NewAugusta");
         Ben = (Entity) getIntent().getSerializableExtra("NewBen");
         Jake = (Entity) getIntent().getSerializableExtra("NewJake");
+        dateAndDistance = (DateAndDistance) getIntent().getSerializableExtra("NewDateAndDistance");
 
         EditText eventText = findViewById(R.id.eventText);
         eventText.setText(String.valueOf(newRandomEvents.lostMember));
@@ -59,10 +63,11 @@ public class dailyEvents extends AppCompatActivity {
                 Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
                 Entity newBen = new Entity (Ben.name, Ben.sick, Ben.injured, Ben.dead);
                 Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
+                DateAndDistance newDateAndDistance = new DateAndDistance();
 
                 Intent intent = new Intent(dailyEvents.this, DailyStatus.class);
 
-                intent.putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                intent.putExtra("NewDateAndDistance", newDateAndDistance).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
 
                 setContentView(R.layout.activity_daily_status);
                 startActivity(new Intent(dailyEvents.this, DailyStatus.class));

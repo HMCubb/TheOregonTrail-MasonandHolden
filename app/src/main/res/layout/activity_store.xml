@@ -9,7 +9,7 @@
     tools:context=".Store">
 
     <TextView
-        android:id="@+id/oxenTextLocation"
+        android:id="@+id/oxenText"
         android:layout_width="255dp"
         android:layout_height="128dp"
         android:layout_marginStart="88dp"
@@ -20,11 +20,11 @@
         android:textAllCaps="true"
         android:textColor="#000000"
         android:textSize="48sp"
-        app:layout_constraintStart_toEndOf="@+id/axlesAmountLocation"
-        app:layout_constraintTop_toBottomOf="@+id/wheelsTextLocation" />
+        app:layout_constraintStart_toEndOf="@+id/axlesAmount"
+        app:layout_constraintTop_toBottomOf="@+id/wheelsText" />
 
     <EditText
-        android:id="@+id/oxenAmountLocation"
+        android:id="@+id/oxenAmount"
         android:layout_width="79dp"
         android:layout_height="67dp"
         android:layout_marginStart="34dp"
@@ -34,35 +34,35 @@
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="48sp"
-        app:layout_constraintStart_toEndOf="@+id/oxenDownLocation"
-        app:layout_constraintTop_toBottomOf="@+id/wheelsAmountLocation" />
+        app:layout_constraintStart_toEndOf="@+id/oxenDown"
+        app:layout_constraintTop_toBottomOf="@+id/wheelsAmount" />
 
     <Button
-        android:id="@+id/oxenDownLocation"
+        android:id="@+id/oxenDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="11dp"
         android:layout_marginTop="16dp"
         android:clickable="true"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintStart_toEndOf="@+id/oxenTextLocation"
-        app:layout_constraintTop_toBottomOf="@+id/oxenUpLocation"
+        app:layout_constraintStart_toEndOf="@+id/oxenText"
+        app:layout_constraintTop_toBottomOf="@+id/oxenUp"
         app:srcCompat="@android:drawable/arrow_down_float" />
 
     <Button
-        android:id="@+id/oxenUpLocation"
+        android:id="@+id/oxenUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="11dp"
         android:layout_marginTop="59dp"
         android:clickable="true"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintStart_toEndOf="@+id/oxenTextLocation"
-        app:layout_constraintTop_toBottomOf="@+id/wheelsDownLocation"
+        app:layout_constraintStart_toEndOf="@+id/oxenText"
+        app:layout_constraintTop_toBottomOf="@+id/wheelsDown"
         app:srcCompat="@android:drawable/arrow_up_float" />
 
     <EditText
-        android:id="@+id/axlesAmountLocation"
+        android:id="@+id/axlesAmount"
         android:layout_width="79dp"
         android:layout_height="67dp"
         android:layout_marginStart="30dp"
@@ -72,11 +72,11 @@
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="48sp"
-        app:layout_constraintStart_toEndOf="@+id/axlesDownLocation"
-        app:layout_constraintTop_toBottomOf="@+id/tonguesAmountLocation" />
+        app:layout_constraintStart_toEndOf="@+id/axlesDown"
+        app:layout_constraintTop_toBottomOf="@+id/tonguesAmount" />
 
     <EditText
-        android:id="@+id/foodAmountLocation"
+        android:id="@+id/foodAmount"
         android:layout_width="79dp"
         android:layout_height="67dp"
         android:layout_marginStart="27dp"
@@ -86,11 +86,11 @@
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="48sp"
-        app:layout_constraintStart_toEndOf="@+id/foodDownLocation"
-        app:layout_constraintTop_toBottomOf="@+id/headerTextLocation" />
+        app:layout_constraintStart_toEndOf="@+id/foodDown"
+        app:layout_constraintTop_toBottomOf="@+id/headerText2" />
 
     <TextView
-        android:id="@+id/wheelsTextLocation"
+        android:id="@+id/wheelsText"
         android:layout_width="238dp"
         android:layout_height="127dp"
         android:layout_marginStart="105dp"
@@ -101,35 +101,35 @@
         android:textAllCaps="true"
         android:textColor="#000000"
         android:textSize="48sp"
-        app:layout_constraintStart_toEndOf="@+id/tonguesAmountLocation"
-        app:layout_constraintTop_toBottomOf="@+id/headerTextLocation" />
+        app:layout_constraintStart_toEndOf="@+id/tonguesAmount"
+        app:layout_constraintTop_toBottomOf="@+id/headerText2" />
 
     <Button
-        android:id="@+id/wheelsDownLocation"
+        android:id="@+id/wheelsDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="11dp"
         android:layout_marginTop="14dp"
         android:clickable="true"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintStart_toEndOf="@+id/wheelsTextLocation"
-        app:layout_constraintTop_toBottomOf="@+id/wheelsUpLocation"
+        app:layout_constraintStart_toEndOf="@+id/wheelsText"
+        app:layout_constraintTop_toBottomOf="@+id/wheelsUp"
         app:srcCompat="@android:drawable/arrow_down_float" />
 
     <Button
-        android:id="@+id/wheelsUpLocation"
+        android:id="@+id/wheelsUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="11dp"
         android:layout_marginTop="81dp"
         android:clickable="true"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintStart_toEndOf="@+id/wheelsTextLocation"
-        app:layout_constraintTop_toBottomOf="@+id/headerTextLocation"
+        app:layout_constraintStart_toEndOf="@+id/wheelsText"
+        app:layout_constraintTop_toBottomOf="@+id/headerText2"
         app:srcCompat="@android:drawable/arrow_up_float" />
 
     <TextView
-        android:id="@+id/axlesTextLocation"
+        android:id="@+id/axlesText"
         android:layout_width="244dp"
         android:layout_height="123dp"
         android:layout_marginStart="94dp"
@@ -140,11 +140,11 @@
         android:textAllCaps="true"
         android:textColor="#000000"
         android:textSize="48sp"
-        app:layout_constraintStart_toEndOf="@+id/clothesAmountLocation"
-        app:layout_constraintTop_toBottomOf="@+id/tonguesTextLocation" />
+        app:layout_constraintStart_toEndOf="@+id/clothesAmount"
+        app:layout_constraintTop_toBottomOf="@+id/tonguesText" />
 
     <TextView
-        android:id="@+id/tonguesTextLocation"
+        android:id="@+id/tonguesText"
         android:layout_width="238dp"
         android:layout_height="127dp"
         android:layout_marginStart="101dp"
@@ -155,55 +155,56 @@
         android:textAllCaps="true"
         android:textColor="#000000"
         android:textSize="48sp"
-        app:layout_constraintStart_toEndOf="@+id/foodAmountLocation"
-        app:layout_constraintTop_toBottomOf="@+id/headerTextLocation" />
+        app:layout_constraintStart_toEndOf="@+id/foodAmount"
+        app:layout_constraintTop_toBottomOf="@+id/headerText2" />
 
     <Button
-        android:id="@+id/axlesUpLocation"
+        android:id="@+id/axlesUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="76dp"
         android:clickable="true"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintStart_toEndOf="@+id/axlesTextLocation"
-        app:layout_constraintTop_toBottomOf="@+id/tonguesDownLocation"
-        app:srcCompat="@android:drawable/arrow_up_float" />
+        app:layout_constraintStart_toEndOf="@+id/axlesText"
+        app:layout_constraintTop_toBottomOf="@+id/tonguesDown"
+        app:srcCompat="@android:drawable/arrow_up_float"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
-        android:id="@+id/tonguesDownLocation"
+        android:id="@+id/tonguesDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="11dp"
         android:layout_marginTop="21dp"
         android:clickable="true"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintStart_toEndOf="@+id/tonguesTextLocation"
-        app:layout_constraintTop_toBottomOf="@+id/tonguesUpLocation"
+        app:layout_constraintStart_toEndOf="@+id/tonguesText"
+        app:layout_constraintTop_toBottomOf="@+id/tonguesUp"
         app:srcCompat="@android:drawable/arrow_down_float" />
 
     <Button
-        android:id="@+id/axlesDownLocation"
+        android:id="@+id/axlesDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="11dp"
         android:layout_marginTop="30dp"
         android:clickable="true"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintStart_toEndOf="@+id/axlesTextLocation"
-        app:layout_constraintTop_toBottomOf="@+id/axlesUpLocation"
+        app:layout_constraintStart_toEndOf="@+id/axlesText"
+        app:layout_constraintTop_toBottomOf="@+id/axlesUp"
         app:srcCompat="@android:drawable/arrow_down_float" />
 
     <Button
-        android:id="@+id/tonguesUpLocation"
+        android:id="@+id/tonguesUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="11dp"
         android:layout_marginTop="73dp"
         android:clickable="true"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintStart_toEndOf="@+id/tonguesTextLocation"
-        app:layout_constraintTop_toBottomOf="@+id/headerTextLocation"
+        app:layout_constraintStart_toEndOf="@+id/tonguesText"
+        app:layout_constraintTop_toBottomOf="@+id/headerText2"
         app:srcCompat="@android:drawable/arrow_up_float" />
 
     <TextView
@@ -219,10 +220,10 @@
         android:textColor="#000000"
         android:textSize="48sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerTextLocation" />
+        app:layout_constraintTop_toBottomOf="@+id/headerText2" />
 
     <Button
-        android:id="@+id/foodDownLocation"
+        android:id="@+id/foodDown"
         android:layout_width="49dp"
         android:layout_height="59dp"
         android:layout_marginStart="12dp"
@@ -230,35 +231,35 @@
         android:clickable="true"
         app:backgroundTint="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/foodText"
-        app:layout_constraintTop_toBottomOf="@+id/foodUpLocation"
+        app:layout_constraintTop_toBottomOf="@+id/foodUp"
         app:srcCompat="@android:drawable/arrow_down_float" />
 
     <Button
-        android:id="@+id/clothesUpLocation"
+        android:id="@+id/clothesUp"
         android:layout_width="50dp"
         android:layout_height="51dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="53dp"
         android:clickable="true"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintStart_toEndOf="@+id/clothesTextLocation"
-        app:layout_constraintTop_toBottomOf="@+id/foodDownLocation"
+        app:layout_constraintStart_toEndOf="@+id/clothesText"
+        app:layout_constraintTop_toBottomOf="@+id/foodDown"
         app:srcCompat="@android:drawable/arrow_up_float" />
 
     <Button
-        android:id="@+id/clothesDownLocation"
+        android:id="@+id/clothesDown"
         android:layout_width="48dp"
         android:layout_height="54dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="21dp"
         android:clickable="true"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintStart_toEndOf="@+id/clothesTextLocation"
-        app:layout_constraintTop_toBottomOf="@+id/clothesUpLocation"
+        app:layout_constraintStart_toEndOf="@+id/clothesText"
+        app:layout_constraintTop_toBottomOf="@+id/clothesUp"
         app:srcCompat="@android:drawable/arrow_down_float" />
 
     <TextView
-        android:id="@+id/clothesTextLocation"
+        android:id="@+id/clothesText"
         android:layout_width="244dp"
         android:layout_height="124dp"
         android:layout_marginStart="175dp"
@@ -273,7 +274,7 @@
         app:layout_constraintTop_toBottomOf="@+id/foodText" />
 
     <Button
-        android:id="@+id/foodUpLocation"
+        android:id="@+id/foodUp"
         android:layout_width="49dp"
         android:layout_height="56dp"
         android:layout_marginStart="12dp"
@@ -281,11 +282,11 @@
         android:clickable="true"
         app:backgroundTint="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/foodText"
-        app:layout_constraintTop_toBottomOf="@+id/headerTextLocation"
+        app:layout_constraintTop_toBottomOf="@+id/headerText2"
         app:srcCompat="@android:drawable/arrow_up_float" />
 
     <EditText
-        android:id="@+id/tonguesAmountLocation"
+        android:id="@+id/tonguesAmount"
         android:layout_width="79dp"
         android:layout_height="67dp"
         android:layout_marginStart="30dp"
@@ -295,11 +296,11 @@
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="48sp"
-        app:layout_constraintStart_toEndOf="@+id/tonguesDownLocation"
-        app:layout_constraintTop_toBottomOf="@+id/headerTextLocation" />
+        app:layout_constraintStart_toEndOf="@+id/tonguesDown"
+        app:layout_constraintTop_toBottomOf="@+id/headerText2" />
 
     <EditText
-        android:id="@+id/clothesAmountLocation"
+        android:id="@+id/clothesAmount"
         android:layout_width="79dp"
         android:layout_height="67dp"
         android:layout_marginStart="27dp"
@@ -309,11 +310,11 @@
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="48sp"
-        app:layout_constraintStart_toEndOf="@+id/clothesUpLocation"
-        app:layout_constraintTop_toBottomOf="@+id/foodAmountLocation" />
+        app:layout_constraintStart_toEndOf="@+id/clothesUp"
+        app:layout_constraintTop_toBottomOf="@+id/foodAmount" />
 
     <EditText
-        android:id="@+id/wheelsAmountLocation"
+        android:id="@+id/wheelsAmount"
         android:layout_width="79dp"
         android:layout_height="67dp"
         android:layout_marginStart="34dp"
@@ -323,11 +324,11 @@
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="48sp"
-        app:layout_constraintStart_toEndOf="@+id/wheelsDownLocation"
-        app:layout_constraintTop_toBottomOf="@+id/headerTextLocation" />
+        app:layout_constraintStart_toEndOf="@+id/wheelsDown"
+        app:layout_constraintTop_toBottomOf="@+id/headerText2" />
 
     <EditText
-        android:id="@+id/moneyOwedAmountLocation"
+        android:id="@+id/moneyOwedAmount"
         android:layout_width="217dp"
         android:layout_height="66dp"
         android:layout_marginStart="31dp"
@@ -338,10 +339,10 @@
         android:textColor="#000000"
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/moneyOwedTextLocation" />
+        app:layout_constraintStart_toEndOf="@+id/moneyOwedText" />
 
     <TextView
-        android:id="@+id/moneyOwedTextLocation"
+        android:id="@+id/moneyOwedText"
         android:layout_width="197dp"
         android:layout_height="65dp"
         android:layout_marginStart="112dp"
@@ -358,7 +359,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/yourMoneyAmountLocation"
+        android:id="@+id/yourMoneyAmount"
         android:layout_width="217dp"
         android:layout_height="66dp"
         android:layout_marginStart="31dp"
@@ -368,11 +369,11 @@
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="48sp"
-        app:layout_constraintStart_toEndOf="@+id/yourMoneyTextLocation"
-        app:layout_constraintTop_toBottomOf="@+id/clothesTextLocation" />
+        app:layout_constraintStart_toEndOf="@+id/yourMoneyText"
+        app:layout_constraintTop_toBottomOf="@+id/clothesText" />
 
     <TextView
-        android:id="@+id/yourMoneyTextLocation"
+        android:id="@+id/yourMoneyText"
         android:layout_width="197dp"
         android:layout_height="65dp"
         android:layout_marginStart="112dp"
@@ -386,10 +387,10 @@
         android:textStyle="bold"
         android:typeface="serif"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clothesTextLocation" />
+        app:layout_constraintTop_toBottomOf="@+id/clothesText" />
 
     <TextView
-        android:id="@+id/headerTextLocation"
+        android:id="@+id/headerText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
@@ -406,7 +407,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/backButtonLocation"
+        android:id="@+id/backButton"
         android:layout_width="339dp"
         android:layout_height="117dp"
         android:layout_marginStart="234dp"
@@ -423,7 +424,7 @@
         android:typeface="serif"
         app:iconTint="#EFE8EA"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/moneyOwedAmountLocation" />
+        app:layout_constraintStart_toEndOf="@+id/moneyOwedAmount" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/group"

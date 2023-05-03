@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.Date;
+
 public class Store extends AppCompatActivity {
 
     public Wagon myWagon = new Wagon(5, 850.00, 0, 0, 0, 0, 0, 0);
@@ -19,8 +21,10 @@ public class Store extends AppCompatActivity {
     public Entity Ben;
     public Entity Jake;
     public Wagon storeWagon;
+    public DateAndDistance dateAndDistance;
     public Store(){}
-    public Store(Entity newHattie, Entity newCharles, Entity newAugusta, Entity newBen, Entity newJake, Wagon wagon){
+    public Store(DateAndDistance dateAndDistance, Entity newHattie, Entity newCharles, Entity newAugusta, Entity newBen, Entity newJake, Wagon wagon){
+        this.dateAndDistance = dateAndDistance;
         this.Hattie = newHattie;
         this.Charles = newCharles;
         this.Augusta = newAugusta;
@@ -40,9 +44,7 @@ public class Store extends AppCompatActivity {
         Ben = (Entity) getIntent().getSerializableExtra("NewBen");
         Jake = (Entity) getIntent().getSerializableExtra("NewJake");
         storeWagon = (Wagon) getIntent().getSerializableExtra("NewWagon");
-
-
-
+        dateAndDistance = (DateAndDistance) getIntent().getSerializableExtra("NewDateAndDistance");
 
         configureFoodUpButton();
         configureFoodDownButton();
@@ -74,10 +76,11 @@ public class Store extends AppCompatActivity {
                 Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
                 Entity newBen = new Entity (Ben.name, Ben.sick, Ben.injured, Ben.dead);
                 Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
+                DateAndDistance newDateAndDistance = new DateAndDistance();
 
                 Intent intent = new Intent(Store.this, DailyStatus.class);
 
-                intent.putExtra("NewWagon", storeWagon).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                intent.putExtra("NewDateAndDistance", newDateAndDistance).putExtra("NewWagon", storeWagon).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
 
                 setContentView(R.layout.activity_daily_status);
                 startActivity(new Intent(Store.this, DailyStatus.class));
