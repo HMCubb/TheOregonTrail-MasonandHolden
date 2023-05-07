@@ -10,14 +10,6 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    Entity Hattie = new Entity( "Hattie",false, false, false);
-    Entity Charles = new Entity ("Charles",false, false, false);
-    Entity Augusta = new Entity("Augusta",false, false, false);
-    Entity Ben = new Entity ("Ben",false, false, false);
-    Entity Jake = new Entity ( "Jake",false, false, false);
-    DateAndDistance newDateAndDistance = new DateAndDistance();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,23 +26,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Store store = new Store();
-                Wagon wagon = new Wagon(0,0.00,0,0,0,0,0,0);
-                Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
-                Entity newCharles = new Entity (Charles.name, Charles.sick, Charles.injured, Charles.dead);
-                Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
-                Entity newBen = new Entity (Ben.name, Ben.sick, Ben.injured, Ben.dead);
-                Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
+                //Store store = new Store();
+                Entity Hattie = new Entity( "Hattie",false, false, false);
+                Entity Charles = new Entity ("Charles",false, false, false);
+                Entity Augusta = new Entity("Augusta",false, false, false);
+                Entity Ben = new Entity ("Ben",false, false, false);
+                Entity Jake = new Entity ( "Jake",false, false, false);
                 DateAndDistance dateAndDistance = new DateAndDistance();
 
 
                 Intent intent = new Intent(MainActivity.this, Store.class);
 
-                intent.putExtra("NewDateAndDistance", dateAndDistance).putExtra("NewWagon", wagon).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                intent.putExtra("NewDateAndDistance", dateAndDistance).putExtra("NewHattie", Hattie).putExtra("NewCharles", Charles).putExtra("NewAugusta", Augusta).putExtra("NewBen", Ben).putExtra("NewJake", Jake);
 
-                startActivity(intent);
+//                startActivity(intent);
                 setContentView(R.layout.activity_store);
                 startActivity(new Intent(MainActivity.this, Store.class));
+                startActivity(intent);
             }
         });
     }

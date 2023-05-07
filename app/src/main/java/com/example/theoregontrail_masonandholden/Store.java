@@ -15,7 +15,7 @@ public class Store extends AppCompatActivity {
 
     public Wagon myWagon = new Wagon(5, 850.00, 0, 0, 0, 0, 0, 0);
 
-    public Entity Hattie;
+    public Entity Hattie = new Entity("Hattie", false,false,false);
     public Entity Charles;
     public Entity Augusta;
     public Entity Ben;
@@ -24,6 +24,8 @@ public class Store extends AppCompatActivity {
     public DateAndDistance dateAndDistance;
     public Store(){}
     public Store(DateAndDistance dateAndDistance, Entity newHattie, Entity newCharles, Entity newAugusta, Entity newBen, Entity newJake, Wagon wagon){
+        //System.out.println("Store constructor ran...");
+
         this.dateAndDistance = dateAndDistance;
         this.Hattie = newHattie;
         this.Charles = newCharles;
@@ -38,12 +40,11 @@ public class Store extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store);
 
-        Hattie = (Entity) getIntent().getSerializableExtra("NewHattie");
+       // Hattie = (Entity) getIntent().getSerializableExtra("NewHattie");
         Charles = (Entity) getIntent().getSerializableExtra("NewCharles");
         Augusta = (Entity) getIntent().getSerializableExtra("NewAugusta");
         Ben = (Entity) getIntent().getSerializableExtra("NewBen");
         Jake = (Entity) getIntent().getSerializableExtra("NewJake");
-        storeWagon = (Wagon) getIntent().getSerializableExtra("NewWagon");
         dateAndDistance = (DateAndDistance) getIntent().getSerializableExtra("NewDateAndDistance");
 
         configureFoodUpButton();
@@ -63,14 +64,12 @@ public class Store extends AppCompatActivity {
 
     private void configureContinueButton() {
 
-        Button continueButton = (Button) findViewById(R.id.backButtonLocation);
+        Button continueButton = (Button) findViewById(R.id.continueButton);
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
                 Wagon storeWagon = new Wagon(myWagon.people, myWagon.money, myWagon.oxen, myWagon.food, myWagon.clothes, myWagon.tongues, myWagon.axles, myWagon.wheels);
-
                 Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
                 Entity newCharles = new Entity (Charles.name, Charles.sick, Charles.injured, Charles.dead);
                 Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
@@ -91,8 +90,8 @@ public class Store extends AppCompatActivity {
 
     private void configureFoodUpButton() {
 
-        Button foodUp = findViewById(R.id.foodUpLocation);
-        EditText foodAmount = findViewById(R.id.foodAmountLocation);
+        Button foodUp = findViewById(R.id.foodUp);
+        EditText foodAmount = findViewById(R.id.foodAmount);
         foodUp.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("DefaultLocale")
             @Override
@@ -103,9 +102,9 @@ public class Store extends AppCompatActivity {
                     myWagon.spendMoney(2.00);
                     foodAmount.setText(String.valueOf(myWagon.getFood()));
                 }
-                EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);
+                EditText ownedMoney = findViewById(R.id.yourMoneyAmount);
                 ownedMoney.setText(String.valueOf(String.format("%.2f", myWagon.getMoney())));
-                EditText moneyOwed = findViewById(R.id.moneyOwedAmountLocation);
+                EditText moneyOwed = findViewById(R.id.moneyOwedAmount);
                 moneyOwed.setText(String.valueOf(String.format("%.2f", myWagon.moneySpent)));
             }
         });
@@ -113,8 +112,8 @@ public class Store extends AppCompatActivity {
 
     private void configureFoodDownButton() {
 
-        Button foodDown = findViewById(R.id.foodDownLocation);
-        EditText foodAmount = findViewById(R.id.foodAmountLocation);
+        Button foodDown = findViewById(R.id.foodDown);
+        EditText foodAmount = findViewById(R.id.foodAmount);
         foodDown.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("DefaultLocale")
             @Override
@@ -125,9 +124,9 @@ public class Store extends AppCompatActivity {
                     myWagon.returnMoney(2.00);
                     foodAmount.setText(String.valueOf(myWagon.getFood()));
                 }
-                EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);
+                EditText ownedMoney = findViewById(R.id.yourMoneyAmount);
                 ownedMoney.setText(String.valueOf(String.format("%.2f", myWagon.getMoney())));
-                EditText moneyOwed = findViewById(R.id.moneyOwedAmountLocation);
+                EditText moneyOwed = findViewById(R.id.moneyOwedAmount);
                 moneyOwed.setText(String.valueOf(String.format("%.2f", myWagon.moneySpent)));
             }
         });
@@ -135,8 +134,8 @@ public class Store extends AppCompatActivity {
 
     private void configureClothesUpButton() {
 
-        Button clothesUp = findViewById(R.id.clothesUpLocation);
-        EditText clothesAmount = findViewById(R.id.clothesAmountLocation);
+        Button clothesUp = findViewById(R.id.clothesUp);
+        EditText clothesAmount = findViewById(R.id.clothesAmount);
         clothesUp.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("DefaultLocale")
             @Override
@@ -147,9 +146,9 @@ public class Store extends AppCompatActivity {
                     myWagon.spendMoney(10.00);
                     clothesAmount.setText(String.valueOf(myWagon.getClothes()));
                 }
-                EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);
+                EditText ownedMoney = findViewById(R.id.yourMoneyAmount);
                 ownedMoney.setText(String.valueOf(String.format("%.2f", myWagon.getMoney())));
-                EditText moneyOwed = findViewById(R.id.moneyOwedAmountLocation);
+                EditText moneyOwed = findViewById(R.id.moneyOwedAmount);
                 moneyOwed.setText(String.valueOf(String.format("%.2f", myWagon.moneySpent)));
             }
         });
@@ -157,8 +156,8 @@ public class Store extends AppCompatActivity {
 
     private void configureClothesDownButton() {
 
-        Button clothesDown = findViewById(R.id.clothesDownLocation);
-        EditText clothesAmount = findViewById(R.id.clothesAmountLocation);
+        Button clothesDown = findViewById(R.id.clothesDown);
+        EditText clothesAmount = findViewById(R.id.clothesAmount);
         clothesDown.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("DefaultLocale")
             @Override
@@ -169,9 +168,9 @@ public class Store extends AppCompatActivity {
                     myWagon.returnMoney(10.00);
                     clothesAmount.setText(String.valueOf(myWagon.getClothes()));
                 }
-                EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);
+                EditText ownedMoney = findViewById(R.id.yourMoneyAmount);
                 ownedMoney.setText(String.valueOf(String.format("%.2f", myWagon.getMoney())));
-                EditText moneyOwed = findViewById(R.id.moneyOwedAmountLocation);
+                EditText moneyOwed = findViewById(R.id.moneyOwedAmount);
                 moneyOwed.setText(String.valueOf(String.format("%.2f", myWagon.moneySpent)));
             }
         });
@@ -179,8 +178,8 @@ public class Store extends AppCompatActivity {
 
     private void configureTonguesUpButton() {
 
-        Button tonguesUp = findViewById(R.id.tonguesUpLocation);
-        EditText tonguesAmount = findViewById(R.id.tonguesAmountLocation);
+        Button tonguesUp = findViewById(R.id.tonguesUp);
+        EditText tonguesAmount = findViewById(R.id.tonguesAmount);
         tonguesUp.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("DefaultLocale")
             @Override
@@ -191,9 +190,9 @@ public class Store extends AppCompatActivity {
                     myWagon.spendMoney(10.00);
                     tonguesAmount.setText(String.valueOf(myWagon.getTongues()));
                 }
-                EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);
+                EditText ownedMoney = findViewById(R.id.yourMoneyAmount);
                 ownedMoney.setText(String.valueOf(String.format("%.2f", myWagon.getMoney())));
-                EditText moneyOwed = findViewById(R.id.moneyOwedAmountLocation);
+                EditText moneyOwed = findViewById(R.id.moneyOwedAmount);
                 moneyOwed.setText(String.valueOf(String.format("%.2f", myWagon.moneySpent)));
             }
         });
@@ -201,8 +200,8 @@ public class Store extends AppCompatActivity {
 
     private void configureTonguesDownButton() {
 
-        Button tonguesDown = findViewById(R.id.tonguesDownLocation);
-        EditText tonguesAmount = findViewById(R.id.tonguesAmountLocation);
+        Button tonguesDown = findViewById(R.id.tonguesDown);
+        EditText tonguesAmount = findViewById(R.id.tonguesAmount);
         tonguesDown.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("DefaultLocale")
             @Override
@@ -213,9 +212,9 @@ public class Store extends AppCompatActivity {
                     myWagon.returnMoney(10.00);
                     tonguesAmount.setText(String.valueOf(myWagon.getTongues()));
                 }
-                EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);
+                EditText ownedMoney = findViewById(R.id.yourMoneyAmount);
                 ownedMoney.setText(String.valueOf(String.format("%.2f", myWagon.getMoney())));
-                EditText moneyOwed = findViewById(R.id.moneyOwedAmountLocation);
+                EditText moneyOwed = findViewById(R.id.moneyOwedAmount);
                 moneyOwed.setText(String.valueOf(String.format("%.2f", myWagon.moneySpent)));
             }
         });
@@ -223,8 +222,8 @@ public class Store extends AppCompatActivity {
 
     private void configureAxlesUpButton() {
 
-        Button axlesUp = findViewById(R.id.axlesUpLocation);
-        EditText axlesAmount = findViewById(R.id.axlesAmountLocation);
+        Button axlesUp = findViewById(R.id.axlesUp);
+        EditText axlesAmount = findViewById(R.id.axlesAmount);
         axlesUp.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("DefaultLocale")
             @Override
@@ -235,9 +234,9 @@ public class Store extends AppCompatActivity {
                     myWagon.spendMoney(10.00);
                     axlesAmount.setText(String.valueOf(myWagon.getAxles()));
                 }
-                EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);
+                EditText ownedMoney = findViewById(R.id.yourMoneyAmount);
                 ownedMoney.setText(String.valueOf(String.format("%.2f", myWagon.getMoney())));
-                EditText moneyOwed = findViewById(R.id.moneyOwedAmountLocation);
+                EditText moneyOwed = findViewById(R.id.moneyOwedAmount);
                 moneyOwed.setText(String.valueOf(String.format("%.2f", myWagon.moneySpent)));
             }
         });
@@ -245,8 +244,8 @@ public class Store extends AppCompatActivity {
 
     private void configureAxlesDownButton() {
 
-        Button axlesDown = findViewById(R.id.axlesDownLocation);
-        EditText axlesAmount = findViewById(R.id.axlesAmountLocation);
+        Button axlesDown = findViewById(R.id.axlesDown);
+        EditText axlesAmount = findViewById(R.id.axlesAmount);
         axlesDown.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("DefaultLocale")
             @Override
@@ -257,9 +256,9 @@ public class Store extends AppCompatActivity {
                     myWagon.returnMoney(10.00);
                     axlesAmount.setText(String.valueOf(myWagon.getAxles()));
                 }
-                EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);
+                EditText ownedMoney = findViewById(R.id.yourMoneyAmount);
                 ownedMoney.setText(String.valueOf(String.format("%.2f", myWagon.getMoney())));
-                EditText moneyOwed = findViewById(R.id.moneyOwedAmountLocation);
+                EditText moneyOwed = findViewById(R.id.moneyOwedAmount);
                 moneyOwed.setText(String.valueOf(String.format("%.2f", myWagon.moneySpent)));
             }
         });
@@ -267,8 +266,8 @@ public class Store extends AppCompatActivity {
 
     private void configureWheelsUpButton() {
 
-        Button wheelsUp = findViewById(R.id.wheelsUpLocation);
-        EditText wheelsAmount = findViewById(R.id.wheelsAmountLocation);
+        Button wheelsUp = findViewById(R.id.wheelsUp);
+        EditText wheelsAmount = findViewById(R.id.wheelsAmount);
         wheelsUp.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("DefaultLocale")
             @Override
@@ -279,9 +278,9 @@ public class Store extends AppCompatActivity {
                     myWagon.spendMoney(10.00);
                     wheelsAmount.setText(String.valueOf(myWagon.getWheels()));
                 }
-                EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);
+                EditText ownedMoney = findViewById(R.id.yourMoneyAmount);
                 ownedMoney.setText(String.valueOf(String.format("%.2f", myWagon.getMoney())));
-                EditText moneyOwed = findViewById(R.id.moneyOwedAmountLocation);
+                EditText moneyOwed = findViewById(R.id.moneyOwedAmount);
                 moneyOwed.setText(String.valueOf(String.format("%.2f", myWagon.moneySpent)));
             }
         });
@@ -289,8 +288,8 @@ public class Store extends AppCompatActivity {
 
     private void configureWheelsDownButton() {
 
-        Button wheelsDown = findViewById(R.id.wheelsDownLocation);
-        EditText wheelsAmount = findViewById(R.id.wheelsAmountLocation);
+        Button wheelsDown = findViewById(R.id.wheelsDown);
+        EditText wheelsAmount = findViewById(R.id.wheelsAmount);
         wheelsDown.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("DefaultLocale")
             @Override
@@ -301,9 +300,9 @@ public class Store extends AppCompatActivity {
                     myWagon.returnMoney(10.00);
                     wheelsAmount.setText(String.valueOf(myWagon.getWheels()));
                 }
-                EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);
+                EditText ownedMoney = findViewById(R.id.yourMoneyAmount);
                 ownedMoney.setText(String.valueOf(String.format("%.2f", myWagon.getMoney())));
-                EditText moneyOwed = findViewById(R.id.moneyOwedAmountLocation);
+                EditText moneyOwed = findViewById(R.id.moneyOwedAmount);
                 moneyOwed.setText(String.valueOf(String.format("%.2f", myWagon.moneySpent)));
             }
         });
@@ -311,8 +310,8 @@ public class Store extends AppCompatActivity {
     
     private void configureOxenUpButton() {
 
-        Button oxenUp = findViewById(R.id.oxenUpLocation);
-        EditText oxenAmount = findViewById(R.id.oxenAmountLocation);
+        Button oxenUp = findViewById(R.id.oxenUp);
+        EditText oxenAmount = findViewById(R.id.oxenAmount);
         oxenUp.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("DefaultLocale")
             @Override
@@ -323,9 +322,9 @@ public class Store extends AppCompatActivity {
                     myWagon.spendMoney(40.00);
                     oxenAmount.setText(String.valueOf(myWagon.getOxen()));
                 }
-                EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);
+                EditText ownedMoney = findViewById(R.id.yourMoneyAmount);
                 ownedMoney.setText(String.valueOf(String.format("%.2f", myWagon.getMoney())));
-                EditText moneyOwed = findViewById(R.id.moneyOwedAmountLocation);
+                EditText moneyOwed = findViewById(R.id.moneyOwedAmount);
                 moneyOwed.setText(String.valueOf(String.format("%.2f", myWagon.moneySpent)));
             }
         });
@@ -333,8 +332,8 @@ public class Store extends AppCompatActivity {
 
     private void configureOxenDownButton() {
 
-        Button oxenDown = findViewById(R.id.oxenDownLocation);
-        EditText oxenAmount = findViewById(R.id.oxenAmountLocation);
+        Button oxenDown = findViewById(R.id.oxenDown);
+        EditText oxenAmount = findViewById(R.id.oxenAmount);
         oxenDown.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("DefaultLocale")
             @Override
@@ -345,9 +344,9 @@ public class Store extends AppCompatActivity {
                     myWagon.returnMoney(40.00);
                     oxenAmount.setText(String.valueOf(myWagon.getOxen()));
                 }
-                EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);
+                EditText ownedMoney = findViewById(R.id.yourMoneyAmount);
                 ownedMoney.setText(String.valueOf(String.format("%.2f", myWagon.getMoney())));
-                EditText moneyOwed = findViewById(R.id.moneyOwedAmountLocation);
+                EditText moneyOwed = findViewById(R.id.moneyOwedAmount);
                 moneyOwed.setText(String.valueOf(String.format("%.2f", myWagon.moneySpent)));
             }
         });
