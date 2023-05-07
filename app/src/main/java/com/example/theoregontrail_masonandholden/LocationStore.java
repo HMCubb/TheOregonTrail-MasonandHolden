@@ -10,26 +10,31 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.Date;
+import java.util.Random;
+
 public class LocationStore extends AppCompatActivity {
 
-    public Wagon myWagon = new Wagon(5, 850.00, 0, 0, 0, 0, 0, 0);
-
+    public RandomEvents randomEvents;
     public Entity Hattie;
     public Entity Charles;
     public Entity Augusta;
     public Entity Ben;
     public Entity Jake;
     public Wagon storeWagon;
+    public DateAndDistance dateAndDistance;
 
     public LocationStore(){}
 
-    public LocationStore(Entity newHattie, Entity newCharles, Entity newAugusta, Entity newBen, Entity newJake, Wagon wagon){
+    public LocationStore(DateAndDistance dateAndDistance, RandomEvents randomEvents, Entity newHattie, Entity newCharles, Entity newAugusta, Entity newBen, Entity newJake, Wagon wagon){
         this.Hattie = newHattie;
         this.Charles = newCharles;
         this.Augusta = newAugusta;
         this.Ben = newBen;
         this.Jake = newJake;
         this.storeWagon = wagon;
+        this.randomEvents = randomEvents;
+        this.dateAndDistance = dateAndDistance;
     }
 
     @Override
@@ -43,6 +48,8 @@ public class LocationStore extends AppCompatActivity {
         Ben = (Entity) getIntent().getSerializableExtra("NewBen");
         Jake = (Entity) getIntent().getSerializableExtra("NewJake");
         storeWagon = (Wagon) getIntent().getSerializableExtra("NewWagon");
+        randomEvents = (RandomEvents) getIntent().getSerializableExtra("NewRandomEvents");
+        dateAndDistance = (DateAndDistance) getIntent().getSerializableExtra("NewDateAndDistance");
 
         configureFoodUpButton();
         configureFoodDownButton();
@@ -66,19 +73,21 @@ public class LocationStore extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-                Wagon storeWagon = new Wagon(myWagon.people, myWagon.money, myWagon.oxen, myWagon.food, myWagon.clothes, myWagon.tongues, myWagon.axles, myWagon.wheels);
+                RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
+                Wagon newWagon = new Wagon(storeWagon.people, storeWagon.money, storeWagon.oxen, storeWagon.food, storeWagon.clothes, storeWagon.tongues, storeWagon.axles, storeWagon.wheels);
                 Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
                 Entity newCharles = new Entity (Charles.name, Charles.sick, Charles.injured, Charles.dead);
                 Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
                 Entity newBen = new Entity (Ben.name, Ben.sick, Ben.injured, Ben.dead);
                 Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
+                DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
+
 
                 Intent intent = new Intent(LocationStore.this, LocationPage.class);
 
-                intent.putExtra("NewWagon", storeWagon).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                intent.putExtra("NewDateAndDistance", newDateAndDistance).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewWagon", newWagon).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
 
-                setContentView(R.layout.activity_daily_status);
+                setContentView(R.layout.activity_location_page);
                 startActivity(new Intent(LocationStore.this, LocationPage.class));
                 startActivity(intent);
             }
@@ -94,15 +103,15 @@ public class LocationStore extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (myWagon.getMoney() >= 2.00) {
-                    myWagon.buyFood();
-                    myWagon.spendMoney(2.00);
-                    foodAmount.setText(String.valueOf(myWagon.getFood()));
+                if (storeWagon.getMoney() >= 2.00) {
+                    storeWagon.buyFood();
+                    storeWagon.spendMoney(2.00);
+                    foodAmount.setText(String.valueOf(storeWagon.getFood()));
                 }
                 EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);
-                ownedMoney.setText(String.valueOf(String.format("%.2f", myWagon.getMoney())));
+                ownedMoney.setText(String.valueOf(String.format("%.2f", storeWagon.getMoney())));
                 EditText moneyOwed = findViewById(R.id.moneyOwedAmountLocation);
-                moneyOwed.setText(String.valueOf(String.format("%.2f", myWagon.moneySpent)));
+                moneyOwed.setText(String.valueOf(String.format("%.2f", storeWagon.moneySpent)));
             }
         });
     }
@@ -116,15 +125,15 @@ public class LocationStore extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (myWagon.getFood() >= 10.00) {
-                    myWagon.sellFood();
-                    myWagon.returnMoney(2.00);
-                    foodAmount.setText(String.valueOf(myWagon.getFood()));
+                if (storeWagon.getFood() >= 10.00) {
+                    storeWagon.sellFood();
+                    storeWagon.returnMoney(2.00);
+                    foodAmount.setText(String.valueOf(storeWagon.getFood()));
                 }
                 EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);
-                ownedMoney.setText(String.valueOf(String.format("%.2f", myWagon.getMoney())));
+                ownedMoney.setText(String.valueOf(String.format("%.2f", storeWagon.getMoney())));
                 EditText moneyOwed = findViewById(R.id.moneyOwedAmountLocation);
-                moneyOwed.setText(String.valueOf(String.format("%.2f", myWagon.moneySpent)));
+                moneyOwed.setText(String.valueOf(String.format("%.2f", storeWagon.moneySpent)));
             }
         });
     }
@@ -138,15 +147,15 @@ public class LocationStore extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (myWagon.getMoney() >= 10.00) {
-                    myWagon.buyClothes();
-                    myWagon.spendMoney(10.00);
-                    clothesAmount.setText(String.valueOf(myWagon.getClothes()));
+                if (storeWagon.getMoney() >= 10.00) {
+                    storeWagon.buyClothes();
+                    storeWagon.spendMoney(10.00);
+                    clothesAmount.setText(String.valueOf(storeWagon.getClothes()));
                 }
                 EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);
-                ownedMoney.setText(String.valueOf(String.format("%.2f", myWagon.getMoney())));
+                ownedMoney.setText(String.valueOf(String.format("%.2f", storeWagon.getMoney())));
                 EditText moneyOwed = findViewById(R.id.moneyOwedAmountLocation);
-                moneyOwed.setText(String.valueOf(String.format("%.2f", myWagon.moneySpent)));
+                moneyOwed.setText(String.valueOf(String.format("%.2f", storeWagon.moneySpent)));
             }
         });
     }
@@ -160,15 +169,15 @@ public class LocationStore extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (myWagon.getClothes() >= 1) {
-                    myWagon.sellClothes();
-                    myWagon.returnMoney(10.00);
-                    clothesAmount.setText(String.valueOf(myWagon.getClothes()));
+                if (storeWagon.getClothes() >= 1) {
+                    storeWagon.sellClothes();
+                    storeWagon.returnMoney(10.00);
+                    clothesAmount.setText(String.valueOf(storeWagon.getClothes()));
                 }
                 EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);
-                ownedMoney.setText(String.valueOf(String.format("%.2f", myWagon.getMoney())));
+                ownedMoney.setText(String.valueOf(String.format("%.2f", storeWagon.getMoney())));
                 EditText moneyOwed = findViewById(R.id.moneyOwedAmountLocation);
-                moneyOwed.setText(String.valueOf(String.format("%.2f", myWagon.moneySpent)));
+                moneyOwed.setText(String.valueOf(String.format("%.2f", storeWagon.moneySpent)));
             }
         });
     }
@@ -182,15 +191,15 @@ public class LocationStore extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (myWagon.getMoney() >= 10.00) {
-                    myWagon.buyTongues();
-                    myWagon.spendMoney(10.00);
-                    tonguesAmount.setText(String.valueOf(myWagon.getTongues()));
+                if (storeWagon.getMoney() >= 10.00) {
+                    storeWagon.buyTongues();
+                    storeWagon.spendMoney(10.00);
+                    tonguesAmount.setText(String.valueOf(storeWagon.getTongues()));
                 }
                 EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);
-                ownedMoney.setText(String.valueOf(String.format("%.2f", myWagon.getMoney())));
+                ownedMoney.setText(String.valueOf(String.format("%.2f", storeWagon.getMoney())));
                 EditText moneyOwed = findViewById(R.id.moneyOwedAmountLocation);
-                moneyOwed.setText(String.valueOf(String.format("%.2f", myWagon.moneySpent)));
+                moneyOwed.setText(String.valueOf(String.format("%.2f", storeWagon.moneySpent)));
             }
         });
     }
@@ -204,15 +213,15 @@ public class LocationStore extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (myWagon.getTongues() >= 1) {
-                    myWagon.sellTongues();
-                    myWagon.returnMoney(10.00);
-                    tonguesAmount.setText(String.valueOf(myWagon.getTongues()));
+                if (storeWagon.getTongues() >= 1) {
+                    storeWagon.sellTongues();
+                    storeWagon.returnMoney(10.00);
+                    tonguesAmount.setText(String.valueOf(storeWagon.getTongues()));
                 }
                 EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);
-                ownedMoney.setText(String.valueOf(String.format("%.2f", myWagon.getMoney())));
+                ownedMoney.setText(String.valueOf(String.format("%.2f", storeWagon.getMoney())));
                 EditText moneyOwed = findViewById(R.id.moneyOwedAmountLocation);
-                moneyOwed.setText(String.valueOf(String.format("%.2f", myWagon.moneySpent)));
+                moneyOwed.setText(String.valueOf(String.format("%.2f", storeWagon.moneySpent)));
             }
         });
     }
@@ -226,15 +235,15 @@ public class LocationStore extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (myWagon.getMoney() >= 10.00) {
-                    myWagon.buyAxles();
-                    myWagon.spendMoney(10.00);
-                    axlesAmount.setText(String.valueOf(myWagon.getAxles()));
+                if (storeWagon.getMoney() >= 10.00) {
+                    storeWagon.buyAxles();
+                    storeWagon.spendMoney(10.00);
+                    axlesAmount.setText(String.valueOf(storeWagon.getAxles()));
                 }
                 EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);
-                ownedMoney.setText(String.valueOf(String.format("%.2f", myWagon.getMoney())));
+                ownedMoney.setText(String.valueOf(String.format("%.2f", storeWagon.getMoney())));
                 EditText moneyOwed = findViewById(R.id.moneyOwedAmountLocation);
-                moneyOwed.setText(String.valueOf(String.format("%.2f", myWagon.moneySpent)));
+                moneyOwed.setText(String.valueOf(String.format("%.2f", storeWagon.moneySpent)));
             }
         });
     }
@@ -248,15 +257,15 @@ public class LocationStore extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (myWagon.getAxles() >= 1) {
-                    myWagon.sellAxles();
-                    myWagon.returnMoney(10.00);
-                    axlesAmount.setText(String.valueOf(myWagon.getAxles()));
+                if (storeWagon.getAxles() >= 1) {
+                    storeWagon.sellAxles();
+                    storeWagon.returnMoney(10.00);
+                    axlesAmount.setText(String.valueOf(storeWagon.getAxles()));
                 }
                 EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);
-                ownedMoney.setText(String.valueOf(String.format("%.2f", myWagon.getMoney())));
+                ownedMoney.setText(String.valueOf(String.format("%.2f", storeWagon.getMoney())));
                 EditText moneyOwed = findViewById(R.id.moneyOwedAmountLocation);
-                moneyOwed.setText(String.valueOf(String.format("%.2f", myWagon.moneySpent)));
+                moneyOwed.setText(String.valueOf(String.format("%.2f", storeWagon.moneySpent)));
             }
         });
     }
@@ -270,15 +279,15 @@ public class LocationStore extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (myWagon.getMoney() >= 10.00) {
-                    myWagon.buyWheels();
-                    myWagon.spendMoney(10.00);
-                    wheelsAmount.setText(String.valueOf(myWagon.getWheels()));
+                if (storeWagon.getMoney() >= 10.00) {
+                    storeWagon.buyWheels();
+                    storeWagon.spendMoney(10.00);
+                    wheelsAmount.setText(String.valueOf(storeWagon.getWheels()));
                 }
                 EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);
-                ownedMoney.setText(String.valueOf(String.format("%.2f", myWagon.getMoney())));
+                ownedMoney.setText(String.valueOf(String.format("%.2f", storeWagon.getMoney())));
                 EditText moneyOwed = findViewById(R.id.moneyOwedAmountLocation);
-                moneyOwed.setText(String.valueOf(String.format("%.2f", myWagon.moneySpent)));
+                moneyOwed.setText(String.valueOf(String.format("%.2f", storeWagon.moneySpent)));
             }
         });
     }
@@ -292,15 +301,15 @@ public class LocationStore extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (myWagon.getWheels() >= 1) {
-                    myWagon.sellWheels();
-                    myWagon.returnMoney(10.00);
-                    wheelsAmount.setText(String.valueOf(myWagon.getWheels()));
+                if (storeWagon.getWheels() >= 1) {
+                    storeWagon.sellWheels();
+                    storeWagon.returnMoney(10.00);
+                    wheelsAmount.setText(String.valueOf(storeWagon.getWheels()));
                 }
                 EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);
-                ownedMoney.setText(String.valueOf(String.format("%.2f", myWagon.getMoney())));
+                ownedMoney.setText(String.valueOf(String.format("%.2f", storeWagon.getMoney())));
                 EditText moneyOwed = findViewById(R.id.moneyOwedAmountLocation);
-                moneyOwed.setText(String.valueOf(String.format("%.2f", myWagon.moneySpent)));
+                moneyOwed.setText(String.valueOf(String.format("%.2f", storeWagon.moneySpent)));
             }
         });
     }
@@ -314,15 +323,15 @@ public class LocationStore extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (myWagon.getMoney() >= 40.00) {
-                    myWagon.buyOxen();
-                    myWagon.spendMoney(40.00);
-                    oxenAmount.setText(String.valueOf(myWagon.getOxen()));
+                if (storeWagon.getMoney() >= 40.00) {
+                    storeWagon.buyOxen();
+                    storeWagon.spendMoney(40.00);
+                    oxenAmount.setText(String.valueOf(storeWagon.getOxen()));
                 }
                 EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);
-                ownedMoney.setText(String.valueOf(String.format("%.2f", myWagon.getMoney())));
+                ownedMoney.setText(String.valueOf(String.format("%.2f", storeWagon.getMoney())));
                 EditText moneyOwed = findViewById(R.id.moneyOwedAmountLocation);
-                moneyOwed.setText(String.valueOf(String.format("%.2f", myWagon.moneySpent)));
+                moneyOwed.setText(String.valueOf(String.format("%.2f", storeWagon.moneySpent)));
             }
         });
     }
@@ -336,15 +345,15 @@ public class LocationStore extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (myWagon.getOxen() >= 1) {
-                    myWagon.sellOxen();
-                    myWagon.returnMoney(40.00);
-                    oxenAmount.setText(String.valueOf(myWagon.getOxen()));
+                if (storeWagon.getOxen() >= 1) {
+                    storeWagon.sellOxen();
+                    storeWagon.returnMoney(40.00);
+                    oxenAmount.setText(String.valueOf(storeWagon.getOxen()));
                 }
                 EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);
-                ownedMoney.setText(String.valueOf(String.format("%.2f", myWagon.getMoney())));
+                ownedMoney.setText(String.valueOf(String.format("%.2f", storeWagon.getMoney())));
                 EditText moneyOwed = findViewById(R.id.moneyOwedAmountLocation);
-                moneyOwed.setText(String.valueOf(String.format("%.2f", myWagon.moneySpent)));
+                moneyOwed.setText(String.valueOf(String.format("%.2f", storeWagon.moneySpent)));
             }
         });
     }

@@ -27,6 +27,9 @@
             android:name=".Store"
             android:exported="false" />
         <activity
+            android:name=".LocationStore"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
