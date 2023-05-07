@@ -35,14 +35,21 @@ public class DateAndDistance implements Serializable {
 
     public int locationTicker = 0;
 
-    public DateAndDistance (){
+    public DateAndDistance (int distanceFromHome, int day, int month, int year, boolean kearny, boolean fortLaramie, boolean independence, boolean southPass, boolean fortHall, boolean fortBoise, boolean walla, boolean theDalles, boolean end){
 
-        distanceFromHome = 0;
-        day = 0;
-        month = 4;
-        year = 0;
-        beenToKearny = false;
-        reachedEnd = false;
+        this.distanceFromHome = distanceFromHome;
+        this.day = day;
+        this.month = month;
+        this.year = year;
+        this.beenToKearny = kearny;
+        this.beenToFortLaramie = fortLaramie;
+        this.beenToIndependenceRock = independence;
+        this.beenToSouthPass = southPass;
+        this.beenToFortHall = fortHall;
+        this.beenToFortBoise = fortBoise;
+        this.beenToFortWallaWalla = walla;
+        this.beenToTheDalles = theDalles;
+        this.reachedEnd = end;
     }
 
     public String getCurrentDate() {

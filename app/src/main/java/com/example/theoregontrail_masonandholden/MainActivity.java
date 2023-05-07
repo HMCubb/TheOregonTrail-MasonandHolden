@@ -26,18 +26,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //Store store = new Store();
+                Wagon wagon = new Wagon (5, 850.00, 0,0,0,0,0,0);
                 Entity Hattie = new Entity( "Hattie",false, false, false);
                 Entity Charles = new Entity ("Charles",false, false, false);
                 Entity Augusta = new Entity("Augusta",false, false, false);
                 Entity Ben = new Entity ("Ben",false, false, false);
                 Entity Jake = new Entity ( "Jake",false, false, false);
-                DateAndDistance dateAndDistance = new DateAndDistance();
+                DateAndDistance dateAndDistance = new DateAndDistance(0, 1, 4, 1847, false, false, false, false,false,false,false,false,false);
 
 
                 Intent intent = new Intent(MainActivity.this, Store.class);
 
-                intent.putExtra("NewDateAndDistance", dateAndDistance).putExtra("NewHattie", Hattie).putExtra("NewCharles", Charles).putExtra("NewAugusta", Augusta).putExtra("NewBen", Ben).putExtra("NewJake", Jake);
+                intent.putExtra("NewWagon", wagon).putExtra("NewDateAndDistance", dateAndDistance).putExtra("NewHattie", Hattie).putExtra("NewCharles", Charles).putExtra("NewAugusta", Augusta).putExtra("NewBen", Ben).putExtra("NewJake", Jake);
 
 //                startActivity(intent);
                 setContentView(R.layout.activity_store);

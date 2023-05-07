@@ -408,7 +408,7 @@ public class DailyStatus extends AppCompatActivity {
                         Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
                         Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
-                        DateAndDistance newDateAndDistance = new DateAndDistance();
+                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
 
                         Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 
@@ -429,7 +429,7 @@ public class DailyStatus extends AppCompatActivity {
                         Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
                         Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
-                        DateAndDistance newDateAndDistance = new DateAndDistance();
+                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
 
                         Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 
@@ -450,7 +450,7 @@ public class DailyStatus extends AppCompatActivity {
                         Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
                         Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
-                        DateAndDistance newDateAndDistance = new DateAndDistance();
+                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
 
                         Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 
@@ -471,7 +471,7 @@ public class DailyStatus extends AppCompatActivity {
                         Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
                         Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
-                        DateAndDistance newDateAndDistance = new DateAndDistance();
+                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
 
                         Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 
@@ -492,7 +492,7 @@ public class DailyStatus extends AppCompatActivity {
                         Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
                         Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
-                        DateAndDistance newDateAndDistance = new DateAndDistance();
+                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
 
                         Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 
@@ -513,7 +513,7 @@ public class DailyStatus extends AppCompatActivity {
                         Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
                         Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
-                        DateAndDistance newDateAndDistance = new DateAndDistance();
+                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
 
                         Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 
@@ -534,7 +534,7 @@ public class DailyStatus extends AppCompatActivity {
                         Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
                         Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
-                        DateAndDistance newDateAndDistance = new DateAndDistance();
+                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
 
                         Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 
@@ -555,7 +555,7 @@ public class DailyStatus extends AppCompatActivity {
                         Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
                         Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
-                        DateAndDistance newDateAndDistance = new DateAndDistance();
+                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
 
                         Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 
@@ -572,7 +572,7 @@ public class DailyStatus extends AppCompatActivity {
                         Entity newBen = new Entity (Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
                         Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
-                        DateAndDistance newDateAndDistance = new DateAndDistance();
+                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
 
                         Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 
