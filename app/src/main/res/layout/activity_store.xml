@@ -23,7 +23,7 @@
         app:layout_constraintStart_toEndOf="@+id/axlesAmount"
         app:layout_constraintTop_toBottomOf="@+id/wheelsText" />
 
-    <EditText
+    <TextView
         android:id="@+id/oxenAmount"
         android:layout_width="79dp"
         android:layout_height="67dp"
@@ -61,7 +61,7 @@
         app:layout_constraintTop_toBottomOf="@+id/wheelsDown"
         app:srcCompat="@android:drawable/arrow_up_float" />
 
-    <EditText
+    <TextView
         android:id="@+id/axlesAmount"
         android:layout_width="79dp"
         android:layout_height="67dp"
@@ -75,7 +75,7 @@
         app:layout_constraintStart_toEndOf="@+id/axlesDown"
         app:layout_constraintTop_toBottomOf="@+id/tonguesAmount" />
 
-    <EditText
+    <TextView
         android:id="@+id/foodAmount"
         android:layout_width="79dp"
         android:layout_height="67dp"
@@ -285,7 +285,7 @@
         app:layout_constraintTop_toBottomOf="@+id/headerText2"
         app:srcCompat="@android:drawable/arrow_up_float" />
 
-    <EditText
+    <TextView
         android:id="@+id/tonguesAmount"
         android:layout_width="79dp"
         android:layout_height="67dp"
@@ -299,7 +299,7 @@
         app:layout_constraintStart_toEndOf="@+id/tonguesDown"
         app:layout_constraintTop_toBottomOf="@+id/headerText2" />
 
-    <EditText
+    <TextView
         android:id="@+id/clothesAmount"
         android:layout_width="79dp"
         android:layout_height="67dp"
@@ -313,7 +313,7 @@
         app:layout_constraintStart_toEndOf="@+id/clothesUp"
         app:layout_constraintTop_toBottomOf="@+id/foodAmount" />
 
-    <EditText
+    <TextView
         android:id="@+id/wheelsAmount"
         android:layout_width="79dp"
         android:layout_height="67dp"
@@ -327,7 +327,7 @@
         app:layout_constraintStart_toEndOf="@+id/wheelsDown"
         app:layout_constraintTop_toBottomOf="@+id/headerText2" />
 
-    <EditText
+    <TextView
         android:id="@+id/moneyOwedAmount"
         android:layout_width="217dp"
         android:layout_height="66dp"
@@ -358,7 +358,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/yourMoneyAmount"
         android:layout_width="217dp"
         android:layout_height="66dp"

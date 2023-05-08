@@ -23,7 +23,7 @@
         app:layout_constraintStart_toEndOf="@+id/axlesAmountLocation"
         app:layout_constraintTop_toBottomOf="@+id/wheelsTextLocation" />
 
-    <EditText
+    <TextView
         android:id="@+id/oxenAmountLocation"
         android:layout_width="79dp"
         android:layout_height="67dp"
@@ -61,7 +61,7 @@
         app:layout_constraintTop_toBottomOf="@+id/wheelsDownLocation"
         app:srcCompat="@android:drawable/arrow_up_float" />
 
-    <EditText
+    <TextView
         android:id="@+id/axlesAmountLocation"
         android:layout_width="79dp"
         android:layout_height="67dp"
@@ -75,7 +75,7 @@
         app:layout_constraintStart_toEndOf="@+id/axlesDownLocation"
         app:layout_constraintTop_toBottomOf="@+id/tonguesAmountLocation" />
 
-    <EditText
+    <TextView
         android:id="@+id/foodAmountLocation"
         android:layout_width="79dp"
         android:layout_height="67dp"
@@ -284,7 +284,7 @@
         app:layout_constraintTop_toBottomOf="@+id/headerTextLocation"
         app:srcCompat="@android:drawable/arrow_up_float" />
 
-    <EditText
+    <TextView
         android:id="@+id/tonguesAmountLocation"
         android:layout_width="79dp"
         android:layout_height="67dp"
@@ -298,7 +298,7 @@
         app:layout_constraintStart_toEndOf="@+id/tonguesDownLocation"
         app:layout_constraintTop_toBottomOf="@+id/headerTextLocation" />
 
-    <EditText
+    <TextView
         android:id="@+id/clothesAmountLocation"
         android:layout_width="79dp"
         android:layout_height="67dp"
@@ -312,7 +312,7 @@
         app:layout_constraintStart_toEndOf="@+id/clothesUpLocation"
         app:layout_constraintTop_toBottomOf="@+id/foodAmountLocation" />
 
-    <EditText
+    <TextView
         android:id="@+id/wheelsAmountLocation"
         android:layout_width="79dp"
         android:layout_height="67dp"
@@ -326,7 +326,7 @@
         app:layout_constraintStart_toEndOf="@+id/wheelsDownLocation"
         app:layout_constraintTop_toBottomOf="@+id/headerTextLocation" />
 
-    <EditText
+    <TextView
         android:id="@+id/moneyOwedAmountLocation"
         android:layout_width="217dp"
         android:layout_height="66dp"
@@ -357,7 +357,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/yourMoneyAmountLocation"
         android:layout_width="217dp"
         android:layout_height="66dp"

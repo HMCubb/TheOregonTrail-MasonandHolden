@@ -1,13 +1,15 @@
 package com.example.theoregontrail_masonandholden;
 
-public class Weather {
+import java.io.Serializable;
+
+public class Weather implements Serializable {
 
     public int temperature;
     public int rainfall;
 
-    public Weather() {
-        this.temperature = 0;
-        this.rainfall = 0;
+    public Weather(int temperature, int rainfall) {
+        this.temperature = temperature;
+        this.rainfall = rainfall;
     }
 
     public int getTemperature() {

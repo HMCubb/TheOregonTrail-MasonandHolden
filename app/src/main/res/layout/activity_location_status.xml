@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LocationStatus"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".LocationStatus">
+
+    <TextView
+        android:id="@+id/ProgressLabelsLocation"
+        android:layout_width="435dp"
+        android:layout_height="368dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="18dp"
+        android:background="#FFFFFF"
+        android:text="Date: Distance: Health: Temperature: "
+        android:textSize="70sp"
+        app:layout_constraintStart_toEndOf="@+id/MoneyCountLocation"
+        app:layout_constraintTop_toBottomOf="@+id/ProgressTitleLocation" />
+
+    <TextView
+        android:id="@+id/TemperatureTrackerLocation"
+        android:layout_width="119dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="26dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textSize="50sp"
+        app:layout_constraintStart_toEndOf="@+id/ProgressLabelsLocation"
+        app:layout_constraintTop_toBottomOf="@+id/HealthTrackerLocation" />
+
+    <TextView
+        android:id="@+id/DistanceTrackerLocation"
+        android:layout_width="174dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="26dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textSize="50sp"
+        app:layout_constraintStart_toEndOf="@+id/ProgressLabelsLocation"
+        app:layout_constraintTop_toBottomOf="@+id/DayTrackerLocation" />
+
+    <TextView
+        android:id="@+id/DayTrackerLocation"
+        android:layout_width="278dp"
+        android:layout_height="89dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="24dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textSize="50sp"
+        app:layout_constraintStart_toEndOf="@+id/ProgressLabelsLocation"
+        app:layout_constraintTop_toBottomOf="@+id/ProgressTitleLocation" />
+
+    <TextView
+        android:id="@+id/HealthTrackerLocation"
+        android:layout_width="178dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="26dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textSize="50sp"
+        app:layout_constraintStart_toEndOf="@+id/ProgressLabelsLocation"
+        app:layout_constraintTop_toBottomOf="@+id/DistanceTrackerLocation" />
+
+    <TextView
+        android:id="@+id/ProgressTitleLocation"
+        android:layout_width="452dp"
+        android:layout_height="142dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="630dp"
+        android:background="#FFFFFF"
+        android:text="Progress"
+        android:textSize="100sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ResourceLabelsLocation"
+        android:layout_width="292dp"
+        android:layout_height="676dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="250dp"
+        android:background="#FFFFFF"
+        android:text="People: Money: Food: Oxen: Clothes: Tongues: Axles: Wheels:"
+        android:textSize="70sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/WheelsCountLocation"
+        android:layout_width="70dp"
+        android:layout_height="91dp"
+        android:layout_marginStart="15dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textSize="50sp"
+        app:layout_constraintStart_toEndOf="@+id/ResourceLabelsLocation"
+        app:layout_constraintTop_toBottomOf="@+id/AxlesCountLocation" />
+
+    <TextView
+        android:id="@+id/AxlesCountLocation"
+        android:layout_width="70dp"
+        android:layout_height="87dp"
+        android:layout_marginStart="15dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textSize="50sp"
+        app:layout_constraintStart_toEndOf="@+id/ResourceLabelsLocation"
+        app:layout_constraintTop_toBottomOf="@+id/TonguesCountLocation" />
+
+    <TextView
+        android:id="@+id/TonguesCountLocation"
+        android:layout_width="70dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="4dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textSize="50sp"
+        app:layout_constraintStart_toEndOf="@+id/ResourceLabelsLocation"
+        app:layout_constraintTop_toBottomOf="@+id/ClothesCountLocation" />
+
+    <TextView
+        android:id="@+id/ClothesCountLocation"
+        android:layout_width="96dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="1dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textSize="50sp"
+        app:layout_constraintStart_toEndOf="@+id/ResourceLabelsLocation"
+        app:layout_constraintTop_toBottomOf="@+id/OxenCountLocation" />
+
+    <TextView
+        android:id="@+id/OxenCountLocation"
+        android:layout_width="93dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="15dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textSize="50sp"
+        app:layout_constraintStart_toEndOf="@+id/ResourceLabelsLocation"
+        app:layout_constraintTop_toBottomOf="@+id/FoodCountLocation" />
+
+    <TextView
+        android:id="@+id/FoodCountLocation"
+        android:layout_width="123dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="1dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textSize="50sp"
+        app:layout_constraintStart_toEndOf="@+id/ResourceLabelsLocation"
+        app:layout_constraintTop_toBottomOf="@+id/MoneyCountLocation" />
+
+    <TextView
+        android:id="@+id/MoneyCountLocation"
+        android:layout_width="185dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="15dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textSize="50sp"
+        app:layout_constraintStart_toEndOf="@+id/ResourceLabelsLocation"
+        app:layout_constraintTop_toBottomOf="@+id/PeopleCountLocation" />
+
+    <TextView
+        android:id="@+id/PeopleCountLocation"
+        android:layout_width="77dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="32dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textSize="50sp"
+        app:layout_constraintStart_toEndOf="@+id/ResourceLabelsLocation"
+        app:layout_constraintTop_toBottomOf="@+id/ResourceTitleLocation" />
+
+    <TextView
+        android:id="@+id/ResourceTitleLocation"
+        android:layout_width="503dp"
+        android:layout_height="149dp"
+        android:layout_marginBottom="30dp"
+        android:background="#FFFFFF"
+        android:text="Resources"
+        android:textSize="100sp"
+        app:layout_constraintBottom_toTopOf="@+id/ResourceLabelsLocation"
+        app:layout_constraintStart_toStartOf="@+id/ResourceLabelsLocation" />
+
+    <Button
+        android:id="@+id/NextDayButtonLocation"
+        android:layout_width="302dp"
+        android:layout_height="151dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="413dp"
+        android:text="Back"
+        android:textSize="60sp"
+        android:typeface="serif"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

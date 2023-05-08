@@ -1,10 +1,16 @@
 package com.example.theoregontrail_masonandholden;
 
-public class GeneralHealth {
+import java.io.Serializable;
+
+public class GeneralHealth implements Serializable {
 
     public double GeneralHealth;
+    public int one;
 
-    public GeneralHealth() {this.GeneralHealth = 0;}
+    public GeneralHealth(double generalHealth, int one) {
+        this.GeneralHealth = generalHealth;
+        this.one = one;
+    }
 
 
     public void decrementHealth(){

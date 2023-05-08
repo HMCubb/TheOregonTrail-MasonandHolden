@@ -15,9 +15,6 @@
             android:name=".PaceAndRationsPage"
             android:exported="false" />
         <activity
-            android:name=".MapPage"
-            android:exported="false" />
-        <activity
             android:name=".LocationPage"
             android:exported="false" />
         <activity
@@ -28,6 +25,9 @@
             android:exported="false" />
         <activity
             android:name=".Store"
+            android:exported="false" />
+        <activity
+            android:name=".LocationStatus"
             android:exported="false" />
         <activity
             android:name=".LocationStore"

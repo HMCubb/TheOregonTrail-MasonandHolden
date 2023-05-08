@@ -11,12 +11,12 @@
         android:id="@+id/rationsUpButton"
         android:layout_width="133dp"
         android:layout_height="30dp"
-        android:layout_marginTop="60dp"
         android:layout_marginEnd="357dp"
+        android:layout_marginBottom="23dp"
         android:clickable="true"
         app:backgroundTint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/rationsDownButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rationsTitle"
         app:srcCompat="@android:drawable/arrow_up_float" />
 
     <TextView
@@ -35,7 +35,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/paceValue"
         android:layout_width="370dp"
         android:layout_height="83dp"
@@ -50,7 +50,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/paceTitle" />
 
-    <EditText
+    <TextView
         android:id="@+id/rationsValue"
         android:layout_width="370dp"
         android:layout_height="83dp"

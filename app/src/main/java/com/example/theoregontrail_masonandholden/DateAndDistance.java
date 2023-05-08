@@ -33,10 +33,9 @@ public class DateAndDistance implements Serializable {
     final private int fortWallaWalla = 1631;
     final private int theDalles = 1726;
     final private int end = 1857;
-
     public int locationTicker = 0;
 
-    public DateAndDistance (int pace, int distanceFromHome, int day, int month, int year, int milesPerDay, int wagonDamage, boolean kearny, boolean fortLaramie, boolean independence, boolean southPass, boolean fortHall, boolean fortBoise, boolean walla, boolean theDalles, boolean end){
+    public DateAndDistance (int locationTicker, int pace, int distanceFromHome, int day, int month, int year, int milesPerDay, int wagonDamage, boolean kearny, boolean fortLaramie, boolean independence, boolean southPass, boolean fortHall, boolean fortBoise, boolean walla, boolean theDalles, boolean end){
 
         this.pace = pace;
         this.distanceFromHome = distanceFromHome;
@@ -54,11 +53,24 @@ public class DateAndDistance implements Serializable {
         this.beenToFortWallaWalla = walla;
         this.beenToTheDalles = theDalles;
         this.reachedEnd = end;
+        this.locationTicker = locationTicker;
     }
 
     public String getCurrentDate() {
 
         day++;
+        if (day >=  31) {
+
+            day = day - 30;
+            month++;
+        }
+        year = 1847;
+
+        return month + "/" + day + "/" + year;
+    }
+
+    public String getDate() {
+
         if (day >=  31) {
 
             day = day - 30;

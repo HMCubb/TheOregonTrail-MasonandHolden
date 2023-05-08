@@ -22,12 +22,12 @@ public class DailyStatus extends AppCompatActivity {
     public Entity Jake;
     public DateAndDistance dateAndDistance;
 
-    Weather weather = new Weather();
-    GeneralHealth health = new GeneralHealth();
+    public Weather newWeather;
+    public GeneralHealth newHealth;
     RandomEvents randomEvents = new RandomEvents(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, 0, 0, 0, 0, 0,0, 0);
 
     public DailyStatus(){}
-    public DailyStatus(DateAndDistance dateAndDistance, Wagon wagon, Entity newHattie, Entity newCharles, Entity newAugusta, Entity newBen, Entity newJake){
+    public DailyStatus(Weather weather, GeneralHealth health, DateAndDistance dateAndDistance, Wagon wagon, Entity newHattie, Entity newCharles, Entity newAugusta, Entity newBen, Entity newJake){
 
         this.wagon = wagon;
         this.Hattie = newHattie;
@@ -36,6 +36,8 @@ public class DailyStatus extends AppCompatActivity {
         this.Ben = newBen;
         this.Jake = newJake;
         this.dateAndDistance = dateAndDistance;
+        this.newHealth = health;
+        this.newWeather = weather;
     }
 
     @Override
@@ -51,6 +53,8 @@ public class DailyStatus extends AppCompatActivity {
         Ben = (Entity) getIntent().getSerializableExtra("NewBen");
         Jake = (Entity) getIntent().getSerializableExtra("NewJake");
         dateAndDistance = (DateAndDistance) getIntent().getSerializableExtra("NewDateAndDistance");
+        newHealth = (GeneralHealth) getIntent().getSerializableExtra("NewGeneralHealth");
+        newWeather = (Weather) getIntent().getSerializableExtra("NewWeather");
 
         configureNextDayButton();
 
@@ -76,10 +80,10 @@ public class DailyStatus extends AppCompatActivity {
         TonguesCount.setText(String.valueOf(wagon.getTongues()));
         AxlesCount.setText(String.valueOf(wagon.getAxles()));
         WheelsCount.setText(String.valueOf(wagon.getWheels()));
-        HealthTracker.setText(String.valueOf(health.getGeneralHealth()));
+        HealthTracker.setText(String.valueOf(newHealth.getGeneralHealth()));
         DistanceTracker.setText(String.valueOf(dateAndDistance.getDistanceTraveled()));
         DayTracker.setText(String.valueOf(dateAndDistance.getCurrentDate()));
-        TemperatureTracker.setText(String.valueOf(weather.getTemperature()));
+        TemperatureTracker.setText(String.valueOf(newWeather.getTemperature()));
     }
 
     private void configureNextDayButton() {
@@ -90,11 +94,11 @@ public class DailyStatus extends AppCompatActivity {
             public void onClick(View view) {
 
                 boolean alive = false;
-                weather.temperatureDaily();
-                weather.rainfallDaily();
-                health.decrementHealth();
+                newWeather.temperatureDaily();
+                newWeather.rainfallDaily();
+                newHealth.decrementHealth();
                 randomEvents.randomFruit(dateAndDistance.getMonth());
-                randomEvents.randomBadGrass(weather.getRainfall());
+                randomEvents.randomBadGrass(newWeather.getRainfall());
                 randomEvents.randomLostMember();
                 randomEvents.randomOxenWander(wagon.getOxen());
                 randomEvents.randomAbandonedWagon();
@@ -106,16 +110,16 @@ public class DailyStatus extends AppCompatActivity {
                 randomEvents.randomSnakebite();
                 randomEvents.randomInjury();
                 randomEvents.randomOxenDamage(dateAndDistance.getDistanceTraveled(), randomEvents.badGrass, wagon.getOxen());
-                randomEvents.randomHail(weather.getTemperature());
-                randomEvents.randomFog(weather.getTemperature());
-                randomEvents.randomBlizzard(weather.getTemperature());
-                randomEvents.randomLowWater(weather.getRainfall());
-                randomEvents.randomBadWater(weather.getRainfall());
-                randomEvents.randomDisease(health.getGeneralHealth());
+                randomEvents.randomHail(newWeather.getTemperature());
+                randomEvents.randomFog(newWeather.getTemperature());
+                randomEvents.randomBlizzard(newWeather.getTemperature());
+                randomEvents.randomLowWater(newWeather.getRainfall());
+                randomEvents.randomBadWater(newWeather.getRainfall());
+                randomEvents.randomDisease(newHealth.getGeneralHealth());
                 randomEvents.randomAxelBroke(wagon.brokenAxel);
                 randomEvents.randomTongueBroke(wagon.brokenTongue);
                 randomEvents.randomWheelBroke(wagon.brokenWheel);
-                health.weatherHealth(weather.getTemperature(), wagon.getClothes(), wagon.getPeople());
+                newHealth.weatherHealth(newWeather.getTemperature(), wagon.getClothes(), wagon.getPeople());
 
                 wagon.setRepairTongue(false);
                 wagon.setRepairWheel(false);
@@ -165,8 +169,8 @@ public class DailyStatus extends AppCompatActivity {
                     }
                 }
 
-                health.addHealth((dateAndDistance.milesPerDay / 5) - 2);
-                health.addHealth(4 * (5 - wagon.getRations()));
+                newHealth.addHealth((dateAndDistance.milesPerDay / 5) - 2);
+                newHealth.addHealth(4 * (5 - wagon.getRations()));
 
                 if (randomEvents.fruit){
                     wagon.gainFood(randomEvents.randomFoodLost(40));
@@ -229,7 +233,7 @@ public class DailyStatus extends AppCompatActivity {
                 }
 
                 if (randomEvents.roughTrail) {
-                    health.addHealth(10);
+                    newHealth.addHealth(10);
                 }
 
                 if (randomEvents.snakeBite || randomEvents.injury) {
@@ -241,7 +245,7 @@ public class DailyStatus extends AppCompatActivity {
                         }
                         else {
                             Hattie.injured = true;
-                            health.addHealth(20);
+                            newHealth.addHealth(20);
                         }
                     }
                     else if (randomEvents.getMemberLost() == 2) {
@@ -252,7 +256,7 @@ public class DailyStatus extends AppCompatActivity {
                         }
                         else {
                             Charles.injured = true;
-                            health.addHealth(20);
+                            newHealth.addHealth(20);
                         }
                     }
                     else if (randomEvents.getMemberLost() == 3) {
@@ -263,7 +267,7 @@ public class DailyStatus extends AppCompatActivity {
                         }
                         else {
                             Augusta.injured = true;
-                            health.addHealth(20);
+                            newHealth.addHealth(20);
                         }
                     }
                     else if (randomEvents.getMemberLost() == 4) {
@@ -274,7 +278,7 @@ public class DailyStatus extends AppCompatActivity {
                         }
                         else {
                             Ben.injured = true;
-                            health.addHealth(20);
+                            newHealth.addHealth(20);
                         }
                     }
                     else if (randomEvents.getMemberLost() == 5) {
@@ -285,7 +289,7 @@ public class DailyStatus extends AppCompatActivity {
                         }
                         else {
                             Jake.injured = true;
-                            health.addHealth(20);
+                            newHealth.addHealth(20);
                         }
                     }
                 }
@@ -299,7 +303,7 @@ public class DailyStatus extends AppCompatActivity {
                         }
                         else {
                             Hattie.sick = true;
-                            health.addHealth(20);
+                            newHealth.addHealth(20);
                         }
                     }
                     else if (randomEvents.getMemberLost() == 2) {
@@ -310,7 +314,7 @@ public class DailyStatus extends AppCompatActivity {
                         }
                         else {
                             Charles.sick = true;
-                            health.addHealth(20);
+                            newHealth.addHealth(20);
                         }
                     }
                     else if (randomEvents.getMemberLost() == 3) {
@@ -321,7 +325,7 @@ public class DailyStatus extends AppCompatActivity {
                         }
                         else {
                             Augusta.sick = true;
-                            health.addHealth(20);
+                            newHealth.addHealth(20);
                         }
                     }
                     else if (randomEvents.getMemberLost() == 4) {
@@ -332,7 +336,7 @@ public class DailyStatus extends AppCompatActivity {
                         }
                         else {
                             Ben.sick = true;
-                            health.addHealth(20);
+                            newHealth.addHealth(20);
                         }
                     }
                     else if (randomEvents.getMemberLost() == 5) {
@@ -343,7 +347,7 @@ public class DailyStatus extends AppCompatActivity {
                         }
                         else {
                             Jake.sick = true;
-                            health.addHealth(20);
+                            newHealth.addHealth(20);
                         }
                     }
                 }
@@ -353,19 +357,19 @@ public class DailyStatus extends AppCompatActivity {
                 }
 
                 if (randomEvents.hail) {
-                    health.addHealth(7);
+                    newHealth.addHealth(7);
                 }
 
                 if (randomEvents.blizzard) {
-                    health.addHealth(14);
+                    newHealth.addHealth(14);
                 }
 
                 if (randomEvents.badWater) {
-                    health.addHealth(20);
+                    newHealth.addHealth(20);
                 }
 
                 if (randomEvents.lowWater) {
-                    health.addHealth(10);
+                    newHealth.addHealth(10);
                 }
 
                 if (randomEvents.tongueBroke) {
@@ -457,7 +461,7 @@ public class DailyStatus extends AppCompatActivity {
 
                 if (wagon.oxen <= 0) {
                     dateAndDistance.setWagonDamage(dateAndDistance.getWagonDamage() + 4);
-                    health.addHealth(20);
+                    newHealth.addHealth(20);
                 }
 
                 if (!randomEvents.blockedTrail && !randomEvents.lostMember && !randomEvents.loseTrail && !randomEvents.fog && !randomEvents.oxenWandered) {
@@ -471,7 +475,7 @@ public class DailyStatus extends AppCompatActivity {
                 wagon.loseFood(wagon.rations * wagon.people);
 
                 if (wagon.getFood() <= 0) {
-                    health.addHealth(25);
+                    newHealth.addHealth(25);
                 }
 
                 if (wagon.getFood() <= 0) {
@@ -500,11 +504,13 @@ public class DailyStatus extends AppCompatActivity {
                 Entity newBen = new Entity (Ben.name, Ben.sick, Ben.injured, Ben.dead);
                 Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
                 Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels, wagon.rations, wagon.brokenTongue, wagon.brokenWheel, wagon.brokenAxel, wagon.repairTongue, wagon.repairWheel, wagon.repairAxel);
-                DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.pace, dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.milesPerDay, dateAndDistance.wagonDamage, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
+                DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.locationTicker, dateAndDistance.pace, dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.milesPerDay, dateAndDistance.wagonDamage, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
+                GeneralHealth newerHealth = new GeneralHealth(newHealth.GeneralHealth, 0);
+                Weather newerWeather = new Weather(newWeather.temperature, newWeather.rainfall);
 
                 Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 
-                intent.putExtra("NewWagon", newWagon).putExtra("NewDateAndDistance", newDateAndDistance).putExtra("NewRandomEvents", randomEventsPass).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                intent.putExtra("NewRandomEvents", randomEventsPass).putExtra("NewWeather", newerWeather).putExtra("NewGeneralHealth", newerHealth).putExtra("NewWagon", wagon).putExtra("NewDateAndDistance", dateAndDistance).putExtra("NewHattie", Hattie).putExtra("NewCharles", Charles).putExtra("NewAugusta", Augusta).putExtra("NewBen", Ben).putExtra("NewJake", Jake);
 
                 setContentView(R.layout.activity_daily_events);
                 startActivity(new Intent(DailyStatus.this, dailyEvents.class));

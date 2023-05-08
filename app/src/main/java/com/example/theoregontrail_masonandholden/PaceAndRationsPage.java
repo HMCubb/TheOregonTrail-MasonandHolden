@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 
 public class PaceAndRationsPage extends AppCompatActivity {
 
@@ -19,12 +19,14 @@ public class PaceAndRationsPage extends AppCompatActivity {
     public Entity Jake;
     public Wagon storeWagon;
     public DateAndDistance dateAndDistance;
+    public Weather newWeather;
+    public GeneralHealth newHealth;
     private int rationsNumber = 0;
     private int paceNumber = 0;
 
     public PaceAndRationsPage(){}
 
-    public PaceAndRationsPage(DateAndDistance dateAndDistance, RandomEvents randomEvents, Entity newHattie, Entity newCharles, Entity newAugusta, Entity newBen, Entity newJake, Wagon wagon){
+    public PaceAndRationsPage(Weather weather, GeneralHealth health, DateAndDistance dateAndDistance, RandomEvents randomEvents, Entity newHattie, Entity newCharles, Entity newAugusta, Entity newBen, Entity newJake, Wagon wagon){
         this.Hattie = newHattie;
         this.Charles = newCharles;
         this.Augusta = newAugusta;
@@ -33,6 +35,8 @@ public class PaceAndRationsPage extends AppCompatActivity {
         this.storeWagon = wagon;
         this.randomEvents = randomEvents;
         this.dateAndDistance = dateAndDistance;
+        this.newWeather = weather;
+        this.newHealth = health;
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +51,8 @@ public class PaceAndRationsPage extends AppCompatActivity {
         storeWagon = (Wagon) getIntent().getSerializableExtra("NewWagon");
         randomEvents = (RandomEvents) getIntent().getSerializableExtra("NewRandomEvents");
         dateAndDistance = (DateAndDistance) getIntent().getSerializableExtra("NewDateAndDistance");
+        newHealth = (GeneralHealth) getIntent().getSerializableExtra("NewGeneralHealth");
+        newWeather = (Weather) getIntent().getSerializableExtra("NewWeather");
 
         configurePaceUpButton();
         configurePaceDownButton();
@@ -57,8 +63,8 @@ public class PaceAndRationsPage extends AppCompatActivity {
         paceNumber = dateAndDistance.pace;
         rationsNumber = storeWagon.getRations();
 
-        EditText rationsValue = findViewById(R.id.rationsValue);
-        EditText paceValue = findViewById(R.id.paceValue);
+        TextView rationsValue = findViewById(R.id.rationsValue);
+        TextView paceValue = findViewById(R.id.paceValue);
         paceValue.setText(String.valueOf(paceNumber));
         rationsValue.setText(String.valueOf(rationsNumber));
 
@@ -79,12 +85,13 @@ public class PaceAndRationsPage extends AppCompatActivity {
                 Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
                 Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
                 Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
-                DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.pace, dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.milesPerDay, dateAndDistance.wagonDamage, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
-
+                DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.locationTicker, dateAndDistance.pace, dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.milesPerDay, dateAndDistance.wagonDamage, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
+                GeneralHealth newerHealth = new GeneralHealth(newHealth.GeneralHealth, 0);
+                Weather newerWeather = new Weather(newWeather.temperature, newWeather.rainfall);
 
                 Intent intent = new Intent(PaceAndRationsPage.this, LocationPage.class);
 
-                intent.putExtra("NewDateAndDistance", newDateAndDistance).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewWagon", newWagon).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                intent.putExtra("NewWeather", newerWeather).putExtra("NewGeneralHealth", newerHealth).putExtra("NewDateAndDistance", newDateAndDistance).putExtra("NewRandomEvents", newRandomEvents).putExtra("NewWagon", newWagon).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
 
                 setContentView(R.layout.activity_location_page);
                 startActivity(new Intent(PaceAndRationsPage.this, LocationPage.class));
@@ -96,7 +103,7 @@ public class PaceAndRationsPage extends AppCompatActivity {
     private void configurePaceUpButton() {
 
         Button paceUp = findViewById(R.id.paceUpButton);
-        EditText paceValue = findViewById(R.id.paceValue);
+        TextView paceValue = findViewById(R.id.paceValue);
         paceUp.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("DefaultLocale")
             @Override
@@ -115,7 +122,7 @@ public class PaceAndRationsPage extends AppCompatActivity {
     private void configurePaceDownButton() {
 
         Button paceUp = findViewById(R.id.paceDownButton);
-        EditText paceValue = findViewById(R.id.paceValue);
+        TextView paceValue = findViewById(R.id.paceValue);
         paceUp.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("DefaultLocale")
             @Override
@@ -134,7 +141,7 @@ public class PaceAndRationsPage extends AppCompatActivity {
     private void configureRationsUpButton() {
 
         Button paceUp = findViewById(R.id.rationsUpButton);
-        EditText rationsValue = findViewById(R.id.rationsValue);
+        TextView rationsValue = findViewById(R.id.rationsValue);
         paceUp.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("DefaultLocale")
             @Override
@@ -153,7 +160,7 @@ public class PaceAndRationsPage extends AppCompatActivity {
     private void configureRationsDownButton() {
 
         Button paceUp = findViewById(R.id.rationsDownButton);
-        EditText rationsValue = findViewById(R.id.rationsValue);
+        TextView rationsValue = findViewById(R.id.rationsValue);
         paceUp.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("DefaultLocale")
             @Override
