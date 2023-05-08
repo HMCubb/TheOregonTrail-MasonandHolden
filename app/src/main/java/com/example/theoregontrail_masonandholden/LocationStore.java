@@ -64,6 +64,23 @@ public class LocationStore extends AppCompatActivity {
         configureOxenUpButton();
         configureOxenDownButton();
         configureBackButton();
+
+        EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);
+        EditText foodAmount = findViewById(R.id.foodAmountLocation);
+        EditText clothesAmount = findViewById(R.id.clothesAmountLocation);
+        EditText tonguesAmount = findViewById(R.id.tonguesAmountLocation);
+        EditText axlesAmount = findViewById(R.id.axlesAmountLocation);
+        EditText wheelsAmount = findViewById(R.id.wheelsAmountLocation);
+        EditText oxenAmount = findViewById(R.id.oxenAmountLocation);
+
+        ownedMoney.setText(String.valueOf(String.format("%.2f", storeWagon.getMoney())));
+        oxenAmount.setText(String.valueOf(storeWagon.getOxen()));
+        foodAmount.setText(String.valueOf(storeWagon.getFood()));
+        clothesAmount.setText(String.valueOf(storeWagon.getClothes()));
+        tonguesAmount.setText(String.valueOf(storeWagon.getTongues()));
+        axlesAmount.setText(String.valueOf(storeWagon.getAxles()));
+        wheelsAmount.setText(String.valueOf(storeWagon.getWheels()));
+        oxenAmount.setText(String.valueOf(storeWagon.getOxen()));
     }
 
     private void configureBackButton() {
@@ -80,7 +97,7 @@ public class LocationStore extends AppCompatActivity {
                 Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
                 Entity newBen = new Entity (Ben.name, Ben.sick, Ben.injured, Ben.dead);
                 Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
-                DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.milesPerDay, dateAndDistance.wagonDamage, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
+                DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.pace, dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.milesPerDay, dateAndDistance.wagonDamage, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
 
 
                 Intent intent = new Intent(LocationStore.this, LocationPage.class);

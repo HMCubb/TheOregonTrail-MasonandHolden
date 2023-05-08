@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".PaceAndRationsPage">
+
+    <Button
+        android:id="@+id/rationsUpButton"
+        android:layout_width="133dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="357dp"
+        android:clickable="true"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rationsTitle"
+        app:srcCompat="@android:drawable/arrow_up_float" />
+
+    <TextView
+        android:id="@+id/rationsTitle"
+        android:layout_width="733dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="124dp"
+        android:layout_marginEnd="157dp"
+        android:background="#FFFFFF"
+        android:text="Change Your Rations"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:textSize="60sp"
+        android:typeface="serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/paceValue"
+        android:layout_width="370dp"
+        android:layout_height="83dp"
+        android:layout_marginStart="157dp"
+        android:layout_marginTop="63dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="60sp"
+        android:typeface="serif"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/paceTitle" />
+
+    <EditText
+        android:id="@+id/rationsValue"
+        android:layout_width="370dp"
+        android:layout_height="83dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="727dp"
+        android:background="#FFFFFF"
+        android:text="0"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="60sp"
+        android:typeface="serif"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/rationsUpButton" />
+
+    <TextView
+        android:id="@+id/paceTitle"
+        android:layout_width="610dp"
+        android:layout_height="83dp"
+        android:layout_marginStart="157dp"
+        android:layout_marginTop="124dp"
+        android:background="#FFFFFF"
+        android:text="Change Your Pace"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:textSize="60sp"
+        android:typeface="serif"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/paceUpButton"
+        android:layout_width="133dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="63dp"
+        android:clickable="true"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/paceValue"
+        app:layout_constraintTop_toBottomOf="@+id/paceTitle"
+        app:srcCompat="@android:drawable/arrow_up_float" />
+
+    <Button
+        android:id="@+id/paceDownButton"
+        android:layout_width="133dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="23dp"
+        android:clickable="true"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/paceValue"
+        app:layout_constraintTop_toBottomOf="@+id/paceUpButton"
+        app:srcCompat="@android:drawable/arrow_up_float" />
+
+    <Button
+        android:id="@+id/rationsDownButton"
+        android:layout_width="133dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="357dp"
+        android:layout_marginBottom="727dp"
+        android:clickable="true"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/arrow_up_float" />
+
+    <Button
+        android:id="@+id/backButtonPAR"
+        android:layout_width="349dp"
+        android:layout_height="104dp"
+        android:layout_marginStart="159dp"
+        android:layout_marginBottom="84dp"
+        android:text="Back"
+        android:textSize="60sp"
+        android:typeface="serif"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

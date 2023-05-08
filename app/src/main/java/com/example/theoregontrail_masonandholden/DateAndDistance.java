@@ -36,8 +36,9 @@ public class DateAndDistance implements Serializable {
 
     public int locationTicker = 0;
 
-    public DateAndDistance (int distanceFromHome, int day, int month, int year, int milesPerDay, int wagonDamage, boolean kearny, boolean fortLaramie, boolean independence, boolean southPass, boolean fortHall, boolean fortBoise, boolean walla, boolean theDalles, boolean end){
+    public DateAndDistance (int pace, int distanceFromHome, int day, int month, int year, int milesPerDay, int wagonDamage, boolean kearny, boolean fortLaramie, boolean independence, boolean southPass, boolean fortHall, boolean fortBoise, boolean walla, boolean theDalles, boolean end){
 
+        this.pace = pace;
         this.distanceFromHome = distanceFromHome;
         this.day = day;
         this.month = month;
@@ -107,6 +108,17 @@ public class DateAndDistance implements Serializable {
 
         locationTicker++;
     }
+
+    public void paceUp() {
+
+        pace++;
+    }
+
+    public void paceDown() {
+
+        pace--;
+    }
+
 
     public void locationCheck() {
 
