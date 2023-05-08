@@ -168,21 +168,8 @@ public class DailyStatus extends AppCompatActivity {
                 health.addHealth((dateAndDistance.milesPerDay / 5) - 2);
                 health.addHealth(4 * (5 - wagon.getRations()));
 
-                if (wagon.oxen <= 0) {
-                    dateAndDistance.setWagonDamage(dateAndDistance.getWagonDamage() + 4);
-                    health.addHealth(20);
-                }
-
-                if (!randomEvents.blockedTrail && !randomEvents.lostMember && !randomEvents.loseTrail && !randomEvents.fog && !randomEvents.oxenWandered) {
-                    dateAndDistance.dailyMotion();
-                }
-
-                if (wagon.oxen <= 0) {
-                    dateAndDistance.setWagonDamage(dateAndDistance.getWagonDamage() - 4);
-                }
-
                 if (randomEvents.fruit){
-                    wagon.gainFood(20);
+                    wagon.gainFood(randomEvents.randomFoodLost(40));
                 }
                 if (randomEvents.lostMember) {
                     randomEvents.setDaysLost(randomEvents.randomDaysLost(5));
@@ -193,17 +180,18 @@ public class DailyStatus extends AppCompatActivity {
                     dateAndDistance.addDays(randomEvents.getDaysLost());
                 }
                 if (randomEvents.abandonedWagon) {
-                    randomEvents.setFoodLost(randomEvents.randomFoodLost(wagon.getFood() / 5));
+                    randomEvents.setFoodLost(randomEvents.randomFoodLost(75));
                     randomEvents.setWheelsLost(randomEvents.randomOtherLost(1));
                     randomEvents.setAxlesLost(randomEvents.randomOtherLost(1));
                     randomEvents.setTonguesLost(randomEvents.randomOtherLost(1));
-                    randomEvents.setClothesLost(randomEvents.randomOtherLost(wagon.getClothes() / 3));
+                    randomEvents.setClothesLost(randomEvents.randomOtherLost(5));
 
                     wagon.setClothes(wagon.clothes + randomEvents.getClothesLost());
                     wagon.setAxles(wagon.axles + randomEvents.getAxlesLost());
                     wagon.setWheels(wagon.wheels + randomEvents.getWheelsLost());
                     wagon.setTongues(wagon.tongues + randomEvents.getTonguesLost());
                     wagon.setFood(wagon.food + randomEvents.getFoodLost());
+                    wagon.setOxen(wagon.oxen + randomEvents.randomOtherLost(1));
                 }
 
                 if (randomEvents.fire && !randomEvents.abandonedWagon && !randomEvents.thief) {
@@ -465,6 +453,19 @@ public class DailyStatus extends AppCompatActivity {
                     else  {
                         Jake.injured = false;
                     }
+                }
+
+                if (wagon.oxen <= 0) {
+                    dateAndDistance.setWagonDamage(dateAndDistance.getWagonDamage() + 4);
+                    health.addHealth(20);
+                }
+
+                if (!randomEvents.blockedTrail && !randomEvents.lostMember && !randomEvents.loseTrail && !randomEvents.fog && !randomEvents.oxenWandered) {
+                    dateAndDistance.dailyMotion();
+                }
+
+                if (wagon.oxen <= 0) {
+                    dateAndDistance.setWagonDamage(dateAndDistance.getWagonDamage() - 4);
                 }
 
                 wagon.loseFood(wagon.rations * wagon.people);

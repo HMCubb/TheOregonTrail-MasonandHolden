@@ -62,11 +62,8 @@ public class dailyEvents extends AppCompatActivity {
                 eventText.append("\nYou travelled " + (dateAndDistance.milesPerDay / (dateAndDistance.wagonDamage + 4)) + " miles.");
             }
         }
-        if (wagon.getOxen() <= 0) {
-            eventText.append("\nYou have no oxen, travelling is extremely brutal");
-        }
         if (newRandomEvents.fruit){
-            eventText.append("\nYou found fruit, gain 20 food.");
+            eventText.append("\nYou found fruit, gain some food.");
         }
         if (newRandomEvents.lostMember) {
             if (newRandomEvents.getMemberLost() == 1) {
@@ -322,6 +319,9 @@ public class dailyEvents extends AppCompatActivity {
             else  {
                 eventText.append("\nJake is no longer injured.");
             }
+        }
+        if (wagon.getOxen() <= 0) {
+            eventText.append("\nYou have no oxen, travelling is extremely brutal");
         }
         if (wagon.getFood() <= 0) {
             eventText.append("\nThere is no more food, everyone is starving.");
