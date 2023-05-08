@@ -74,7 +74,7 @@ public class LocationStore extends AppCompatActivity {
             public void onClick(View v) {
 
                 RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.tongueBroke, randomEvents.wheelBroke, randomEvents.axelBroke, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
-                Wagon newWagon = new Wagon(storeWagon.people, storeWagon.money, storeWagon.oxen, storeWagon.food, storeWagon.clothes, storeWagon.tongues, storeWagon.axles, storeWagon.wheels, storeWagon.brokenTongue, storeWagon.brokenWheel, storeWagon.brokenAxel, storeWagon.repairTongue, storeWagon.repairWheel, storeWagon.repairAxel);
+                Wagon newWagon = new Wagon(storeWagon.people, storeWagon.money, storeWagon.oxen, storeWagon.food, storeWagon.clothes, storeWagon.tongues, storeWagon.axles, storeWagon.wheels, storeWagon.rations, storeWagon.brokenTongue, storeWagon.brokenWheel, storeWagon.brokenAxel, storeWagon.repairTongue, storeWagon.repairWheel, storeWagon.repairAxel);
                 Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
                 Entity newCharles = new Entity (Charles.name, Charles.sick, Charles.injured, Charles.dead);
                 Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
@@ -103,9 +103,9 @@ public class LocationStore extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (storeWagon.getMoney() >= 2.00) {
+                if (storeWagon.getMoney() >= 4.00) {
                     storeWagon.buyFood();
-                    storeWagon.spendMoney(2.00);
+                    storeWagon.spendMoney(4.00);
                     foodAmount.setText(String.valueOf(storeWagon.getFood()));
                 }
                 EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);
@@ -125,9 +125,9 @@ public class LocationStore extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (storeWagon.getFood() >= 10.00) {
+                if (storeWagon.getFood() >= 20.00) {
                     storeWagon.sellFood();
-                    storeWagon.returnMoney(2.00);
+                    storeWagon.returnMoney(4.00);
                     foodAmount.setText(String.valueOf(storeWagon.getFood()));
                 }
                 EditText ownedMoney = findViewById(R.id.yourMoneyAmountLocation);

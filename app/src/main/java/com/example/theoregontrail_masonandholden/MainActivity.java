@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Wagon wagon = new Wagon (5, 850.00, 0,0,0,0,0,0, false, false, false, false, false, false);
+                Wagon wagon = new Wagon (5, 850.00, 0,0,0,0,0,0, 5, false, false, false, false, false, false);
                 Entity Hattie = new Entity( "Hattie",false, false, false);
                 Entity Charles = new Entity ("Charles",false, false, false);
                 Entity Augusta = new Entity("Augusta",false, false, false);
