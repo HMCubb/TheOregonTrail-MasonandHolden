@@ -210,7 +210,7 @@ public class dailyEvents extends AppCompatActivity {
             }
             else if (newRandomEvents.getMemberLost() == 2) {
                 if (!Charles.sick) {
-                    eventText.append("\nCharles has died of her illness.");
+                    eventText.append("\nCharles has died of his illness.");
                 }
                 else {
                     eventText.append("\nCharles is sick.");
@@ -226,7 +226,7 @@ public class dailyEvents extends AppCompatActivity {
             }
             else if (newRandomEvents.getMemberLost() == 4) {
                 if (!Ben.sick) {
-                    eventText.append("\nBen has died of her illness.");
+                    eventText.append("\nBen has died of his illness.");
                 }
                 else {
                     eventText.append("\nBen is sick.");
@@ -234,7 +234,7 @@ public class dailyEvents extends AppCompatActivity {
             }
             else if (newRandomEvents.getMemberLost() == 5) {
                 if (!Jake.sick) {
-                    eventText.append("\nJake has died of her illness.");
+                    eventText.append("\nJake has died of his illness.");
                 }
                 else {
                     eventText.append("\nJake is sick.");

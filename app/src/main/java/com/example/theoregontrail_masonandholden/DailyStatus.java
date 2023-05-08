@@ -170,7 +170,7 @@ public class DailyStatus extends AppCompatActivity {
                 }
 
                 newHealth.addHealth((dateAndDistance.milesPerDay / 5) - 2);
-                newHealth.addHealth(4 * (5 - wagon.getRations()));
+                newHealth.addHealth(4 * (4 - wagon.getRations()));
 
                 if (randomEvents.fruit){
                     wagon.gainFood(randomEvents.randomFoodLost(40));

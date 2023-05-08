@@ -14,7 +14,7 @@ public class GeneralHealth implements Serializable {
 
 
     public void decrementHealth(){
-        double decrement = this.GeneralHealth * 0.1;
+        double decrement = this.GeneralHealth * 0.10;
         this.GeneralHealth = this.GeneralHealth - decrement;
     }
 

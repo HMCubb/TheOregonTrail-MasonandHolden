@@ -2,11 +2,13 @@ package com.example.theoregontrail_masonandholden;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.Date;
 import java.util.Random;
@@ -38,6 +40,7 @@ public class LocationPage extends AppCompatActivity {
         this.newWeather = weather;
         this.newHealth = health;
     }
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +61,33 @@ public class LocationPage extends AppCompatActivity {
         configurePartyButton();
         configureShopButton();
         configureNextLocationButton();
+
+        final TextView locationText = findViewById(R.id.locationText);
+
+        if (dateAndDistance.beenToTheDalles) {
+            locationText.setText("The Dalles");
+        }
+        else if (dateAndDistance.beenToFortWallaWalla) {
+            locationText.setText("Fort Walla Walla");
+        }
+        else if (dateAndDistance.beenToFortBoise) {
+            locationText.setText("Fort Boise");
+        }
+        else if (dateAndDistance.beenToFortHall) {
+            locationText.setText("Fort Hall");
+        }
+        else if (dateAndDistance.beenToSouthPass) {
+            locationText.setText("South Pass");
+        }
+        else if (dateAndDistance.beenToIndependenceRock) {
+            locationText.setText("Independence Rock");
+        }
+        else if (dateAndDistance.beenToFortLaramie) {
+            locationText.setText("Fort Laramie");
+        }
+        else if (dateAndDistance.beenToKearny) {
+            locationText.setText("Fort Kearney");
+        }
     }
 
 
