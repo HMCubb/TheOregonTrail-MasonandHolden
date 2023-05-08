@@ -15,8 +15,14 @@ public class Wagon implements Serializable {
     public int tongues;
     public int axles;
     public int wheels;
+    public boolean brokenTongue;
+    public boolean brokenWheel;
+    public boolean brokenAxel;
+    public boolean repairTongue;
+    public boolean repairWheel;
+    public boolean repairAxel;
 
-    public Wagon(int people, double money, int oxen, int food, int clothes, int tongues, int axles, int wheels) {
+    public Wagon(int people, double money, int oxen, int food, int clothes, int tongues, int axles, int wheels, boolean brokenTongue, boolean brokenWheel, boolean brokenAxel, boolean repairTongue, boolean repairWheel, boolean repairAxel) {
         this.people = people;
         this.money = money;
         this.oxen = oxen;
@@ -25,6 +31,12 @@ public class Wagon implements Serializable {
         this.tongues = tongues;
         this.axles = axles;
         this.wheels = wheels;
+        this.brokenTongue = brokenTongue;
+        this.brokenWheel = brokenWheel;
+        this.brokenAxel = brokenAxel;
+        this.repairTongue = repairTongue;
+        this.repairWheel = repairWheel;
+        this.repairAxel = repairAxel;
     }
 
     public int getPeople() {
@@ -155,6 +167,30 @@ public class Wagon implements Serializable {
 
     public void sellWheels() {
         this.wheels = this.wheels - 1;
+    }
+
+    public void setBrokenTongue(boolean brokenTongue) {
+        this.brokenTongue = brokenTongue;
+    }
+
+    public void setBrokenWheel(boolean brokenWheel) {
+        this.brokenWheel = brokenWheel;
+    }
+
+    public void setBrokenAxel(boolean brokenAxel) {
+        this.brokenAxel = brokenAxel;
+    }
+
+    public void setRepairTongue(boolean repairTongue) {
+        this.repairTongue = repairTongue;
+    }
+
+    public void setRepairWheel(boolean repairWheel) {
+        this.repairWheel = repairWheel;
+    }
+
+    public void setRepairAxel(boolean repairAxel) {
+        this.repairAxel = repairAxel;
     }
 }
 

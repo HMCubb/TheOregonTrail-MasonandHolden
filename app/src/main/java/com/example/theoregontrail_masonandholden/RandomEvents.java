@@ -25,6 +25,9 @@ public class RandomEvents implements Serializable {
     public boolean fruit;
     public boolean healedDisease;
     public boolean healedInjury;
+    public boolean tongueBroke;
+    public boolean wheelBroke;
+    public boolean axelBroke;
     public int daysLost;
     public int foodLost;
     public int clothesLost;
@@ -35,7 +38,7 @@ public class RandomEvents implements Serializable {
 
 
 
-    public RandomEvents(boolean disease, boolean badWater, boolean lowWater, boolean roughTrail, boolean blizzard, boolean fog, boolean hail, boolean oxenDamage, boolean injury, boolean snakeBite, boolean loseTrail, boolean thief, boolean blockedTrail, boolean fire, boolean abandonedWagon, boolean oxenWandered, boolean lostMember, boolean badGrass, boolean fruit, boolean healedDisease, boolean healedInjury, int daysLost, int foodLost, int clothesLost, int axlesLost, int wheelsLost, int tonguesLost, int memberLost)  {
+    public RandomEvents(boolean disease, boolean badWater, boolean lowWater, boolean roughTrail, boolean blizzard, boolean fog, boolean hail, boolean oxenDamage, boolean injury, boolean snakeBite, boolean loseTrail, boolean thief, boolean blockedTrail, boolean fire, boolean abandonedWagon, boolean oxenWandered, boolean lostMember, boolean badGrass, boolean fruit, boolean healedDisease, boolean healedInjury, boolean tongueBroke, boolean wheelBroke, boolean axelBroke, int daysLost, int foodLost, int clothesLost, int axlesLost, int wheelsLost, int tonguesLost, int memberLost)  {
         this.disease = disease;
         this.badWater = badWater;
         this.lowWater = lowWater;
@@ -57,6 +60,9 @@ public class RandomEvents implements Serializable {
         this.fruit = fruit;
         this.healedDisease = healedDisease;
         this.healedInjury = healedInjury;
+        this.tongueBroke = tongueBroke;
+        this.wheelBroke = wheelBroke;
+        this.axelBroke = axelBroke;
         this.daysLost = daysLost;
         this.foodLost = foodLost;
         this.clothesLost = clothesLost;
@@ -127,16 +133,16 @@ public class RandomEvents implements Serializable {
         }
     }
 
-    public void randomOxenDamage(int distance, boolean badGrass){
+    public void randomOxenDamage(int distance, boolean badGrass, int oxen){
         double random = (Math.random() * 100);
-        if (distance <= 1200 && !badGrass) {
-            this.oxenDamage = random <= 1;
-        }
-        else if (!badGrass){
-            this.oxenDamage = random <= 2;
-        }
-        else {
-            this.oxenDamage = random <= 35;
+        if (oxen > 0) {
+            if (distance <= 1200 && !badGrass) {
+                this.oxenDamage = random <= 1;
+            } else if (!badGrass) {
+                this.oxenDamage = random <= 2;
+            } else {
+                this.oxenDamage = random <= 35;
+            }
         }
     }
 
@@ -180,9 +186,32 @@ public class RandomEvents implements Serializable {
         this.abandonedWagon = random <= 2;
     }
 
-    public void randomOxenWander(){
+    public void randomOxenWander(int oxen){
         double random = (Math.random() * 100);
-        this.oxenWandered = random <= 1;
+        if (oxen > 0) {
+            this.oxenWandered = random <= 1;
+        }
+    }
+
+    public void randomTongueBroke(boolean broken){
+        if (!broken) {
+            double random = (Math.random() * 100);
+            this.tongueBroke = random <= 3;
+        }
+    }
+
+    public void randomWheelBroke(boolean broken){
+        if (!broken) {
+            double random = (Math.random() * 100);
+            this.wheelBroke = random <= 3;
+        }
+    }
+
+    public void randomAxelBroke(boolean broken){
+        if (!broken) {
+            double random = (Math.random() * 100);
+            this.axelBroke = random <= 3;
+        }
     }
 
     public void randomLostMember(){

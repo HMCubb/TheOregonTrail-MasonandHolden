@@ -26,13 +26,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Wagon wagon = new Wagon (5, 850.00, 0,0,0,0,0,0);
+                Wagon wagon = new Wagon (5, 850.00, 0,0,0,0,0,0, false, false, false, false, false, false);
                 Entity Hattie = new Entity( "Hattie",false, false, false);
                 Entity Charles = new Entity ("Charles",false, false, false);
                 Entity Augusta = new Entity("Augusta",false, false, false);
                 Entity Ben = new Entity ("Ben",false, false, false);
                 Entity Jake = new Entity ( "Jake",false, false, false);
-                DateAndDistance dateAndDistance = new DateAndDistance(0, 1, 4, 1847, false, false, false, false,false,false,false,false,false);
+                DateAndDistance dateAndDistance = new DateAndDistance(0, 0, 4, 1847, 20, 1, false, false, false, false,false,false,false,false,false);
 
 
                 Intent intent = new Intent(MainActivity.this, Store.class);

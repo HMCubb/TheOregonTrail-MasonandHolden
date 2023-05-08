@@ -24,7 +24,7 @@ public class DailyStatus extends AppCompatActivity {
 
     Weather weather = new Weather();
     GeneralHealth health = new GeneralHealth();
-    RandomEvents randomEvents = new RandomEvents(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, 0, 0, 0, 0, 0,0, 0);
+    RandomEvents randomEvents = new RandomEvents(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, 0, 0, 0, 0, 0,0, 0);
 
     public DailyStatus(){}
     public DailyStatus(DateAndDistance dateAndDistance, Wagon wagon, Entity newHattie, Entity newCharles, Entity newAugusta, Entity newBen, Entity newJake){
@@ -96,7 +96,7 @@ public class DailyStatus extends AppCompatActivity {
                 randomEvents.randomFruit(dateAndDistance.getMonth());
                 randomEvents.randomBadGrass(weather.getRainfall());
                 randomEvents.randomLostMember();
-                randomEvents.randomOxenWander();
+                randomEvents.randomOxenWander(wagon.getOxen());
                 randomEvents.randomAbandonedWagon();
                 randomEvents.randomFire();
                 randomEvents.randomThief();
@@ -105,16 +105,23 @@ public class DailyStatus extends AppCompatActivity {
                 randomEvents.randomRoughTrail();
                 randomEvents.randomSnakebite();
                 randomEvents.randomInjury();
-                randomEvents.randomOxenDamage(dateAndDistance.getDistanceTraveled(), randomEvents.badGrass);
+                randomEvents.randomOxenDamage(dateAndDistance.getDistanceTraveled(), randomEvents.badGrass, wagon.getOxen());
                 randomEvents.randomHail(weather.getTemperature());
                 randomEvents.randomFog(weather.getTemperature());
                 randomEvents.randomBlizzard(weather.getTemperature());
                 randomEvents.randomLowWater(weather.getRainfall());
                 randomEvents.randomBadWater(weather.getRainfall());
                 randomEvents.randomDisease(health.getGeneralHealth());
+                randomEvents.randomAxelBroke(wagon.brokenAxel);
+                randomEvents.randomTongueBroke(wagon.brokenTongue);
+                randomEvents.randomWheelBroke(wagon.brokenWheel);
                 health.weatherHealth(weather.getTemperature(), wagon.getClothes(), wagon.getPeople());
 
-                while (!alive) {
+                wagon.setRepairTongue(false);
+                wagon.setRepairWheel(false);
+                wagon.setRepairAxel(false);
+
+                while (!alive && (!Hattie.dead || !Charles.dead || !Augusta.dead || !Ben.dead || !Jake.dead)) {
                     int person = randomEvents.randomChooseMember(5);
                     if (person == 1) {
                         if (!Hattie.dead) {
@@ -160,8 +167,17 @@ public class DailyStatus extends AppCompatActivity {
 
                 health.addHealth((dateAndDistance.milesPerDay / 5) - 2);
 
-                if (!randomEvents.blockedTrail && !randomEvents.lostMember && !randomEvents.loseTrail && !randomEvents.fog) {
+                if (wagon.oxen <= 0) {
+                    dateAndDistance.setWagonDamage(dateAndDistance.getWagonDamage() + 4);
+                    health.addHealth(20);
+                }
+
+                if (!randomEvents.blockedTrail && !randomEvents.lostMember && !randomEvents.loseTrail && !randomEvents.fog && !randomEvents.oxenWandered) {
                     dateAndDistance.dailyMotion();
+                }
+
+                if (wagon.oxen <= 0) {
+                    dateAndDistance.setWagonDamage(dateAndDistance.getWagonDamage() - 4);
                 }
 
                 if (randomEvents.fruit){
@@ -204,7 +220,7 @@ public class DailyStatus extends AppCompatActivity {
                 }
 
                 if (randomEvents.thief && !randomEvents.abandonedWagon) {
-                    randomEvents.setFoodLost(randomEvents.randomFoodLost(wagon.getFood() / 10));
+                    randomEvents.setFoodLost(randomEvents.randomFoodLost((wagon.getFood() / 10)+ 20));
                     randomEvents.setClothesLost(randomEvents.randomOtherLost(wagon.getClothes() / 3));
 
                     wagon.setClothes(wagon.clothes - randomEvents.getClothesLost());
@@ -231,6 +247,7 @@ public class DailyStatus extends AppCompatActivity {
                     if (randomEvents.getMemberLost() == 1) {
                         if (Hattie.injured) {
                             Hattie.dead = true;
+                            Hattie.injured = false;
                             wagon.removePerson();
                         }
                         else {
@@ -241,6 +258,7 @@ public class DailyStatus extends AppCompatActivity {
                     else if (randomEvents.getMemberLost() == 2) {
                         if (Charles.injured) {
                             Charles.dead = true;
+                            Charles.injured = false;
                             wagon.removePerson();
                         }
                         else {
@@ -251,6 +269,7 @@ public class DailyStatus extends AppCompatActivity {
                     else if (randomEvents.getMemberLost() == 3) {
                         if (Augusta.injured) {
                             Augusta.dead = true;
+                            Augusta.injured = false;
                             wagon.removePerson();
                         }
                         else {
@@ -261,6 +280,7 @@ public class DailyStatus extends AppCompatActivity {
                     else if (randomEvents.getMemberLost() == 4) {
                         if (Ben.injured) {
                             Ben.dead = true;
+                            Ben.injured = false;
                             wagon.removePerson();
                         }
                         else {
@@ -271,6 +291,7 @@ public class DailyStatus extends AppCompatActivity {
                     else if (randomEvents.getMemberLost() == 5) {
                         if (Jake.injured) {
                             Jake.dead = true;
+                            Jake.injured = false;
                             wagon.removePerson();
                         }
                         else {
@@ -284,6 +305,7 @@ public class DailyStatus extends AppCompatActivity {
                     if (randomEvents.getMemberLost() == 1) {
                         if (Hattie.sick) {
                             Hattie.dead = true;
+                            Hattie.sick = false;
                             wagon.removePerson();
                         }
                         else {
@@ -294,6 +316,7 @@ public class DailyStatus extends AppCompatActivity {
                     else if (randomEvents.getMemberLost() == 2) {
                         if (Charles.sick) {
                             Charles.dead = true;
+                            Charles.sick = false;
                             wagon.removePerson();
                         }
                         else {
@@ -304,6 +327,7 @@ public class DailyStatus extends AppCompatActivity {
                     else if (randomEvents.getMemberLost() == 3) {
                         if (Augusta.sick) {
                             Augusta.dead = true;
+                            Augusta.sick = false;
                             wagon.removePerson();
                         }
                         else {
@@ -314,6 +338,7 @@ public class DailyStatus extends AppCompatActivity {
                     else if (randomEvents.getMemberLost() == 4) {
                         if (Ben.sick) {
                             Ben.dead = true;
+                            Ben.sick = false;
                             wagon.removePerson();
                         }
                         else {
@@ -324,6 +349,7 @@ public class DailyStatus extends AppCompatActivity {
                     else if (randomEvents.getMemberLost() == 5) {
                         if (Jake.sick) {
                             Jake.dead = true;
+                            Jake.sick = false;
                             wagon.removePerson();
                         }
                         else {
@@ -351,6 +377,57 @@ public class DailyStatus extends AppCompatActivity {
 
                 if (randomEvents.lowWater) {
                     health.addHealth(10);
+                }
+
+                if (randomEvents.tongueBroke) {
+                    if (wagon.getTongues() >= 1) {
+                        wagon.setTongues(wagon.getTongues() - 1);
+                    }
+                    else {
+                        dateAndDistance.setWagonDamage(dateAndDistance.getWagonDamage() + 1);
+                        wagon.setBrokenTongue(true);
+                    }
+                }
+
+                if (randomEvents.wheelBroke) {
+                    if (wagon.getWheels() >= 1) {
+                        wagon.setWheels(wagon.getWheels() - 1);
+                    }
+                    else {
+                        dateAndDistance.setWagonDamage(dateAndDistance.getWagonDamage() + 1);
+                        wagon.setBrokenWheel(true);
+                    }
+                }
+
+                if (randomEvents.axelBroke) {
+                    if (wagon.getAxles() >= 1) {
+                        wagon.setAxles(wagon.getAxles() - 1);
+                    }
+                    else {
+                        dateAndDistance.setWagonDamage(dateAndDistance.getWagonDamage() + 1);
+                        wagon.setBrokenAxel(true);
+                    }
+                }
+
+                if (wagon.brokenTongue && wagon.tongues > 0) {
+                    wagon.setBrokenTongue(false);
+                    wagon.setTongues(wagon.getTongues() - 1);
+                    dateAndDistance.setWagonDamage(dateAndDistance.getWagonDamage() - 1);
+                    wagon.setRepairTongue(true);
+                }
+
+                if (wagon.brokenWheel && wagon.wheels > 0) {
+                    wagon.setBrokenWheel(false);
+                    wagon.setTongues(wagon.getWheels() - 1);
+                    dateAndDistance.setWagonDamage(dateAndDistance.getWagonDamage() - 1);
+                    wagon.setRepairWheel(true);
+                }
+
+                if (wagon.brokenAxel && wagon.axles > 0) {
+                    wagon.setBrokenAxel(false);
+                    wagon.setAxles(wagon.getAxles() - 1);
+                    dateAndDistance.setWagonDamage(dateAndDistance.getWagonDamage() - 1);
+                    wagon.setRepairAxel(true);
                 }
 
                 if (randomEvents.healedDisease && !randomEvents.snakeBite && !randomEvents.injury && !randomEvents.disease) {
@@ -389,6 +466,25 @@ public class DailyStatus extends AppCompatActivity {
                     }
                 }
 
+                if (wagon.getFood() <= 0) {
+                    wagon.setFood(0);
+                }
+                if (wagon.getClothes() <= 0) {
+                    wagon.setClothes(0);
+                }
+                if (wagon.getOxen() <= 0) {
+                    wagon.setOxen(0);
+                }
+                if (wagon.getWheels() <= 0) {
+                    wagon.setWheels(0);
+                }
+                if (wagon.getTongues() <= 0) {
+                    wagon.setTongues(0);
+                }
+                if (wagon.getAxles() <= 0) {
+                    wagon.setAxles(0);
+                }
+
                 dateAndDistance.locationCheck();
                 dateAndDistance.location();
 
@@ -401,14 +497,14 @@ public class DailyStatus extends AppCompatActivity {
                     if (dateAndDistance.beenToTheDalles) {
 
                         dateAndDistance.tickerUp();
-                        RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
+                        RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.tongueBroke, randomEvents.wheelBroke, randomEvents.axelBroke, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
                         Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
                         Entity newCharles = new Entity(Charles.name, Charles.sick, Charles.injured, Charles.dead);
                         Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
                         Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
-                        Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
-                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
+                        Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels, wagon.brokenTongue, wagon.brokenWheel, wagon.brokenAxel, wagon.repairTongue, wagon.repairWheel, wagon.repairAxel);
+                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.milesPerDay, dateAndDistance.wagonDamage, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
 
                         Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 
@@ -422,14 +518,14 @@ public class DailyStatus extends AppCompatActivity {
                     if (dateAndDistance.beenToFortWallaWalla) {
 
                         dateAndDistance.tickerUp();
-                        RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
+                        RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.tongueBroke, randomEvents.wheelBroke, randomEvents.axelBroke, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
                         Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
                         Entity newCharles = new Entity(Charles.name, Charles.sick, Charles.injured, Charles.dead);
                         Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
                         Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
-                        Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
-                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
+                        Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels, wagon.brokenTongue, wagon.brokenWheel, wagon.brokenAxel, wagon.repairTongue, wagon.repairWheel, wagon.repairAxel);
+                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.milesPerDay, dateAndDistance.wagonDamage, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
 
                         Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 
@@ -443,14 +539,14 @@ public class DailyStatus extends AppCompatActivity {
                     if (dateAndDistance.beenToFortBoise) {
 
                         dateAndDistance.tickerUp();
-                        RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
+                        RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.tongueBroke, randomEvents.wheelBroke, randomEvents.axelBroke, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
                         Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
                         Entity newCharles = new Entity(Charles.name, Charles.sick, Charles.injured, Charles.dead);
                         Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
                         Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
-                        Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
-                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
+                        Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels, wagon.brokenTongue, wagon.brokenWheel, wagon.brokenAxel, wagon.repairTongue, wagon.repairWheel, wagon.repairAxel);
+                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.milesPerDay, dateAndDistance.wagonDamage, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
 
                         Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 
@@ -464,14 +560,14 @@ public class DailyStatus extends AppCompatActivity {
                     if (dateAndDistance.beenToFortHall) {
 
                         dateAndDistance.tickerUp();
-                        RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
+                        RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.tongueBroke, randomEvents.wheelBroke, randomEvents.axelBroke, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
                         Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
                         Entity newCharles = new Entity(Charles.name, Charles.sick, Charles.injured, Charles.dead);
                         Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
                         Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
-                        Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
-                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
+                        Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels, wagon.brokenTongue, wagon.brokenWheel, wagon.brokenAxel, wagon.repairTongue, wagon.repairWheel, wagon.repairAxel);
+                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.milesPerDay, dateAndDistance.wagonDamage, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
 
                         Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 
@@ -485,14 +581,14 @@ public class DailyStatus extends AppCompatActivity {
                     if (dateAndDistance.beenToSouthPass) {
 
                         dateAndDistance.tickerUp();
-                        RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
+                        RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.tongueBroke, randomEvents.wheelBroke, randomEvents.axelBroke, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
                         Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
                         Entity newCharles = new Entity(Charles.name, Charles.sick, Charles.injured, Charles.dead);
                         Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
                         Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
-                        Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
-                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
+                        Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels, wagon.brokenTongue, wagon.brokenWheel, wagon.brokenAxel, wagon.repairTongue, wagon.repairWheel, wagon.repairAxel);
+                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.milesPerDay, dateAndDistance.wagonDamage, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
 
                         Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 
@@ -506,14 +602,14 @@ public class DailyStatus extends AppCompatActivity {
                     if (dateAndDistance.beenToIndependenceRock) {
 
                         dateAndDistance.tickerUp();
-                        RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
+                        RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.tongueBroke, randomEvents.wheelBroke, randomEvents.axelBroke, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
                         Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
                         Entity newCharles = new Entity(Charles.name, Charles.sick, Charles.injured, Charles.dead);
                         Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
                         Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
-                        Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
-                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
+                        Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels, wagon.brokenTongue, wagon.brokenWheel, wagon.brokenAxel, wagon.repairTongue, wagon.repairWheel, wagon.repairAxel);
+                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.milesPerDay, dateAndDistance.wagonDamage, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
 
                         Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 
@@ -527,14 +623,14 @@ public class DailyStatus extends AppCompatActivity {
                     if (dateAndDistance.beenToFortLaramie) {
 
                         dateAndDistance.tickerUp();
-                        RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
+                        RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.tongueBroke, randomEvents.wheelBroke, randomEvents.axelBroke, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
                         Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
                         Entity newCharles = new Entity(Charles.name, Charles.sick, Charles.injured, Charles.dead);
                         Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
                         Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
-                        Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
-                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
+                        Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels, wagon.brokenTongue, wagon.brokenWheel, wagon.brokenAxel, wagon.repairTongue, wagon.repairWheel, wagon.repairAxel);
+                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.milesPerDay, dateAndDistance.wagonDamage, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
 
                         Intent intent = new Intent(DailyStatus.this, LocationPage.class);
 
@@ -548,14 +644,14 @@ public class DailyStatus extends AppCompatActivity {
                     if (dateAndDistance.beenToKearny) {
 
                         dateAndDistance.tickerUp();
-                        RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
+                        RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.tongueBroke, randomEvents.wheelBroke, randomEvents.axelBroke, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
                         Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
                         Entity newCharles = new Entity(Charles.name, Charles.sick, Charles.injured, Charles.dead);
                         Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
                         Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
-                        Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
-                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
+                        Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels, wagon.brokenTongue, wagon.brokenWheel, wagon.brokenAxel, wagon.repairTongue, wagon.repairWheel, wagon.repairAxel);
+                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.milesPerDay, dateAndDistance.wagonDamage, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
 
                         Intent intent = new Intent(DailyStatus.this, LocationPage.class);
 
@@ -565,14 +661,14 @@ public class DailyStatus extends AppCompatActivity {
                         startActivity(intent);
                     }
                     else {
-                        RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
+                        RandomEvents newRandomEvents = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.tongueBroke, randomEvents.wheelBroke, randomEvents.axelBroke, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
                         Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
                         Entity newCharles = new Entity (Charles.name, Charles.sick, Charles.injured, Charles.dead);
                         Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
                         Entity newBen = new Entity (Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
-                        Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels);
-                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
+                        Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels, wagon.brokenTongue, wagon.brokenWheel, wagon.brokenAxel, wagon.repairTongue, wagon.repairWheel, wagon.repairAxel);
+                        DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.milesPerDay, dateAndDistance.wagonDamage, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
 
                         Intent intent = new Intent(DailyStatus.this, dailyEvents.class);
 

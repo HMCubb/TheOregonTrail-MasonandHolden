@@ -22,6 +22,7 @@ public class DateAndDistance implements Serializable {
     public int year = 0;
     public int pace = 0;
     public int milesPerDay = 20;
+    public int wagonDamage = 1;
     private int locationStart = 0;
     final private int fortKearny = 335;
     final private int fortLaramie = 658;
@@ -35,12 +36,14 @@ public class DateAndDistance implements Serializable {
 
     public int locationTicker = 0;
 
-    public DateAndDistance (int distanceFromHome, int day, int month, int year, boolean kearny, boolean fortLaramie, boolean independence, boolean southPass, boolean fortHall, boolean fortBoise, boolean walla, boolean theDalles, boolean end){
+    public DateAndDistance (int distanceFromHome, int day, int month, int year, int milesPerDay, int wagonDamage, boolean kearny, boolean fortLaramie, boolean independence, boolean southPass, boolean fortHall, boolean fortBoise, boolean walla, boolean theDalles, boolean end){
 
         this.distanceFromHome = distanceFromHome;
         this.day = day;
         this.month = month;
         this.year = year;
+        this.milesPerDay = milesPerDay;
+        this.wagonDamage = wagonDamage;
         this.beenToKearny = kearny;
         this.beenToFortLaramie = fortLaramie;
         this.beenToIndependenceRock = independence;
@@ -253,10 +256,8 @@ public class DateAndDistance implements Serializable {
         }
     }
 
-    public int dailyMotion() {
-
-        distanceFromHome = distanceFromHome + milesPerDay;
-        return distanceFromHome;
+    public void dailyMotion() {
+        distanceFromHome = distanceFromHome + (milesPerDay/wagonDamage);
     }
 
     public int getMonth() {
@@ -265,5 +266,17 @@ public class DateAndDistance implements Serializable {
 
     public void addDays(int days) {
         day = day + days;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public int getWagonDamage() {
+        return wagonDamage;
+    }
+
+    public void setWagonDamage(int wagonDamage) {
+        this.wagonDamage = wagonDamage;
     }
 }
