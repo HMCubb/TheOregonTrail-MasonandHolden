@@ -202,6 +202,16 @@ public class Wagon implements Serializable {
     public void setRations(int rations) {
         this.rations = rations;
     }
+
+    public void rationsDown() {
+
+        rations--;
+    }
+
+    public void rationsUp() {
+
+        rations++;
+    }
 }
 
 

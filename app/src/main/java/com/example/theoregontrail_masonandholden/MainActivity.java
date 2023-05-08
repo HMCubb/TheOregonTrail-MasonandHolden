@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                 Entity Augusta = new Entity("Augusta",false, false, false);
                 Entity Ben = new Entity ("Ben",false, false, false);
                 Entity Jake = new Entity ( "Jake",false, false, false);
-                DateAndDistance dateAndDistance = new DateAndDistance(0, 0, 4, 1847, 20, 1, false, false, false, false,false,false,false,false,false);
+                DateAndDistance dateAndDistance = new DateAndDistance(1, 0, 0, 4, 1847, 20, 1, false, false, false, false,false,false,false,false,false);
 
 
                 Intent intent = new Intent(MainActivity.this, Store.class);
