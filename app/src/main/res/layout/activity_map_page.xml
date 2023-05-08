@@ -8,7 +8,7 @@
     tools:context=".MapPage">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/mapPicture"
         android:layout_width="2009dp"
         android:layout_height="1029dp"
         app:layout_constraintEnd_toEndOf="parent"
