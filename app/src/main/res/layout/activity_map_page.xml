@@ -7,4 +7,12 @@
     android:background="#000000"
     tools:context=".MapPage">
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="2009dp"
+        android:layout_height="1029dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/organ_trale" />
 </androidx.constraintlayout.widget.ConstraintLayout>

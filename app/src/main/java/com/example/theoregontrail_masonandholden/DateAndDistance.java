@@ -161,7 +161,6 @@ public class DateAndDistance implements Serializable {
 
         if (distanceFromHome == locationStart) {
             locationName = "Independence, Missouri";
-            pace = 0;
             stop = true;
         }
         else if (distanceFromHome < fortKearny && distanceFromHome > locationStart) {
@@ -171,7 +170,6 @@ public class DateAndDistance implements Serializable {
         else if (distanceFromHome == fortKearny) {
             locationName = "Fort Kearny, Nebraska";
             beenToKearny = true;
-            pace = 0;
             stop = true;
         }
         else if (distanceFromHome < fortLaramie && distanceFromHome > fortKearny) {
@@ -181,7 +179,6 @@ public class DateAndDistance implements Serializable {
         else if (distanceFromHome == fortLaramie) {
             locationName = "Fort Laramie";
             beenToFortLaramie = true;
-            pace = 0;
             stop = true;
         }
         else if (distanceFromHome < independenceRock && distanceFromHome > fortLaramie) {
@@ -191,7 +188,6 @@ public class DateAndDistance implements Serializable {
         else if (distanceFromHome == independenceRock) {
             locationName = "Independence Rock";
             beenToIndependenceRock = true;
-            pace = 0;
             stop = true;
         }
         else if (distanceFromHome < southPass && distanceFromHome > independenceRock) {
@@ -201,7 +197,6 @@ public class DateAndDistance implements Serializable {
         else if (distanceFromHome == southPass) {
             locationName = "South Pass";
             beenToSouthPass = true;
-            pace = 0;
             stop = true;
         }
         else if (distanceFromHome < fortHall && distanceFromHome > southPass) {
@@ -211,7 +206,6 @@ public class DateAndDistance implements Serializable {
         else if (distanceFromHome == fortHall) {
             locationName = "Fort Hall";
             beenToFortHall = true;
-            pace = 0;
             stop = true;
         }
         else if (distanceFromHome < fortBoise && distanceFromHome > fortHall) {
@@ -221,7 +215,6 @@ public class DateAndDistance implements Serializable {
         else if (distanceFromHome == fortBoise) {
             locationName = "Fort Boise";
             beenToFortBoise = true;
-            pace = 0;
             stop = true;
         }
         else if (distanceFromHome < fortWallaWalla && distanceFromHome > fortBoise) {
@@ -231,7 +224,6 @@ public class DateAndDistance implements Serializable {
         else if (distanceFromHome == fortWallaWalla) {
             locationName = "Fort Walla Walla";
             beenToFortWallaWalla = true;
-            pace = 0;
             stop = true;
         }
         else if (distanceFromHome < theDalles && distanceFromHome > fortWallaWalla) {
@@ -241,7 +233,6 @@ public class DateAndDistance implements Serializable {
         else if (distanceFromHome == theDalles) {
             locationName = "The Dalles";
             beenToTheDalles = true;
-            pace = 0;
             stop = true;
         }
         else if (distanceFromHome < end && distanceFromHome > theDalles) {
@@ -251,7 +242,6 @@ public class DateAndDistance implements Serializable {
         else if (distanceFromHome == end) {
             locationName = "Ash Hollow, Nebraska";
             reachedEnd = true;
-            pace = 0;
             stop = true;
         }
     }
