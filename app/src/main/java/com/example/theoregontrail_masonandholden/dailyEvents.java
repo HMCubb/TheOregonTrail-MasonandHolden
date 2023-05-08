@@ -335,7 +335,7 @@ public class dailyEvents extends AppCompatActivity {
 
 
         if (Hattie.dead && Charles.dead && Augusta.dead && Ben.dead && Jake.dead) {
-            eventText.append("\nEverybody has died, you lose!.");
+            eventText.append("\nEverybody has died, you lose!");
         }
 
         configureNextButton();
