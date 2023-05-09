@@ -15,7 +15,7 @@ import android.widget.TextView;
 import java.util.Date;
 
 /**
- * Within the dailyEvents class displays the randomly generated values for each day in a way
+ * The dailyEvents class displays the randomly generated values for each day in a way
  * that users can understand.
  * @filename OregonTrailMasonandHolden
  * @author Holden Cubberley & Mason Muether
@@ -23,6 +23,7 @@ import java.util.Date;
  */
 public class dailyEvents extends AppCompatActivity {
 
+    // Public value initialization.
     public RandomEvents newRandomEvents;
     public Entity Hattie;
     public Entity Charles;
@@ -35,6 +36,8 @@ public class dailyEvents extends AppCompatActivity {
     public GeneralHealth newHealth;
 
     public dailyEvents(){}
+
+    // Package with all values that this class intakes from serializable values (more for completeness).
     public dailyEvents(Weather weather, GeneralHealth health, Wagon wagon, DateAndDistance dateAndDistance, RandomEvents newRandomEvents, Entity newHattie, Entity newCharles, Entity newAugusta, Entity newBen, Entity newJake){
         this.dateAndDistance = dateAndDistance;
         this.newRandomEvents = newRandomEvents;
@@ -61,6 +64,7 @@ public class dailyEvents extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_events);
 
+        // Pulling the serialized values from the previous class.
         newRandomEvents = (RandomEvents) getIntent().getSerializableExtra("NewRandomEvents");
         Hattie = (Entity) getIntent().getSerializableExtra("NewHattie");
         Charles = (Entity) getIntent().getSerializableExtra("NewCharles");
@@ -75,6 +79,7 @@ public class dailyEvents extends AppCompatActivity {
         TextView eventText = findViewById(R.id.eventText);
         eventText.setText("Day " + (dateAndDistance.getDay() + ((dateAndDistance.getMonth() - 4) * 30)));
 
+        // The rest of the onCreate class determines what will be printed for the user to see.
         if (!newRandomEvents.blockedTrail && !newRandomEvents.lostMember && !newRandomEvents.loseTrail && !newRandomEvents.fog && !newRandomEvents.oxenWandered) {
             if (wagon.getOxen() > 0) {
                 eventText.append("\nYou travelled " + (dateAndDistance.milesPerDay / dateAndDistance.wagonDamage) + " miles.");

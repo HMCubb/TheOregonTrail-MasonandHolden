@@ -2,8 +2,15 @@ package com.example.theoregontrail_masonandholden;
 
 import java.io.Serializable;
 
+/**
+ * The DateAndDistance class holds all the values regarding distance and date (as you can tell by the name).
+ * @filename OregonTrailMasonandHolden
+ * @author Holden Cubberley & Mason Muether
+ * @date 5/9/2023
+ */
 public class DateAndDistance implements Serializable {
 
+    // Initializing all the public and private values used within and outside of this class.
     public boolean beenToKearny = false;
     public boolean beenToFortLaramie = false;
     public boolean beenToIndependenceRock = false;
@@ -35,6 +42,11 @@ public class DateAndDistance implements Serializable {
     final private int end = 1857;
     public int locationTicker = 0;
 
+    /**
+     * DateAndDistance
+     * Constructor
+     * Creates and holds all values relating to date and distance.
+     */
     public DateAndDistance (int locationTicker, int pace, int distanceFromHome, int day, int month, int year, int milesPerDay, int wagonDamage, boolean kearny, boolean fortLaramie, boolean independence, boolean southPass, boolean fortHall, boolean fortBoise, boolean walla, boolean theDalles, boolean end){
 
         this.pace = pace;
@@ -56,6 +68,12 @@ public class DateAndDistance implements Serializable {
         this.locationTicker = locationTicker;
     }
 
+    /**
+     * getCurrentDate
+     * Bumps the day value up by one upon call.
+     * Generates a string value containing the day, year, and month.
+     * @return String : returns the date separated by /s (ex: 1/1/2001)
+     */
     public String getCurrentDate() {
 
         day++;
@@ -69,6 +87,11 @@ public class DateAndDistance implements Serializable {
         return month + "/" + day + "/" + year;
     }
 
+    /**
+     * getDate
+     * Generates a string value containing the day, year, and month.
+     * @return String : returns the date separated by /s (ex: 1/1/2001)
+     */
     public String getDate() {
 
         if (day >=  31) {
@@ -81,16 +104,22 @@ public class DateAndDistance implements Serializable {
         return month + "/" + day + "/" + year;
     }
 
-    public String getLocationName() {
-
-        return locationName;
-    }
-
+    /**
+     * getDistanceTraveled
+     * Returns the distance traveled thus far.
+     * @return int : returns the distanceFromHome value
+     */
     public int getDistanceTraveled() {
 
         return distanceFromHome;
     }
 
+    /**
+     * setPace
+     * Takes the pace and uses it to determine the pace title, the miles the user will travel per day, and whether the wagon is stopped or not.
+     * @param pace : the value from 0-3 which determine the pace the user will travel at.
+     * @return int : returns the distanceFromHome value
+     */
     public void setPace(int pace) {
         this.pace = pace;
         if (pace == 0) {
@@ -116,22 +145,44 @@ public class DateAndDistance implements Serializable {
 
     }
 
+    /**
+     * tickerUp
+     * void function
+     * Bumps the location ticker value up by one every time the user reaches a new location.
+     */
     public void tickerUp() {
 
         locationTicker++;
     }
 
+    /**
+     * paceUp
+     * void function
+     * Bumps the pace value up by one every time this function is called.
+     */
     public void paceUp() {
 
         pace++;
     }
 
+    /**
+     * paceDown
+     * void function
+     * Bumps the pace value down by one every time this function is called.
+     */
     public void paceDown() {
 
         pace--;
     }
 
 
+    /**
+     * locationCheck
+     * void function
+     * A series of nested if statements that checks if a user has been to a specific location, if false then it checks if the distance from home
+     * value is larger than that of the location value, if true, then the distance from home value is set to the value of the location.
+     * This keeps the user from going past the location.
+     */
     public void locationCheck() {
 
         if (!beenToKearny) {
@@ -181,6 +232,12 @@ public class DateAndDistance implements Serializable {
         }
 
     }
+
+    /**
+     * location
+     * void function
+     * Checks where the user is in comparison to the start value, location values, and end values then changes the location name, been to booleans, and stop values.
+     */
     public void location() {
 
         if (distanceFromHome == locationStart) {
@@ -270,30 +327,63 @@ public class DateAndDistance implements Serializable {
         }
     }
 
+    /**
+     * dailyMotion
+     * void function
+     * Sets the distance from home equal to itself plus the daily mileage divided by the wagon damage.
+     */
     public void dailyMotion() {
         distanceFromHome = distanceFromHome + (milesPerDay/wagonDamage);
     }
 
+    /**
+     * getMonth
+     * @return int : returns the month value.
+     */
     public int getMonth() {
         return month;
     }
 
+    /**
+     * addDays
+     * void function
+     * Sets the day value equal to itself plus the days parameter.
+     * @param days : amount of days that will be added.
+     */
     public void addDays(int days) {
         day = day + days;
     }
 
+    /**
+     * getDay
+     * @return int : returns the day value.
+     */
     public int getDay() {
         return day;
     }
 
+    /**
+     * getWagonDamage
+     * @return int : returns the wagonDamage value.
+     */
     public int getWagonDamage() {
         return wagonDamage;
     }
 
+    /**
+     * setWagonDamage
+     * void function
+     * Sets the classes wagon damage equal to the passed wagon damage parameter.
+     * @param wagonDamage : value that the wagon damage will be set to.
+     */
     public void setWagonDamage(int wagonDamage) {
         this.wagonDamage = wagonDamage;
     }
 
+    /**
+     * getPage
+     * @return int : returns the pace value.
+     */
     public int getPace() {
         return pace;
     }

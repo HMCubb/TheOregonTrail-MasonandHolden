@@ -12,8 +12,15 @@ import android.widget.TextView;
 import java.io.Serializable;
 import java.util.Random;
 
+/**
+ * The DailyStatus class rolls all of the random events then passes those newly generated values to the dailyEvents page.
+ * @filename OregonTrailMasonandHolden
+ * @author Holden Cubberley & Mason Muether
+ * @date 5/9/2023
+ */
 public class DailyStatus extends AppCompatActivity {
 
+    // Public value initialization.
     public Wagon wagon;
     public Entity Hattie;
     public Entity Charles;
@@ -27,6 +34,8 @@ public class DailyStatus extends AppCompatActivity {
     RandomEvents randomEvents = new RandomEvents(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, 0, 0, 0, 0, 0,0, 0);
 
     public DailyStatus(){}
+
+    // Package with all values that this class intakes from serializable values (more for completeness).
     public DailyStatus(Weather weather, GeneralHealth health, DateAndDistance dateAndDistance, Wagon wagon, Entity newHattie, Entity newCharles, Entity newAugusta, Entity newBen, Entity newJake){
 
         this.wagon = wagon;
@@ -40,12 +49,22 @@ public class DailyStatus extends AppCompatActivity {
         this.newWeather = weather;
     }
 
+    /**
+     * onCreate
+     * When the program is initially ran, all of the serializable elements within this method are established.
+     * All of the buttons and text values are also initialized and filled with their respective values.
+     * The health is also established based on their numerical values.
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_status);
 
+        // Pulling the serialized values from the previous class.
         wagon = (Wagon) getIntent().getSerializableExtra("NewWagon");
         Hattie = (Entity) getIntent().getSerializableExtra("NewHattie");
         Charles = (Entity) getIntent().getSerializableExtra("NewCharles");
@@ -56,8 +75,10 @@ public class DailyStatus extends AppCompatActivity {
         newHealth = (GeneralHealth) getIntent().getSerializableExtra("NewGeneralHealth");
         newWeather = (Weather) getIntent().getSerializableExtra("NewWeather");
 
+        // Initialization of the nextDay button class.
         configureNextDayButton();
 
+        // Initialization of the buttons and text values displayed on screen.
         final Button NextDayButton = findViewById(R.id.NextDayButton);
         final TextView PeopleCount = findViewById(R.id.PeopleCount);
         final TextView MoneyCount = findViewById(R.id.MoneyCount);
@@ -72,6 +93,7 @@ public class DailyStatus extends AppCompatActivity {
         final TextView HealthTracker = findViewById(R.id.HealthTracker);
         final TextView TemperatureTracker = findViewById(R.id.TemperatureTracker);
 
+        // Pulling all the values from each object, then setting the corresponding text fields equal to those values.
         dateAndDistance.setPace(dateAndDistance.getPace());
         PeopleCount.setText(String.valueOf(wagon.getPeople()));
         MoneyCount.setText(String.valueOf(String.format("%.2f", wagon.getMoney())));
@@ -86,6 +108,8 @@ public class DailyStatus extends AppCompatActivity {
         DayTracker.setText(String.valueOf(dateAndDistance.getCurrentDate()));
         TemperatureTracker.setText(String.valueOf(newWeather.getTemperature() + 10));
         TemperatureTracker.append("°F");
+
+        // Establishes the health string as very poor, poor, okay, or good depending on the numerical health value.
         if (newHealth.getGeneralHealth() >= 105) {
             HealthTracker.setText("Very Poor");
         }
@@ -100,13 +124,21 @@ public class DailyStatus extends AppCompatActivity {
         }
     }
 
+    // Everything that happens upon clicking the next day button is held within this class.
     private void configureNextDayButton() {
 
         Button nextDayButton = (Button) findViewById(R.id.NextDayButton);
         nextDayButton.setOnClickListener(new View.OnClickListener() {
+
+            /**
+             * Upon clicking the "nextDayButton" button, the weather, health, and random events are generated.
+             * Afterwards, all objects are passed to the dailyEvents page by transforming them into serializable values.
+             * @param view The view that was clicked.
+             */
             @Override
             public void onClick(View view) {
 
+                // Generates the weather, health, and random events.
                 boolean alive = false;
                 newWeather.temperatureDaily();
                 newWeather.rainfallDaily();
@@ -140,6 +172,7 @@ public class DailyStatus extends AppCompatActivity {
                 wagon.setRepairWheel(false);
                 wagon.setRepairAxel(false);
 
+                // Determines if people are alive, and changes the alive and dead values based on these determinations.
                 while (!alive && (!Hattie.dead || !Charles.dead || !Augusta.dead || !Ben.dead || !Jake.dead)) {
                     int person = randomEvents.randomChooseMember(5);
                     if (person == 1) {
@@ -512,6 +545,7 @@ public class DailyStatus extends AppCompatActivity {
                     wagon.setAxles(0);
                 }
 
+                // Creates new objects with all values generated in this class, then passes them to the dailyEvents class using serializable.
                 RandomEvents randomEventsPass = new RandomEvents(randomEvents.disease, randomEvents.badWater, randomEvents.lowWater, randomEvents.roughTrail, randomEvents.blizzard, randomEvents.fog, randomEvents.hail, randomEvents.oxenDamage, randomEvents.injury, randomEvents.snakeBite, randomEvents.loseTrail, randomEvents.thief, randomEvents.blockedTrail, randomEvents.fire, randomEvents.abandonedWagon, randomEvents.oxenWandered, randomEvents.lostMember, randomEvents.badGrass, randomEvents.fruit, randomEvents.healedDisease, randomEvents.healedInjury, randomEvents.tongueBroke, randomEvents.wheelBroke, randomEvents.axelBroke, randomEvents.daysLost, randomEvents.foodLost, randomEvents.clothesLost, randomEvents.axlesLost, randomEvents.wheelsLost, randomEvents.wheelsLost, randomEvents.memberLost);
                 Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
                 Entity newCharles = new Entity (Charles.name, Charles.sick, Charles.injured, Charles.dead);

@@ -13,8 +13,15 @@ import android.widget.TextView;
 import java.util.Date;
 import java.util.Random;
 
+/**
+ * The LocationPage class displays the map with all locations along the Oregon Trail, as well as a menu with several buttons.
+ * @filename OregonTrailMasonandHolden
+ * @author Holden Cubberley & Mason Muether
+ * @date 5/9/2023
+ */
 public class LocationPage extends AppCompatActivity {
 
+    // Public value initialization.
     public RandomEvents locationRandoms;
     public Entity locationHattie;
     public Entity locationCharles;
@@ -26,7 +33,8 @@ public class LocationPage extends AppCompatActivity {
     public Weather newWeather;
     public GeneralHealth newHealth;
     public LocationPage(){};
-    
+
+    // Package with all values that this class intakes from serializable values (more for completeness).
     public LocationPage(Weather weather, GeneralHealth health, RandomEvents randomEvents, DateAndDistance dateAndDistance, RandomEvents locationRandoms, Entity locationHattie, Entity locationCharles, Entity locationAugusta, Entity locationBen, Entity locationJake, Wagon locationWagon){
 
         this.locationRandoms = randomEvents;
@@ -40,12 +48,22 @@ public class LocationPage extends AppCompatActivity {
         this.newWeather = weather;
         this.newHealth = health;
     }
+
+    /**
+     * onCreate
+     * When the program is initially ran, all of the serializable elements within this method are established.
+     * The menu button classes are initialized, and so is the location text that is changed based on the location.
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     */
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_page);
 
+        // Pulling the serialized values from the previous class.
         locationRandoms = (RandomEvents) getIntent().getSerializableExtra("NewRandomEvents");
         locationHattie = (Entity) getIntent().getSerializableExtra("NewHattie");
         locationCharles = (Entity) getIntent().getSerializableExtra("NewCharles");
@@ -56,14 +74,17 @@ public class LocationPage extends AppCompatActivity {
         dateAndDistance = (DateAndDistance) getIntent().getSerializableExtra("NewDateAndDistance");
         newHealth = (GeneralHealth) getIntent().getSerializableExtra("NewGeneralHealth");
         newWeather = (Weather) getIntent().getSerializableExtra("NewWeather");
-        
+
+        // Initialization of the button classes.
         configureResourcesButton();
         configurePartyButton();
         configureShopButton();
         configureNextLocationButton();
 
+        // Initialization of the locationText text view field.
         final TextView locationText = findViewById(R.id.locationText);
 
+        // Determines what text will appear in the locationText field.
         if (dateAndDistance.beenToTheDalles) {
             locationText.setText("The Dalles");
         }
@@ -91,13 +112,20 @@ public class LocationPage extends AppCompatActivity {
     }
 
 
+    // Everything that happens upon clicking the resources button.
     private void configureResourcesButton() {
 
-        Button continueButton = (Button) findViewById(R.id.resourcesButton);
-        continueButton.setOnClickListener(new View.OnClickListener() {
+        Button resourcesButton = (Button) findViewById(R.id.resourcesButton);
+        resourcesButton.setOnClickListener(new View.OnClickListener() {
+
+            /**
+             * Upon clicking the "resourcesButton" button, all objects are created, filled, and passed to the LocationStatus class.
+             * @param v The view that was clicked.
+             */
             @Override
             public void onClick(View v) {
 
+                // Creates new objects with all values generated in this class, then passes them to the LocationStatus class using serializable.
                 RandomEvents newRandomEvents = new RandomEvents(locationRandoms.disease, locationRandoms.badWater, locationRandoms.lowWater, locationRandoms.roughTrail, locationRandoms.blizzard, locationRandoms.fog, locationRandoms.hail, locationRandoms.oxenDamage, locationRandoms.injury, locationRandoms.snakeBite, locationRandoms.loseTrail, locationRandoms.thief, locationRandoms.blockedTrail, locationRandoms.fire, locationRandoms.abandonedWagon, locationRandoms.oxenWandered, locationRandoms.lostMember, locationRandoms.badGrass, locationRandoms.fruit, locationRandoms.healedDisease, locationRandoms.healedInjury, locationRandoms.tongueBroke, locationRandoms.wheelBroke, locationRandoms.axelBroke, locationRandoms.daysLost, locationRandoms.foodLost, locationRandoms.clothesLost, locationRandoms.axlesLost, locationRandoms.wheelsLost, locationRandoms.wheelsLost, locationRandoms.memberLost);
                 Entity newHattie = new Entity(locationHattie.name, locationHattie.sick, locationHattie.injured, locationHattie.dead);
                 Entity newCharles = new Entity (locationCharles.name, locationCharles.sick, locationCharles.injured, locationCharles.dead);
@@ -120,8 +148,13 @@ public class LocationPage extends AppCompatActivity {
 
     private void configurePartyButton() {
 
-        Button continueButton = (Button) findViewById(R.id.partyButton);
-        continueButton.setOnClickListener(new View.OnClickListener() {
+        Button configurePartyButton = (Button) findViewById(R.id.partyButton);
+        configurePartyButton.setOnClickListener(new View.OnClickListener() {
+
+            /**
+             * Upon clicking the "configurePartyButton" button, all objects are created, filled, and passed to the PaceAndRations class.
+             * @param v The view that was clicked.
+             */
             @Override
             public void onClick(View v) {
 
@@ -148,9 +181,13 @@ public class LocationPage extends AppCompatActivity {
 
     private void configureShopButton() {
 
-        Button continueButton = (Button) findViewById(R.id.shopButton);
-        continueButton.setOnClickListener(new View.OnClickListener() {
+        Button shopButton = (Button) findViewById(R.id.shopButton);
+        shopButton.setOnClickListener(new View.OnClickListener() {
 
+            /**
+             * Upon clicking the "shopButton" button, all objects are created, filled, and passed to the LocationShop class.
+             * @param v The view that was clicked.
+             */
             @Override
             public void onClick(View v) {
 
@@ -177,8 +214,13 @@ public class LocationPage extends AppCompatActivity {
 
     private void configureNextLocationButton() {
 
-        Button continueButton = (Button) findViewById(R.id.nextButtonLocationButton);
-        continueButton.setOnClickListener(new View.OnClickListener() {
+        Button nextLocationButton = (Button) findViewById(R.id.nextButtonLocationButton);
+        nextLocationButton.setOnClickListener(new View.OnClickListener() {
+
+            /**
+             * Upon clicking the "nextLocationButton" button, all objects are created, filled, and passed to the LocationStatus class.
+             * @param v The view that was clicked.
+             */
             @Override
             public void onClick(View v) {
 

@@ -10,8 +10,15 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * The LocationStatus class rolls all of the random events then passes those newly generated values back to the LocationPage page.
+ * @filename OregonTrailMasonandHolden
+ * @author Holden Cubberley & Mason Muether
+ * @date 5/9/2023
+ */
 public class LocationStatus extends AppCompatActivity {
 
+    // Public value initialization.
     public RandomEvents locationRandoms;
     public Entity locationHattie;
     public Entity locationCharles;
@@ -23,9 +30,9 @@ public class LocationStatus extends AppCompatActivity {
     public Weather newWeather;
     public GeneralHealth newHealth;
 
-    public LocationStatus() {
-    }
+    public LocationStatus() {}
 
+    // Package with all values that this class intakes from serializable values (more for completeness).
     public LocationStatus(Weather weather, GeneralHealth health, RandomEvents randomEvents, DateAndDistance dateAndDistance, RandomEvents locationRandoms, Entity locationHattie, Entity locationCharles, Entity locationAugusta, Entity locationBen, Entity locationJake, Wagon locationWagon) {
 
         this.locationRandoms = randomEvents;
@@ -40,11 +47,21 @@ public class LocationStatus extends AppCompatActivity {
         this.newHealth = health;
     }
 
+    /**
+     * onCreate
+     * When the program is initially ran, all of the serializable elements within this method are established.
+     * All of the buttons and text values are also initialized and filled with their respective values.
+     * The health is also established based on their numerical values.
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     */
     @SuppressLint({"DefaultLocale", "SetTextI18n"})
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_status);
 
+        // Pulling the serialized values from the previous class.
         locationRandoms = (RandomEvents) getIntent().getSerializableExtra("NewRandomEvents");
         locationHattie = (Entity) getIntent().getSerializableExtra("NewHattie");
         locationCharles = (Entity) getIntent().getSerializableExtra("NewCharles");
@@ -56,8 +73,10 @@ public class LocationStatus extends AppCompatActivity {
         newHealth = (GeneralHealth) getIntent().getSerializableExtra("NewGeneralHealth");
         newWeather = (Weather) getIntent().getSerializableExtra("NewWeather");
 
+        // Initialization of the backButtonLS button class.
         configureBackButtonLS();
 
+        // Initialization of the buttons and text values displayed on screen.
         final TextView PeopleCount = findViewById(R.id.PeopleCountLocation);
         final TextView MoneyCount = findViewById(R.id.MoneyCountLocation);
         final TextView FoodCount = findViewById(R.id.FoodCountLocation);
@@ -70,7 +89,8 @@ public class LocationStatus extends AppCompatActivity {
         final TextView DistanceTracker = findViewById(R.id.DistanceTrackerLocation);
         final TextView HealthTracker = findViewById(R.id.HealthTrackerLocation);
         final TextView TemperatureTracker = findViewById(R.id.TemperatureTrackerLocation);
-        
+
+        // Pulling all the values from each object, then setting the corresponding text fields equal to those values.
         PeopleCount.setText(String.valueOf(locationWagon.getPeople()));
         MoneyCount.setText(String.valueOf(String.format("%.2f", locationWagon.getMoney())));
         FoodCount.setText(String.valueOf(locationWagon.getFood()));
@@ -81,9 +101,11 @@ public class LocationStatus extends AppCompatActivity {
         WheelsCount.setText(String.valueOf(locationWagon.getWheels()));
         DistanceTracker.setText(String.valueOf(dateAndDistance.getDistanceTraveled()));
         DistanceTracker.append(" miles");
-        DayTracker.setText(String.valueOf(dateAndDistance.getCurrentDate()));
+        DayTracker.setText(String.valueOf(dateAndDistance.getDate()));
         TemperatureTracker.setText(String.valueOf(newWeather.getTemperature() + 10));
         TemperatureTracker.append("°F");
+
+        // Establishes the health string as very poor, poor, okay, or good depending on the numerical health value.
         if (newHealth.getGeneralHealth() >= 105) {
             HealthTracker.setText("Very Poor");
         }
@@ -97,11 +119,17 @@ public class LocationStatus extends AppCompatActivity {
             HealthTracker.setText("Good");
         }
     }
-    
+
+    // Everything that happens upon clicking the back button is held within this class.
     private void configureBackButtonLS() {
 
         Button backButtonLS = (Button) findViewById(R.id.NextDayButtonLocation);
         backButtonLS.setOnClickListener(new View.OnClickListener() {
+
+            /**
+             * Upon clicking the "backButtonLS" button, all objects are passed back to the LocationPage page by transforming them into serializable values.
+             * @param v The view that was clicked.
+             */
             @Override
             public void onClick(View v) {
 
