@@ -69,6 +69,10 @@ public class Store extends AppCompatActivity {
         newHealth = (GeneralHealth) getIntent().getSerializableExtra("NewGeneralHealth");
         newWeather = (Weather) getIntent().getSerializableExtra("NewWeather");
 
+        TextView ownedMoney = findViewById(R.id.yourMoneyAmount);
+        ownedMoney.setText(String.valueOf(String.format("%.2f", storeWagon.getMoney())));
+
+
         // Initializing the button classes.
         configureFoodUpButton();
         configureFoodDownButton();
