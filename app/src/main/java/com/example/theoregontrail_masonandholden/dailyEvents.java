@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.location.Location;
 import android.media.AudioFocusRequest;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,6 +14,13 @@ import android.widget.TextView;
 
 import java.util.Date;
 
+/**
+ * Within the dailyEvents class displays the randomly generated values for each day in a way
+ * that users can understand.
+ * @filename OregonTrailMasonandHolden
+ * @author Holden Cubberley & Mason Muether
+ * @date 5/9/2023
+ */
 public class dailyEvents extends AppCompatActivity {
 
     public RandomEvents newRandomEvents;
@@ -42,6 +48,13 @@ public class dailyEvents extends AppCompatActivity {
         this.newHealth = health;
     }
 
+    /**
+     * onCreate
+     * When the program is initially ran, all of the serializable elements within this method are established.
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     */
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -345,18 +358,24 @@ public class dailyEvents extends AppCompatActivity {
 
     private void configureNextButton() {
 
-
         Button nextButton = (Button) findViewById(R.id.nextButton);
         nextButton.setOnClickListener(new View.OnClickListener() {
+
+            /**
+             * Upon clicking the "nextButton" button, the display will switch to either the daily status screen,
+             * or the location screen, depending on where the user is compared to the starting distance.
+             * @param v The view that was clicked.
+             */
             @Override
             public void onClick(View v) {
 
-
-
+                // Checks where the user at is comparison to the starting point, then determines what location they are at.
                 dateAndDistance.locationCheck();
                 dateAndDistance.location();
 
+                // This series of if/else-if/else statements determines where the user goes if all the party members are dead, if they reach a location, are on the normal path, or win.
                 if (dateAndDistance.locationTicker == 8) {
+                    // If all party members are dead...
                     if (wagon.getPeople() == 0) {
                         RandomEvents newRandomEventsPass = new RandomEvents(newRandomEvents.disease, newRandomEvents.badWater, newRandomEvents.lowWater, newRandomEvents.roughTrail, newRandomEvents.blizzard, newRandomEvents.fog, newRandomEvents.hail, newRandomEvents.oxenDamage, newRandomEvents.injury, newRandomEvents.snakeBite, newRandomEvents.loseTrail, newRandomEvents.thief, newRandomEvents.blockedTrail, newRandomEvents.fire, newRandomEvents.abandonedWagon, newRandomEvents.oxenWandered, newRandomEvents.lostMember, newRandomEvents.badGrass, newRandomEvents.fruit, newRandomEvents.healedDisease, newRandomEvents.healedInjury, newRandomEvents.tongueBroke, newRandomEvents.wheelBroke, newRandomEvents.axelBroke, newRandomEvents.daysLost, newRandomEvents.foodLost, newRandomEvents.clothesLost, newRandomEvents.axlesLost, newRandomEvents.wheelsLost, newRandomEvents.wheelsLost, newRandomEvents.memberLost);
                         Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
@@ -372,10 +391,12 @@ public class dailyEvents extends AppCompatActivity {
                         Intent intent = new Intent(dailyEvents.this, LoseScreen.class);
 
                         intent.putExtra("NewWeather", newerWeather).putExtra("NewGeneralHealth", newerHealth).putExtra("NewDateAndDistance", newDateAndDistance).putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEventsPass).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                        // ...take user to lose screen.
                         setContentView(R.layout.activity_lose_screen);
                         startActivity(new Intent(dailyEvents.this, LoseScreen.class));
                         startActivity(intent);
                     }
+                    // If user has reached location (the end)...
                     else if (dateAndDistance.reachedEnd) {
                         RandomEvents newRandomEventsPass = new RandomEvents(newRandomEvents.disease, newRandomEvents.badWater, newRandomEvents.lowWater, newRandomEvents.roughTrail, newRandomEvents.blizzard, newRandomEvents.fog, newRandomEvents.hail, newRandomEvents.oxenDamage, newRandomEvents.injury, newRandomEvents.snakeBite, newRandomEvents.loseTrail, newRandomEvents.thief, newRandomEvents.blockedTrail, newRandomEvents.fire, newRandomEvents.abandonedWagon, newRandomEvents.oxenWandered, newRandomEvents.lostMember, newRandomEvents.badGrass, newRandomEvents.fruit, newRandomEvents.healedDisease, newRandomEvents.healedInjury, newRandomEvents.tongueBroke, newRandomEvents.wheelBroke, newRandomEvents.axelBroke, newRandomEvents.daysLost, newRandomEvents.foodLost, newRandomEvents.clothesLost, newRandomEvents.axlesLost, newRandomEvents.wheelsLost, newRandomEvents.wheelsLost, newRandomEvents.memberLost);
                         Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
@@ -391,16 +412,18 @@ public class dailyEvents extends AppCompatActivity {
                         Intent intent = new Intent(dailyEvents.this, WinScreen.class);
 
                         intent.putExtra("NewWeather", newerWeather).putExtra("NewGeneralHealth", newerHealth).putExtra("NewDateAndDistance", newDateAndDistance).putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEventsPass).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
+                        // ...take user to location screen (win screen).
                         setContentView(R.layout.activity_win_screen);
                         startActivity(new Intent(dailyEvents.this, WinScreen.class));
                         startActivity(intent);
                     }
+                    // If neither true, continue to the regular path (DailyEvents screen).
                     else {
                         RandomEvents newRandomEventsPass = new RandomEvents(newRandomEvents.disease, newRandomEvents.badWater, newRandomEvents.lowWater, newRandomEvents.roughTrail, newRandomEvents.blizzard, newRandomEvents.fog, newRandomEvents.hail, newRandomEvents.oxenDamage, newRandomEvents.injury, newRandomEvents.snakeBite, newRandomEvents.loseTrail, newRandomEvents.thief, newRandomEvents.blockedTrail, newRandomEvents.fire, newRandomEvents.abandonedWagon, newRandomEvents.oxenWandered, newRandomEvents.lostMember, newRandomEvents.badGrass, newRandomEvents.fruit, newRandomEvents.healedDisease, newRandomEvents.healedInjury, newRandomEvents.tongueBroke, newRandomEvents.wheelBroke, newRandomEvents.axelBroke, newRandomEvents.daysLost, newRandomEvents.foodLost, newRandomEvents.clothesLost, newRandomEvents.axlesLost, newRandomEvents.wheelsLost, newRandomEvents.wheelsLost, newRandomEvents.memberLost);
                         Entity newHattie = new Entity(Hattie.name, Hattie.sick, Hattie.injured, Hattie.dead);
-                        Entity newCharles = new Entity (Charles.name, Charles.sick, Charles.injured, Charles.dead);
+                        Entity newCharles = new Entity(Charles.name, Charles.sick, Charles.injured, Charles.dead);
                         Entity newAugusta = new Entity(Augusta.name, Augusta.sick, Augusta.injured, Augusta.dead);
-                        Entity newBen = new Entity (Ben.name, Ben.sick, Ben.injured, Ben.dead);
+                        Entity newBen = new Entity(Ben.name, Ben.sick, Ben.injured, Ben.dead);
                         Entity newJake = new Entity(Jake.name, Jake.sick, Jake.injured, Jake.dead);
                         Wagon newWagon = new Wagon(wagon.people, wagon.money, wagon.oxen, wagon.food, wagon.clothes, wagon.tongues, wagon.axles, wagon.wheels, wagon.rations, wagon.brokenTongue, wagon.brokenWheel, wagon.brokenAxel, wagon.repairTongue, wagon.repairWheel, wagon.repairAxel);
                         DateAndDistance newDateAndDistance = new DateAndDistance(dateAndDistance.locationTicker, dateAndDistance.pace, dateAndDistance.distanceFromHome, dateAndDistance.day, dateAndDistance.month, dateAndDistance.year, dateAndDistance.milesPerDay, dateAndDistance.wagonDamage, dateAndDistance.beenToKearny, dateAndDistance.beenToFortLaramie, dateAndDistance.beenToIndependenceRock, dateAndDistance.beenToSouthPass, dateAndDistance.beenToFortHall, dateAndDistance.beenToFortBoise, dateAndDistance.beenToFortWallaWalla, dateAndDistance.beenToTheDalles, dateAndDistance.reachedEnd);
@@ -410,7 +433,6 @@ public class dailyEvents extends AppCompatActivity {
                         Intent intent = new Intent(dailyEvents.this, DailyStatus.class);
 
                         intent.putExtra("NewWeather", newerWeather).putExtra("NewGeneralHealth", newerHealth).putExtra("NewWagon", newWagon).putExtra("NewDateAndDistance", newDateAndDistance).putExtra("NewRandomEvents", newRandomEventsPass).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
-
                         setContentView(R.layout.activity_daily_events);
                         startActivity(new Intent(dailyEvents.this, DailyStatus.class));
                         startActivity(intent);
