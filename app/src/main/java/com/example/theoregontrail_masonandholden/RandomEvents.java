@@ -105,7 +105,7 @@ public class RandomEvents implements Serializable {
 
     public void randomBlizzard(int temperature){
         double random = (Math.random() * 100);
-        if (temperature <= 1) {
+        if (temperature <= 12) {
             this.blizzard = random <= 5;
         }
         else {
@@ -115,7 +115,7 @@ public class RandomEvents implements Serializable {
 
     public void randomFog(int temperature){
         double random = (Math.random() * 100);
-        if (temperature >= 4) {
+        if (temperature >= 40) {
             this.fog = random <= 3;
         }
         else {
@@ -125,7 +125,7 @@ public class RandomEvents implements Serializable {
 
     public void randomHail(int temperature){
         double random = (Math.random() * 100);
-        if (temperature <= 0) {
+        if (temperature <= 9) {
             this.hail = random <= 6;
         }
         else {

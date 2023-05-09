@@ -373,7 +373,7 @@ public class dailyEvents extends AppCompatActivity {
                         GeneralHealth newerHealth = new GeneralHealth(newHealth.GeneralHealth, 0);
                         Weather newerWeather = new Weather(newWeather.temperature, newWeather.rainfall);
 
-                        Intent intent = new Intent(dailyEvents.this, dailyEvents.class);
+                        Intent intent = new Intent(dailyEvents.this, LocationPage.class);
 
                         intent.putExtra("NewWeather", newerWeather).putExtra("NewGeneralHealth", newerHealth).putExtra("NewDateAndDistance", newDateAndDistance).putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEventsPass).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
                         setContentView(R.layout.activity_location_page);
@@ -416,7 +416,7 @@ public class dailyEvents extends AppCompatActivity {
                         GeneralHealth newerHealth = new GeneralHealth(newHealth.GeneralHealth, 0);
                         Weather newerWeather = new Weather(newWeather.temperature, newWeather.rainfall);
 
-                        Intent intent = new Intent(dailyEvents.this, dailyEvents.class);
+                        Intent intent = new Intent(dailyEvents.this, LocationPage.class);
 
                         intent.putExtra("NewWeather", newerWeather).putExtra("NewGeneralHealth", newerHealth).putExtra("NewDateAndDistance", newDateAndDistance).putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEventsPass).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
                         setContentView(R.layout.activity_location_page);
@@ -459,7 +459,7 @@ public class dailyEvents extends AppCompatActivity {
                         GeneralHealth newerHealth = new GeneralHealth(newHealth.GeneralHealth, 0);
                         Weather newerWeather = new Weather(newWeather.temperature, newWeather.rainfall);
 
-                        Intent intent = new Intent(dailyEvents.this, dailyEvents.class);
+                        Intent intent = new Intent(dailyEvents.this, LocationPage.class);
 
                         intent.putExtra("NewWeather", newerWeather).putExtra("NewGeneralHealth", newerHealth).putExtra("NewDateAndDistance", newDateAndDistance).putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEventsPass).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
                         setContentView(R.layout.activity_location_page);
@@ -502,7 +502,7 @@ public class dailyEvents extends AppCompatActivity {
                         GeneralHealth newerHealth = new GeneralHealth(newHealth.GeneralHealth, 0);
                         Weather newerWeather = new Weather(newWeather.temperature, newWeather.rainfall);
 
-                        Intent intent = new Intent(dailyEvents.this, dailyEvents.class);
+                        Intent intent = new Intent(dailyEvents.this, LocationPage.class);
 
                         intent.putExtra("NewWeather", newerWeather).putExtra("NewGeneralHealth", newerHealth).putExtra("NewDateAndDistance", newDateAndDistance).putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEventsPass).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
                         setContentView(R.layout.activity_location_page);
@@ -545,7 +545,7 @@ public class dailyEvents extends AppCompatActivity {
                         GeneralHealth newerHealth = new GeneralHealth(newHealth.GeneralHealth, 0);
                         Weather newerWeather = new Weather(newWeather.temperature, newWeather.rainfall);
 
-                        Intent intent = new Intent(dailyEvents.this, dailyEvents.class);
+                        Intent intent = new Intent(dailyEvents.this, LocationPage.class);
 
                         intent.putExtra("NewWeather", newerWeather).putExtra("NewGeneralHealth", newerHealth).putExtra("NewDateAndDistance", newDateAndDistance).putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEventsPass).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
                         setContentView(R.layout.activity_location_page);
@@ -588,7 +588,7 @@ public class dailyEvents extends AppCompatActivity {
                         GeneralHealth newerHealth = new GeneralHealth(newHealth.GeneralHealth, 0);
                         Weather newerWeather = new Weather(newWeather.temperature, newWeather.rainfall);
 
-                        Intent intent = new Intent(dailyEvents.this, dailyEvents.class);
+                        Intent intent = new Intent(dailyEvents.this, LocationPage.class);
 
                         intent.putExtra("NewWeather", newerWeather).putExtra("NewGeneralHealth", newerHealth).putExtra("NewDateAndDistance", newDateAndDistance).putExtra("NewWagon", newWagon).putExtra("NewRandomEvents", newRandomEventsPass).putExtra("NewHattie", newHattie).putExtra("NewCharles", newCharles).putExtra("NewAugusta", newAugusta).putExtra("NewBen", newBen).putExtra("NewJake", newJake);
                         setContentView(R.layout.activity_location_page);

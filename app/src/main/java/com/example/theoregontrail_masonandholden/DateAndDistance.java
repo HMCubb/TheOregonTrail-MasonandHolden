@@ -293,4 +293,8 @@ public class DateAndDistance implements Serializable {
     public void setWagonDamage(int wagonDamage) {
         this.wagonDamage = wagonDamage;
     }
+
+    public int getPace() {
+        return pace;
+    }
 }

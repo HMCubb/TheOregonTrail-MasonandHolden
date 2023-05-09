@@ -57,8 +57,8 @@
 
     <TextView
         android:id="@+id/locationText"
-        android:layout_width="434dp"
-        android:layout_height="97dp"
+        android:layout_width="927dp"
+        android:layout_height="94dp"
         android:layout_marginStart="133dp"
         android:layout_marginTop="73dp"
         android:background="#FFFFFF"

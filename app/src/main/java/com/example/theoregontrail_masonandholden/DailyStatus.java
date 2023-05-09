@@ -72,6 +72,7 @@ public class DailyStatus extends AppCompatActivity {
         final TextView HealthTracker = findViewById(R.id.HealthTracker);
         final TextView TemperatureTracker = findViewById(R.id.TemperatureTracker);
 
+        dateAndDistance.setPace(dateAndDistance.getPace());
         PeopleCount.setText(String.valueOf(wagon.getPeople()));
         MoneyCount.setText(String.valueOf(String.format("%.2f", wagon.getMoney())));
         FoodCount.setText(String.valueOf(wagon.getFood()));
@@ -80,10 +81,23 @@ public class DailyStatus extends AppCompatActivity {
         TonguesCount.setText(String.valueOf(wagon.getTongues()));
         AxlesCount.setText(String.valueOf(wagon.getAxles()));
         WheelsCount.setText(String.valueOf(wagon.getWheels()));
-        HealthTracker.setText(String.valueOf(newHealth.getGeneralHealth()));
         DistanceTracker.setText(String.valueOf(dateAndDistance.getDistanceTraveled()));
+        DistanceTracker.append(" miles");
         DayTracker.setText(String.valueOf(dateAndDistance.getCurrentDate()));
-        TemperatureTracker.setText(String.valueOf(newWeather.getTemperature()));
+        TemperatureTracker.setText(String.valueOf(newWeather.getTemperature() + 10));
+        TemperatureTracker.append("°F");
+        if (newHealth.getGeneralHealth() >= 105) {
+            HealthTracker.setText("Very Poor");
+        }
+        else if (newHealth.getGeneralHealth() >= 70) {
+            HealthTracker.setText("Poor");
+        }
+        else if (newHealth.getGeneralHealth() >= 35) {
+            HealthTracker.setText("Okay");
+        }
+        else {
+            HealthTracker.setText("Good");
+        }
     }
 
     private void configureNextDayButton() {

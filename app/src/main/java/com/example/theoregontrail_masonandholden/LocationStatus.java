@@ -40,7 +40,7 @@ public class LocationStatus extends AppCompatActivity {
         this.newHealth = health;
     }
 
-    @SuppressLint("DefaultLocale")
+    @SuppressLint({"DefaultLocale", "SetTextI18n"})
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_status);
@@ -79,10 +79,23 @@ public class LocationStatus extends AppCompatActivity {
         TonguesCount.setText(String.valueOf(locationWagon.getTongues()));
         AxlesCount.setText(String.valueOf(locationWagon.getAxles()));
         WheelsCount.setText(String.valueOf(locationWagon.getWheels()));
-        HealthTracker.setText(String.valueOf(newHealth.GeneralHealth));
         DistanceTracker.setText(String.valueOf(dateAndDistance.getDistanceTraveled()));
-        DayTracker.setText(String.valueOf(dateAndDistance.getDate()));
-        TemperatureTracker.setText(String.valueOf(newWeather.temperature));
+        DistanceTracker.append(" miles");
+        DayTracker.setText(String.valueOf(dateAndDistance.getCurrentDate()));
+        TemperatureTracker.setText(String.valueOf(newWeather.getTemperature() + 10));
+        TemperatureTracker.append("°F");
+        if (newHealth.getGeneralHealth() >= 105) {
+            HealthTracker.setText("Very Poor");
+        }
+        else if (newHealth.getGeneralHealth() >= 70) {
+            HealthTracker.setText("Poor");
+        }
+        else if (newHealth.getGeneralHealth() >= 35) {
+            HealthTracker.setText("Okay");
+        }
+        else {
+            HealthTracker.setText("Good");
+        }
     }
     
     private void configureBackButtonLS() {

@@ -29,7 +29,7 @@ public class Weather implements Serializable {
     }
 
     public void temperatureDaily(){
-        this.temperature = (int) (Math.random() * 5);
+        this.temperature = (int) (Math.random() * 100);
     }
 
     public void rainfallDaily(){
