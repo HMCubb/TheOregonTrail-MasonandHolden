@@ -12,6 +12,12 @@
         android:theme="@style/Theme.TheOregonTrailMasonandHolden"
         tools:targetApi="31">
         <activity
+            android:name=".LoseScreen"
+            android:exported="false" />
+        <activity
+            android:name=".WinScreen"
+            android:exported="false" />
+        <activity
             android:name=".PaceAndRationsPage"
             android:exported="false" />
         <activity
