@@ -109,7 +109,7 @@ public class LocationStore extends AppCompatActivity {
         oxenAmount.setText(String.valueOf(storeWagon.getOxen()));
     }
 
-    // Everything that happens upon clicking the continue button is held within this class.
+    // Everything that happens upon clicking the back button is held within this class.
     private void configureBackButton() {
 
         Button backButton = (Button) findViewById(R.id.backButtonLocation);
