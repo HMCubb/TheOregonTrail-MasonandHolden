@@ -71,4 +71,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerText" />
 
+    <TextView
+        android:id="@+id/loreTextMain"
+        android:layout_width="1624dp"
+        android:layout_height="396dp"
+        android:background="#FFFFFF"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="46sp"
+        android:typeface="serif"
+        app:layout_constraintBottom_toTopOf="@+id/startButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerText" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
