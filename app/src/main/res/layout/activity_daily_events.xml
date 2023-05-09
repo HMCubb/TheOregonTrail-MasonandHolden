@@ -55,6 +55,7 @@
         android:layout_width="1818dp"
         android:layout_height="521dp"
         android:background="@color/white"
+        android:scrollbars="vertical"
         android:text="TextView"
         android:textAlignment="center"
         android:textAllCaps="false"

@@ -222,7 +222,7 @@ public class RandomEvents implements Serializable {
     public void randomHealedDisease(boolean sick){
         double random = (Math.random() * 100);
         if (sick) {
-            this.healedDisease = random <= 10;
+            this.healedDisease = random <= 15;
         }
         else {
             this.healedDisease = false;
@@ -232,7 +232,7 @@ public class RandomEvents implements Serializable {
     public void randomHealedInjury(boolean injured){
         double random = (Math.random() * 100);
         if (injured) {
-            this.healedInjury = random <= 10;
+            this.healedInjury = random <= 15;
         }
         else {
             this.healedInjury = false;
