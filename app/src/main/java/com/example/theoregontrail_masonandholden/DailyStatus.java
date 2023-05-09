@@ -134,6 +134,7 @@ public class DailyStatus extends AppCompatActivity {
                 randomEvents.randomTongueBroke(wagon.brokenTongue);
                 randomEvents.randomWheelBroke(wagon.brokenWheel);
                 newHealth.weatherHealth(newWeather.getTemperature(), wagon.getClothes(), wagon.getPeople());
+                newHealth.paceHealth(dateAndDistance.getPace());
 
                 wagon.setRepairTongue(false);
                 wagon.setRepairWheel(false);

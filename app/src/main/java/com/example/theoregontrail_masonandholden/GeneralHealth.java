@@ -2,8 +2,20 @@ package com.example.theoregontrail_masonandholden;
 
 import java.io.Serializable;
 
+/**
+ * This is the GeneralHealth class.
+ * This class holds a value that represents the party's overall health.
+ *
+ * @author Mason Muether and Holden Cubberley
+ * @version 5/9/2023
+ */
 public class GeneralHealth implements Serializable {
 
+    /**
+     * Constructor for the health value.
+     * The value is a double so that it can be calculated with precision.
+     * The one value is only used for testing purposes, and can primarily be ignored.
+     */
     public double GeneralHealth;
     public int one;
 
@@ -13,23 +25,39 @@ public class GeneralHealth implements Serializable {
     }
 
 
+    /**
+     * Decreases the health value by 10% each day
+     */
     public void decrementHealth(){
         double decrement = this.GeneralHealth * 0.10;
         this.GeneralHealth = this.GeneralHealth - decrement;
     }
 
+    /**
+     * Basic getter for GeneralHealth
+     *
+     * @return a double representing the health of the party
+     */
     public double getGeneralHealth() {
         return this.GeneralHealth;
     }
 
-    public void setGeneralHealth(double generalHealth) {
-        this.GeneralHealth = generalHealth;
-    }
-
+    /**
+     * Increases health by a given amount
+     *
+     * @param increment an integer representing the how much health should be added
+     */
     public void addHealth(int increment) {
         this.GeneralHealth = this.GeneralHealth + increment;
     }
 
+    /**
+     * Increases the party's health, based on weather, clothing, and number of members
+     *
+     * @param weather an integer representing the current temperature
+     * @param clothing an integer representing an amount of clothing
+     * @param memberCount an integer representing number of current members
+     */
     public void weatherHealth(int weather, int clothing, int memberCount){
         if (weather == 5){
             this.GeneralHealth = this.GeneralHealth + 2;
@@ -61,34 +89,23 @@ public class GeneralHealth implements Serializable {
         }
     }
 
-    public boolean paceHealth(int pace){
+    /**
+     * Increases the party's health, based on the pace
+     *
+     * @param pace an integer representing the party's current pace
+     */
+    public void paceHealth(int pace){
         if (pace == 0){
-            return true;
         }
         else if (pace == 1){
             this.GeneralHealth = this.GeneralHealth + 2;
-            return true;
         }
         else if (pace == 2){
             this.GeneralHealth = this.GeneralHealth + 4;
-            return true;
         }
         else if (pace == 3){
             this.GeneralHealth = this.GeneralHealth + 6;
-            return true;
         }
-        return false;
     }
-
-    public boolean sickHealth(int sickNumber){
-        this.GeneralHealth = this.GeneralHealth + sickNumber;
-        return true;
-    }
-
-    public boolean injuryHealth(int injuryNumber){
-        this.GeneralHealth = this.GeneralHealth + injuryNumber;
-        return true;
-    }
-
 
 }
