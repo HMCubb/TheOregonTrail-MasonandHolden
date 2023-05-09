@@ -7,6 +7,16 @@
     android:background="#000000"
     tools:context=".dailyEvents">
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="2097dp"
+        android:layout_height="1217dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/untitled_artwork__1_"
+        tools:srcCompat="@drawable/untitled_artwork__1_" />
+
     <TextView
         android:id="@+id/eventTitle"
         android:layout_width="409dp"

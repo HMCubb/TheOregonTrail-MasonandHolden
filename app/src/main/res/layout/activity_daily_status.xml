@@ -8,6 +8,16 @@
     android:background="#000000"
     tools:context=".DailyStatus">
 
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="2097dp"
+        android:layout_height="1217dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/untitled_artwork__1_"
+        tools:srcCompat="@drawable/untitled_artwork__1_" />
+
     <TextView
         android:id="@+id/ProgressLabels"
         android:layout_width="435dp"
@@ -16,7 +26,9 @@
         android:layout_marginTop="18dp"
         android:background="#FFFFFF"
         android:text="Date: Distance: Health: Temperature: "
-        android:textSize="70sp"
+        android:textColor="#000000"
+        android:textSize="65sp"
+        android:typeface="serif"
         app:layout_constraintStart_toEndOf="@+id/MoneyCount"
         app:layout_constraintTop_toBottomOf="@+id/ProgressTitle" />
 
@@ -73,7 +85,11 @@
         android:layout_marginEnd="630dp"
         android:background="#FFFFFF"
         android:text="Progress"
-        android:textSize="100sp"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:textSize="85sp"
+        android:typeface="serif"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -85,7 +101,9 @@
         android:layout_marginTop="250dp"
         android:background="#FFFFFF"
         android:text="People: Money: Food: Oxen: Clothes: Tongues: Axles: Wheels:"
-        android:textSize="70sp"
+        android:textColor="#000000"
+        android:textSize="68sp"
+        android:typeface="serif"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -188,7 +206,11 @@
         android:layout_marginBottom="30dp"
         android:background="#FFFFFF"
         android:text="Resources"
-        android:textSize="100sp"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:textSize="85sp"
+        android:typeface="serif"
         app:layout_constraintBottom_toTopOf="@+id/ResourceLabels"
         app:layout_constraintStart_toStartOf="@+id/ResourceLabels" />
 

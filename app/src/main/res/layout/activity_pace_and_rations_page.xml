@@ -7,16 +7,29 @@
     android:background="#000000"
     tools:context=".PaceAndRationsPage">
 
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="2097dp"
+        android:layout_height="1217dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/untitled_artwork__1_"
+        tools:srcCompat="@drawable/untitled_artwork__1_" />
+
     <Button
         android:id="@+id/rationsUpButton"
-        android:layout_width="133dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="357dp"
-        android:layout_marginBottom="23dp"
+        android:layout_width="147dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="455dp"
         android:clickable="true"
+        android:text="up"
+        android:textColor="#000000"
+        android:textSize="24sp"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/rationsDownButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rationsValue"
         app:srcCompat="@android:drawable/arrow_up_float" />
 
     <TextView
@@ -39,8 +52,8 @@
         android:id="@+id/paceValue"
         android:layout_width="370dp"
         android:layout_height="83dp"
-        android:layout_marginStart="157dp"
-        android:layout_marginTop="63dp"
+        android:layout_marginStart="263dp"
+        android:layout_marginTop="33dp"
         android:background="#FFFFFF"
         android:text="0"
         android:textAlignment="center"
@@ -54,16 +67,16 @@
         android:id="@+id/rationsValue"
         android:layout_width="370dp"
         android:layout_height="83dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="727dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="347dp"
         android:background="#FFFFFF"
         android:text="0"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="60sp"
         android:typeface="serif"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/rationsUpButton" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rationsTitle" />
 
     <TextView
         android:id="@+id/paceTitle"
@@ -83,38 +96,47 @@
 
     <Button
         android:id="@+id/paceUpButton"
-        android:layout_width="133dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="63dp"
+        android:layout_width="157dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="369dp"
+        android:layout_marginTop="30dp"
         android:clickable="true"
+        android:text="up"
+        android:textColor="#000000"
+        android:textSize="24sp"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintStart_toEndOf="@+id/paceValue"
-        app:layout_constraintTop_toBottomOf="@+id/paceTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/paceValue"
         app:srcCompat="@android:drawable/arrow_up_float" />
 
     <Button
         android:id="@+id/paceDownButton"
-        android:layout_width="133dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="23dp"
+        android:layout_width="153dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="369dp"
+        android:layout_marginTop="44dp"
         android:clickable="true"
+        android:text="down"
+        android:textColor="#000000"
+        android:textSize="24sp"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintStart_toEndOf="@+id/paceValue"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/paceUpButton"
         app:srcCompat="@android:drawable/arrow_up_float" />
 
     <Button
         android:id="@+id/rationsDownButton"
-        android:layout_width="133dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="357dp"
-        android:layout_marginBottom="727dp"
+        android:layout_width="150dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="452dp"
         android:clickable="true"
+        android:text="down"
+        android:textColor="#000000"
+        android:textSize="24sp"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rationsUpButton"
         app:srcCompat="@android:drawable/arrow_up_float" />
 
     <Button

@@ -8,6 +8,16 @@
     android:background="#000000"
     tools:context=".LocationStatus">
 
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="2097dp"
+        android:layout_height="1217dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/untitled_artwork__1_"
+        tools:srcCompat="@drawable/untitled_artwork__1_" />
+
     <TextView
         android:id="@+id/ProgressLabelsLocation"
         android:layout_width="435dp"
@@ -73,7 +83,11 @@
         android:layout_marginEnd="630dp"
         android:background="#FFFFFF"
         android:text="Progress"
-        android:textSize="100sp"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:textSize="85sp"
+        android:typeface="serif"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -85,7 +99,9 @@
         android:layout_marginTop="250dp"
         android:background="#FFFFFF"
         android:text="People: Money: Food: Oxen: Clothes: Tongues: Axles: Wheels:"
-        android:textSize="70sp"
+        android:textColor="#000000"
+        android:textSize="65sp"
+        android:typeface="serif"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -102,8 +118,8 @@
 
     <TextView
         android:id="@+id/AxlesCountLocation"
-        android:layout_width="70dp"
-        android:layout_height="87dp"
+        android:layout_width="76dp"
+        android:layout_height="71dp"
         android:layout_marginStart="15dp"
         android:background="#FFFFFF"
         android:text="0"
@@ -113,8 +129,8 @@
 
     <TextView
         android:id="@+id/TonguesCountLocation"
-        android:layout_width="70dp"
-        android:layout_height="82dp"
+        android:layout_width="83dp"
+        android:layout_height="67dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="4dp"
         android:background="#FFFFFF"
@@ -188,7 +204,11 @@
         android:layout_marginBottom="30dp"
         android:background="#FFFFFF"
         android:text="Resources"
-        android:textSize="100sp"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:textSize="85sp"
+        android:typeface="serif"
         app:layout_constraintBottom_toTopOf="@+id/ResourceLabelsLocation"
         app:layout_constraintStart_toStartOf="@+id/ResourceLabelsLocation" />
 

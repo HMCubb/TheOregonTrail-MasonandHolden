@@ -8,6 +8,16 @@
     android:background="#000000"
     tools:context=".LocationStore">
 
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="2097dp"
+        android:layout_height="1217dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/untitled_artwork__1_"
+        tools:srcCompat="@drawable/untitled_artwork__1_" />
+
     <TextView
         android:id="@+id/oxenTextLocation"
         android:layout_width="255dp"
@@ -25,8 +35,8 @@
 
     <TextView
         android:id="@+id/oxenAmountLocation"
-        android:layout_width="79dp"
-        android:layout_height="67dp"
+        android:layout_width="119dp"
+        android:layout_height="64dp"
         android:layout_marginStart="34dp"
         android:layout_marginTop="119dp"
         android:background="#FFFFFF"
@@ -41,8 +51,8 @@
         android:id="@+id/oxenDownLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:clickable="true"
         app:backgroundTint="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/oxenTextLocation"
@@ -53,8 +63,8 @@
         android:id="@+id/oxenUpLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="76dp"
         android:clickable="true"
         app:backgroundTint="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/oxenTextLocation"
@@ -63,8 +73,8 @@
 
     <TextView
         android:id="@+id/axlesAmountLocation"
-        android:layout_width="79dp"
-        android:layout_height="67dp"
+        android:layout_width="105dp"
+        android:layout_height="64dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="114dp"
         android:background="#FFFFFF"
@@ -77,8 +87,8 @@
 
     <TextView
         android:id="@+id/foodAmountLocation"
-        android:layout_width="79dp"
-        android:layout_height="67dp"
+        android:layout_width="131dp"
+        android:layout_height="72dp"
         android:layout_marginStart="27dp"
         android:layout_marginTop="111dp"
         android:background="#FFFFFF"
@@ -162,8 +172,8 @@
         android:id="@+id/axlesUpLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="84dp"
         android:clickable="true"
         app:backgroundTint="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/axlesTextLocation"
@@ -186,8 +196,8 @@
         android:id="@+id/axlesDownLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
         android:clickable="true"
         app:backgroundTint="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/axlesTextLocation"
@@ -205,21 +215,6 @@
         app:layout_constraintStart_toEndOf="@+id/tonguesTextLocation"
         app:layout_constraintTop_toBottomOf="@+id/headerTextLocation"
         app:srcCompat="@android:drawable/arrow_up_float" />
-
-    <TextView
-        android:id="@+id/foodTextLocation"
-        android:layout_width="284dp"
-        android:layout_height="131dp"
-        android:layout_marginStart="134dp"
-        android:layout_marginTop="79dp"
-        android:background="#FFFFFF"
-        android:text="20lbs food ($4/20lbs)"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="#000000"
-        android:textSize="48sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerTextLocation" />
 
     <Button
         android:id="@+id/foodDownLocation"
@@ -261,8 +256,8 @@
         android:id="@+id/clothesTextLocation"
         android:layout_width="244dp"
         android:layout_height="124dp"
-        android:layout_marginStart="175dp"
-        android:layout_marginTop="58dp"
+        android:layout_marginStart="204dp"
+        android:layout_marginTop="52dp"
         android:background="#FFFFFF"
         android:text="Clothes ($10/set)"
         android:textAlignment="center"
@@ -271,6 +266,21 @@
         android:textSize="48sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/foodTextLocation" />
+
+    <TextView
+        android:id="@+id/foodTextLocation"
+        android:layout_width="284dp"
+        android:layout_height="131dp"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="68dp"
+        android:background="#FFFFFF"
+        android:text="20lbs food ($4/20lbs)"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:textSize="48sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerTextLocation" />
 
     <Button
         android:id="@+id/foodUpLocation"
@@ -286,8 +296,8 @@
 
     <TextView
         android:id="@+id/tonguesAmountLocation"
-        android:layout_width="79dp"
-        android:layout_height="67dp"
+        android:layout_width="118dp"
+        android:layout_height="62dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="111dp"
         android:background="#FFFFFF"
@@ -300,8 +310,8 @@
 
     <TextView
         android:id="@+id/clothesAmountLocation"
-        android:layout_width="79dp"
-        android:layout_height="67dp"
+        android:layout_width="125dp"
+        android:layout_height="62dp"
         android:layout_marginStart="27dp"
         android:layout_marginTop="114dp"
         android:background="#FFFFFF"
@@ -314,8 +324,8 @@
 
     <TextView
         android:id="@+id/wheelsAmountLocation"
-        android:layout_width="79dp"
-        android:layout_height="67dp"
+        android:layout_width="121dp"
+        android:layout_height="58dp"
         android:layout_marginStart="34dp"
         android:layout_marginTop="118dp"
         android:background="#FFFFFF"

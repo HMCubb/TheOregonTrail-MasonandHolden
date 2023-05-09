@@ -8,6 +8,16 @@
     android:background="#000000"
     tools:context=".Store">
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="2097dp"
+        android:layout_height="1217dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/untitled_artwork__1_"
+        tools:srcCompat="@drawable/untitled_artwork__1_" />
+
     <TextView
         android:id="@+id/oxenText"
         android:layout_width="255dp"
@@ -25,8 +35,8 @@
 
     <TextView
         android:id="@+id/oxenAmount"
-        android:layout_width="79dp"
-        android:layout_height="67dp"
+        android:layout_width="125dp"
+        android:layout_height="68dp"
         android:layout_marginStart="34dp"
         android:layout_marginTop="119dp"
         android:background="#FFFFFF"
@@ -41,7 +51,7 @@
         android:id="@+id/oxenDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
         android:clickable="true"
         app:backgroundTint="#FFFFFF"
@@ -53,8 +63,8 @@
         android:id="@+id/oxenUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="59dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="84dp"
         android:clickable="true"
         app:backgroundTint="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/oxenText"
@@ -63,8 +73,8 @@
 
     <TextView
         android:id="@+id/axlesAmount"
-        android:layout_width="79dp"
-        android:layout_height="67dp"
+        android:layout_width="102dp"
+        android:layout_height="61dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="114dp"
         android:background="#FFFFFF"
@@ -77,7 +87,7 @@
 
     <TextView
         android:id="@+id/foodAmount"
-        android:layout_width="79dp"
+        android:layout_width="161dp"
         android:layout_height="67dp"
         android:layout_marginStart="27dp"
         android:layout_marginTop="111dp"
@@ -162,8 +172,8 @@
         android:id="@+id/axlesUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="84dp"
         android:clickable="true"
         app:backgroundTint="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/axlesText"
@@ -187,8 +197,8 @@
         android:id="@+id/axlesDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
         android:clickable="true"
         app:backgroundTint="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/axlesText"
@@ -211,8 +221,8 @@
         android:id="@+id/foodText"
         android:layout_width="284dp"
         android:layout_height="131dp"
-        android:layout_marginStart="134dp"
-        android:layout_marginTop="79dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="76dp"
         android:background="#FFFFFF"
         android:text="20lbs food ($4/20lbs)"
         android:textAlignment="center"
@@ -221,6 +231,21 @@
         android:textSize="48sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerText2" />
+
+    <TextView
+        android:id="@+id/clothesText"
+        android:layout_width="244dp"
+        android:layout_height="124dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="52dp"
+        android:background="#FFFFFF"
+        android:text="Clothes ($10/set)"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:textSize="48sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodText" />
 
     <Button
         android:id="@+id/foodDown"
@@ -258,21 +283,6 @@
         app:layout_constraintTop_toBottomOf="@+id/clothesUp"
         app:srcCompat="@android:drawable/arrow_down_float" />
 
-    <TextView
-        android:id="@+id/clothesText"
-        android:layout_width="244dp"
-        android:layout_height="124dp"
-        android:layout_marginStart="175dp"
-        android:layout_marginTop="58dp"
-        android:background="#FFFFFF"
-        android:text="Clothes ($10/set)"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="#000000"
-        android:textSize="48sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/foodText" />
-
     <Button
         android:id="@+id/foodUp"
         android:layout_width="49dp"
@@ -287,8 +297,8 @@
 
     <TextView
         android:id="@+id/tonguesAmount"
-        android:layout_width="79dp"
-        android:layout_height="67dp"
+        android:layout_width="109dp"
+        android:layout_height="64dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="111dp"
         android:background="#FFFFFF"
@@ -301,8 +311,8 @@
 
     <TextView
         android:id="@+id/clothesAmount"
-        android:layout_width="79dp"
-        android:layout_height="67dp"
+        android:layout_width="144dp"
+        android:layout_height="73dp"
         android:layout_marginStart="27dp"
         android:layout_marginTop="114dp"
         android:background="#FFFFFF"
@@ -315,8 +325,8 @@
 
     <TextView
         android:id="@+id/wheelsAmount"
-        android:layout_width="79dp"
-        android:layout_height="67dp"
+        android:layout_width="116dp"
+        android:layout_height="63dp"
         android:layout_marginStart="34dp"
         android:layout_marginTop="118dp"
         android:background="#FFFFFF"
